@@ -2,7 +2,7 @@ import { H2 } from "../components/ui/Headings";
 
 export const MyApproachSection = () => {
   return (
-    <section className="h-[80vh] px-10">
+    <section className="h-[60vh] px-10">
       <H2>My Approach</H2>
 
       <div className="h-[1px] w-full bg-black mt-20" />

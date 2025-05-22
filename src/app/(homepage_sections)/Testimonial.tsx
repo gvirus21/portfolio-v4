@@ -34,10 +34,10 @@ const testimonials = [
 
 export const TestimonialSection = () => {
   return (
-    <section className="h-[60vh] max-w-7xl mx-auto mt-[10rem] mb-20">
+    <section className="min-h-[50vh] w-full px-10 mt-[10rem]">
       <H2>Clients Success Stories</H2>
 
-      <div className="flex overflow-x-scroll mx-auto gap-4 py-0 mb-40 rounded-2xl mt-24">
+      <div className="flex mx-auto gap-4 py-0 mb-40 rounded-2xl mt-24">
         {testimonials.map((testimonial) => (
           <div
             key={testimonial.id}
