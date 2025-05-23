@@ -79,7 +79,7 @@ export const WorkSection = () => {
     <section className="mt-20 lg:mt-[28rem] xl:mt-[20rem] pt-[1rem] lg:pt-[6rem] px-10">
       <H2>Brands I&apos;ve Worked With</H2>
 
-      <div className="flex flex-col justify-between tracking-wide font-medium mt-10">
+      <div className="flex flex-col justify-between mt-10 font-normal tracking-tighter">
         <div className="w-full h-[1px] bg-black/70" />
         {projects.map((project, index) => (
           <div key={index} className="">

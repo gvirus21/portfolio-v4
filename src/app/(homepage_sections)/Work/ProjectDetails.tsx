@@ -44,7 +44,7 @@ export const ProjectDetails = ({
           </Link>
 
           <div className="mt-6">
-            <h3 className="font-semibold text-xl tracking-[2%] mb-3">
+            <h3 className="text-xl tracking-[2%] mb-3">
               {" "}
               Challenges We Worked on
             </h3>
@@ -57,7 +57,7 @@ export const ProjectDetails = ({
           </div>
 
           <div className="mt-6">
-            <h3 className="font-semibold text-xl tracking-[2%] mb-3">Tools</h3>
+            <h3 className="text-xl tracking-[2%] mb-3">Tools</h3>
             <ul className="space-y-1">
               {tools.map((tool, index) => (
                 <li key={index} className="flex items-center">

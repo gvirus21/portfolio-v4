@@ -18,11 +18,11 @@ export const Description = ({
   return (
     <h1
       className={cn(
-        "leading-normal font-light lg:font-medium tracking-[4%] lg:tracking-wide",
-        variant === "xl" && "text-lg xl:text-2xl font-medium",
+        "leading-normal font-light tracking-[4%] lg:tracking-wide",
         variant === "xs" && "text-[0.625rem]",
         variant === "sm" && "text-base lg:text-sm",
         variant === "regular" && "text-[1.25rem] lg:text-[1.2rem]",
+        variant === "xl" && "text-lg xl:text-2xl tracking-tight leading-7",
         className
       )}
     >
