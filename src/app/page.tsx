@@ -2,7 +2,7 @@ import {
   HeroSection,
   TestimonialSection,
   ValueSection,
-  // WorkSection,
+  WorkSection,
   MyApproachSection,
   Footer,
 } from "./(homepage_sections)";
@@ -12,7 +12,7 @@ export default function Home() {
     <div className="h-screen bg-white max-w-screen font-main font-light">
       <HeroSection />
       <ValueSection />
-      {/* <WorkSection /> */}
+      <WorkSection />
       <TestimonialSection />
       <MyApproachSection />
       <Footer />

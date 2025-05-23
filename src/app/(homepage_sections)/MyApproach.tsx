@@ -1,4 +1,4 @@
-import { H2 } from "../components/ui/Headings";
+import { H2 } from "../components/ui/Text";
 
 export const MyApproachSection = () => {
   return (

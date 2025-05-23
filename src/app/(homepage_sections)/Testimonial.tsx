@@ -1,5 +1,5 @@
 import React from "react";
-import { H2 } from "../components/ui/Headings";
+import { H2 } from "../components/ui/Text";
 
 const testimonials = [
   {
