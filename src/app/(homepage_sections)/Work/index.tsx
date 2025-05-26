@@ -1,12 +1,10 @@
 "use client";
 
 import { useState } from "react";
-// import { Heading } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import ProjectDetails from "./ProjectDetails";
-
-import "./styles.css";
 import { H2 } from "@/app/components/ui/Text";
+import "./styles.css";
 
 const projects = [
   {
@@ -82,7 +80,7 @@ export const WorkSection = () => {
       <div className="flex flex-col justify-between mt-10 font-normal tracking-tighter">
         <div className="w-full h-[1px] bg-black/70" />
         {projects.map((project, index) => (
-          <div key={index} className="">
+          <div key={index}>
             <div
               onClick={() =>
                 setActiveProject((prev) => (prev === index ? null : index))
