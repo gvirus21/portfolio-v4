@@ -1,12 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { cn } from "@/lib/utils";
-import ProjectDetails from "./ProjectDetails";
-import { H2 } from "@/app/components/ui/Text";
-import "./styles.css";
+import ProjectItem from "./row";
+import { H2 } from "../../components/ui/Text";
+import styles from "./style.module.scss";
 
-const projects = [
+interface Project {
+  id: string;
+  name: string;
+  category: string;
+  date: string;
+  additonal_details: {
+    website: string;
+    images: string[];
+    description: string;
+    challengesDescription: string;
+    tools: string[];
+  };
+}
+
+const projects: Project[] = [
   {
     id: "playgrounds-website",
     name: "Playground's Website",
@@ -18,7 +31,7 @@ const projects = [
       description:
         "Led the development of multiple website projects for the Playgrounds Team, including landing pages, customer-facing web applications, and internal tools for the organisation.",
       challengesDescription:
-        "Overcame challenges by delivering innovative solutions that balanced brand creativity and functionality. Implemented optimised user experiences, ensured seamless cross-device functionality, and aligned projects with the company&apos;s evolving goals, all within tight deadlines.",
+        "Overcame challenges by delivering innovative solutions that balanced brand creativity and functionality. Implemented optimised user experiences, ensured seamless cross-device functionality, and aligned projects with the company's evolving goals, all within tight deadlines.",
       tools: ["Next.js", "TailwindCSS", "Framer Motion"],
     },
   },
@@ -31,9 +44,9 @@ const projects = [
       website: "https://www.google.com",
       images: ["https://www.google.com", "www.google.com"],
       description:
-        "Contributed to the development of the new Re-design of the Bankless&apos;s new Website. Worked Closely with the Leading developer and built many pages & graphics for the site.",
+        "Contributed to the development of the new Re-design of the Bankless's new Website. Worked Closely with the Leading developer and built many pages & graphics for the site.",
       challengesDescription:
-        "We collaborated to bring Bankless DAO&apos;s Web3 vision to life on their new website, refining it through multiple design and development iterations to achieve the perfect result.",
+        "We collaborated to bring Bankless DAO's Web3 vision to life on their new website, refining it through multiple design and development iterations to achieve the perfect result.",
       tools: ["Next.js", "TailwindCSS", "Chakra UI", "Figma"],
     },
   },
@@ -46,7 +59,7 @@ const projects = [
       website: "https://www.google.com",
       images: ["https://www.google.com", "www.google.com"],
       description:
-        "Collaborated with the Forefront team to help them design & develop their Squad&apos;s website",
+        "Collaborated with the Forefront team to help them design & develop their Squad's website",
       challengesDescription:
         "We designed and implemented complex features that integrated seamlessly with Web3 wallets, ensuring a smooth and intuitive user experience across our websites.",
       tools: ["Next.js", "TailwindCSS", "Figma"],
@@ -71,62 +84,25 @@ const projects = [
 
 export const WorkSection = () => {
   const [activeProject, setActiveProject] = useState<number | null>(null);
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   return (
-    <section className="mt-20 lg:mt-[28rem] xl:mt-[20rem] pt-[1rem] lg:pt-[6rem] px-10">
+    <section className="mt-10 pt-[1rem] lg:pt-[6rem] px-10">
       <H2>Brands I&apos;ve Worked With</H2>
 
       <div className="flex flex-col justify-between mt-10 font-normal tracking-tighter">
-        <div className="w-full h-[1px] bg-black/70" />
-        {projects.map((project, index) => (
-          <div key={index}>
-            <div
-              onClick={() =>
-                setActiveProject((prev) => (prev === index ? null : index))
-              }
-              onMouseEnter={() => setHoveredProject(index)}
-              onMouseLeave={() => setHoveredProject(null)}
-              className={cn(
-                "relative group flex justify-between items-center top-0 overflow-hidden py-2 cursor-pointer text-[12px] 2xs:text-[14px] sm:text-base",
-                hoveredProject === index && "active-work"
-              )}
-            >
-              <p
-                className={cn(
-                  "sm:group-hover:translate-x-4 transition-all duration-400 ease-in-out z-10 w-[10rem]",
-                  hoveredProject === index && "text-white"
-                )}
-              >
-                {project.name}
-              </p>
-
-              <p
-                className={cn(
-                  "text-right sm:text-left w-[10rem]",
-                  hoveredProject === index && "text-white z-10"
-                )}
-              >
-                {project.category}
-              </p>
-
-              <p
-                className={cn(
-                  "group-hover:-translate-x-4 transition-all duration-400 ease-in-out hidden sm:block",
-                  hoveredProject === index && "text-white z-10"
-                )}
-              >
-                {project.date}
-              </p>
-            </div>
-            <ProjectDetails
-              index={index}
-              details={project.additonal_details}
-              activeProject={activeProject}
-            />
-            <div className="w-full h-[1px] bg-black/70" />
+        <div className={styles.table}>
+          <div className={styles.body}>
+            {projects.map((project, index) => (
+              <ProjectItem
+                key={project.id}
+                data={project}
+                index={index}
+                activeProject={activeProject}
+                setActiveProject={setActiveProject}
+              />
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );

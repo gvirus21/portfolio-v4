@@ -1,0 +1,82 @@
+.table {
+  display: flex;
+  z-index: 3;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  .body {
+    .el {
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      perspective: 80vw;
+      transform-origin: top;
+
+      // table separator
+
+      border-top: 1px solid black;
+
+      &:first-of-type {
+        border-top: none;
+      }
+
+      &:last-of-type {
+        border-bottom: 1px solid black;
+      }
+
+      &:hover {
+        .outer {
+          .container {
+            opacity: 1;
+          }
+        }
+      }
+    }
+    a,
+    p {
+      color: black;
+      text-transform: uppercase;
+      font-weight: 400;
+      margin: 0px;
+      text-decoration: none;
+    }
+    .outer {
+      display: flex;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      will-change: top;
+      .inner {
+        background-color: black;
+        position: absolute;
+        white-space: nowrap;
+        height: 100%;
+        width: 100%;
+        top: 100%;
+        justify-content: center;
+        display: flex;
+        will-change: top;
+        .container {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          transition: opacity 0.3s;
+          position: relative;
+          opacity: 0;
+
+          &:nth-of-type(2) {
+            transition-delay: -4s;
+          }
+          &:nth-of-type(3) {
+            transition-delay: -6s;
+          }
+          p {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

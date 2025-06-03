@@ -12,7 +12,7 @@ const FooterLinks = () => {
   ];
 
   return (
-    <div className="flex justify-between w-full max-w-[40rem] text-sm">
+    <div className="flex justify-between w-full max-w-[30rem] 2xl:max-w-[40rem] text-sm">
       <div>
         <nav className="flex flex-col justify-between space-y-2">
           {footerLinks.map((link) => (

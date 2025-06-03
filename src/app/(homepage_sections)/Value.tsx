@@ -27,7 +27,10 @@ export const ValueSection = () => {
           <div className="flex justify-between items-center w-6/12">
             <div className="space-y-4">
               {deliverySteps.map((step) => (
-                <p key={step.id} className="text-xl text-black tracking-[-2%]">
+                <p
+                  key={step.id}
+                  className="text-lg 2xl:text-xl text-black tracking-[-2%]"
+                >
                   {step.content}
                 </p>
               ))}
@@ -40,7 +43,7 @@ export const ValueSection = () => {
         </div>
 
         {/* Image section */}
-        <div className="mt-44 relative aspect-[16/9] w-8/12 mx-auto overflow-hidden bg-gray-300"></div>
+        <div className="mt-44 relative aspect-[16/9] w-10/12 2xl:w-8/12 mx-auto overflow-hidden bg-gray-300"></div>
       </div>
     </section>
   );
