@@ -1,7 +1,5 @@
 "use client";
 
-// import Image from "next/image";
-
 export const HeroSection = () => {
   return (
     <section className="w-full mx-auto pt-44 px-10">

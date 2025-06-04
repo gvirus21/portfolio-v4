@@ -13,7 +13,13 @@ const Navbar = () => {
         <span>WEB DEVELOPER & DESIGNER</span>
         <div className="text-sm text-gray-500">VIZAG, INDIA</div>
       </div>
-      <PillButton title="Let's Talk" link="/contact" />
+      <div className="flex items-center gap-4">
+        <p>About</p>
+        {/* <p>Playground</p> */}
+        {/* <p>Blog</p> */}
+        <p>Instagram</p>
+        <div className="bg-black px-2 py-1 text-sm rounded-full text-white">Let's talk</div>
+      </div>
     </nav>
   );
 };

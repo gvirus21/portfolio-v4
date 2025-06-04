@@ -92,11 +92,9 @@ export default function Link({
   };
 
   const handleClick = () => {
-    // If clicking on the already active project, close it
     if (activeProject === index) {
       setActiveProject(null);
     } else {
-      // Otherwise, open this project (and close any other)
       setActiveProject(index);
     }
   };
@@ -105,13 +103,13 @@ export default function Link({
     <div className="">
       {index === 0 && (
         <div className="flex justify-between items-center py-3">
-          <p className="text-gray-400 text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider w-[13.5rem]">
+          <p className="text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider w-[13.5rem]">
             Client
           </p>
-          <p className="text-gray-400 text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider text-left sm:text-left w-[10rem]">
+          <p className="text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider text-left sm:text-left w-[10rem]">
             Category
           </p>
-          <p className="text-gray-400 text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider">
+          <p className="text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider">
             Year
           </p>
         </div>

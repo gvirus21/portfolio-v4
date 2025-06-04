@@ -1,7 +1,8 @@
-import Navbar from "./components/Navbar";
+import Navbar from "../components/Navbar";
 import localFont from "next/font/local";
 import { LenisProvider } from "./providers";
 import type { Metadata } from "next";
+import CustomCursor from "@/components/custom-cursor";
 import "./globals.css";
 
 const sequelSans = localFont({
@@ -67,6 +68,7 @@ export default function RootLayout({
         <body className={`${sequelSans.variable} antialiased font-main`}>
           <Navbar />
           {children}
+          <CustomCursor />
         </body>
       </LenisProvider>
     </html>

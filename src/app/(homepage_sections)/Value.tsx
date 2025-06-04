@@ -1,19 +1,19 @@
 "use client";
 
-import { H2 } from "../components/ui/Text";
-import PillButton from "../components/ui/PillButton";
+import { H2 } from "../../components/ui/Text";
+import PillButton from "../../components/ui/PillButton";
 
 const deliverySteps = [
   {
     id: 1,
     content:
-      "Personal Intro - sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla. Personal Intro - sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla.",
+      "I approach every project with a mix of curiosity, strategy, and craft. My goal isn’t just to build websites—it’s to help brands communicate better, convert more, and create digital experiences people genuinely enjoy. Every decision, from layout to line of code, is made with intention.",
     image: "/placeholder.svg?height=600&width=800",
   },
   {
     id: 2,
     content:
-      "Sit amet sapien fringilla. Personal Intro - sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla.",
+      "Rather than offering one-size-fits-all solutions, I adapt to what each project truly needs. I collaborate closely, ask the right questions, and bring design and development together to create work that not only looks beautiful but delivers real business impact.",
     image: "/placeholder.svg?height=600&width=800",
   },
 ];
@@ -29,7 +29,7 @@ export const ValueSection = () => {
               {deliverySteps.map((step) => (
                 <p
                   key={step.id}
-                  className="text-lg 2xl:text-xl text-black tracking-[-2%]"
+                  className="text-lg 2xl:text-xl text-black tracking-wide"
                 >
                   {step.content}
                 </p>

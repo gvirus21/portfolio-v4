@@ -13,7 +13,7 @@ export const Description = ({
 }: {
   children: string;
   className?: string;
-  variant?: "xs" | "sm" | "regular" | "xl";
+  variant?: "xs" | "sm" | "regular" | "lg" | "xl";
 }) => {
   return (
     <h1
@@ -21,8 +21,9 @@ export const Description = ({
         "leading-normal font-light tracking-[4%] lg:tracking-wide",
         variant === "xs" && "text-[0.625rem]",
         variant === "sm" && "text-base lg:text-sm",
-        variant === "regular" && "text-[1.25rem] lg:text-[1.2rem]",
-        variant === "xl" && "text-lg xl:text-2xl tracking-tight leading-7",
+        variant === "regular" && "text-[1.25rem] lg:text-[1.2rem] leading-6",
+        variant === "lg" && "text-[2rem] lg:text-[1.5rem] leading-7",
+        variant === "xl" && "text-lg xl:text-3xl",
         className
       )}
     >
