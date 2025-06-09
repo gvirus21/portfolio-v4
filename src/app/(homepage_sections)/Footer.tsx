@@ -1,3 +1,7 @@
+"use client";
+
+import FlipLink from "@/components/ui/FlipLink";
+
 const FooterLinks = () => {
   const footerLinks = [
     { name: "Home", href: "#" },
@@ -13,22 +17,21 @@ const FooterLinks = () => {
 
   return (
     <div className="flex justify-between w-full max-w-[30rem] 2xl:max-w-[40rem] text-sm">
+      
+      <nav className="flex flex-col justify-between space-y-4">
+        {footerLinks.map((link) => (
+          <FlipLink key={link.name} href={link.href}>
+            {link.name}
+          </FlipLink>
+        ))}
+      </nav>
+      {/* Social Media links */}
       <div>
-        <nav className="flex flex-col justify-between space-y-2">
-          {footerLinks.map((link) => (
-            <a key={link.name} href={link.href} className="text-white">
-              {link.name}
-            </a>
-          ))}
-        </nav>
-      </div>
-      <div>
-        {/* Social Media links */}
-        <nav className="flex flex-col justify-between space-y-2 mr-20">
+        <nav className="flex flex-col h-[3.5rem] justify-between mr-[10rem]">
           {socialMediaLinks.map((link) => (
-            <a key={link.name} href={link.href} className="text-white">
+            <FlipLink key={link.name} href={link.href}>
               {link.name}
-            </a>
+            </FlipLink>
           ))}
         </nav>
       </div>

@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import PillButton from "./ui/PillButton";
+import FlipLink from "./ui/FlipLink";
+// import PillButton from "./ui/PillButton";
 
 const Navbar = () => {
   return (
@@ -14,11 +15,20 @@ const Navbar = () => {
         <div className="text-sm text-gray-500">VIZAG, INDIA</div>
       </div>
       <div className="flex items-center gap-4">
-        <p>About</p>
+        <FlipLink className="uppercase" href="/about">
+          About
+        </FlipLink>
+        <FlipLink
+          className="uppercase"
+          href="https://instagram.com/gourav.kumar__"
+        >
+          Instagram
+        </FlipLink>
         {/* <p>Playground</p> */}
         {/* <p>Blog</p> */}
-        <p>Instagram</p>
-        <div className="bg-black px-2 py-1 text-sm rounded-full text-white">Let's talk</div>
+        <div className="bg-black px-2 py-1 text-sm rounded-full text-white">
+          Let&apos;s talk
+        </div>
       </div>
     </nav>
   );
