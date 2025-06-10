@@ -1,24 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import FlipLink from "./ui/FlipLink";
-import SkeletonPillButton from "./ui/SkeletonPillButton";
+import FlipLink from "./ui/links/FlipLink";
+import SkeletonPillButton from "./ui/buttons/SkeletonPillButton";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 z-50 w-full pt-4 pb-3 px-10 flex justify-between items-start">
+    <nav className="fixed top-0 z-50 w-full bg-white pt-4 pb-3 px-10 flex justify-between items-start">
       <div className="font-light">
         <Link href="/">@gourav.kumar__</Link>
       </div>
-      <div className="text-black font-light mt-1 text-sm">
+      <div className="absolute top-2 left-1/2 -translate-x-0.5 text-black font-light mt-1 text-sm">
         <span>WEB DEVELOPER & DESIGNER</span>
         <div className="text-sm text-gray-500">VIZAG, INDIA</div>
       </div>
       <div className="flex items-center gap-4">
-        <FlipLink className="uppercase" href="/about">
+        <FlipLink underline className="uppercase" href="/about">
           About
         </FlipLink>
         <FlipLink
+          underline
           className="uppercase"
           href="https://instagram.com/gourav.kumar__"
         >

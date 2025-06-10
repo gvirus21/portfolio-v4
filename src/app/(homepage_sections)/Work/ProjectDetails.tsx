@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { Description } from "@/components/ui/Text";
 import { BsDot } from "react-icons/bs";
+import PillButton from "@/components/ui/buttons/PillButton";
 
 interface AdditionalDetails {
   website: string;
@@ -66,12 +66,9 @@ export const ProjectDetails = ({
                 {description}
               </Description>
 
-              <Link
-                href={website}
-                className="bg-black px-4 py-2 rounded-full text-white text-sm hover:bg-gray-800 transition-colors duration-200"
-              >
-                <span className="text-white capitalize">Visit Website</span>
-              </Link>
+              <PillButton link={website} className="inline-flex">
+                Visit Website
+              </PillButton>
 
               <div className="mt-10">
                 <h3 className="text-3xl tracking-[-2%] mb-3">

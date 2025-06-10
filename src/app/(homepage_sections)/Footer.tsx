@@ -1,6 +1,6 @@
 "use client";
 
-import FlipLink from "@/components/ui/FlipLink";
+import SlidingLink from "@/components/ui/links/SlidingLink";
 
 const FooterLinks = () => {
   const footerLinks = [
@@ -17,21 +17,29 @@ const FooterLinks = () => {
 
   return (
     <div className="flex justify-between w-full max-w-[30rem] 2xl:max-w-[40rem] text-sm">
-      
       <nav className="flex flex-col justify-between space-y-4">
         {footerLinks.map((link) => (
-          <FlipLink key={link.name} href={link.href}>
-            {link.name}
-          </FlipLink>
+          <a key={link.name} href={link.href}>
+            <span
+              className="link-underline-anim"
+              style={{ "--underline-height": "0.5px" } as React.CSSProperties}
+            >
+              {link.name}
+            </span>
+          </a>
         ))}
       </nav>
       {/* Social Media links */}
       <div>
-        <nav className="flex flex-col h-[3.5rem] justify-between mr-[10rem]">
+        <nav className="flex flex-col h-[4rem] justify-between mr-[10rem]">
           {socialMediaLinks.map((link) => (
-            <FlipLink key={link.name} href={link.href}>
+            <SlidingLink
+              key={link.name}
+              link={link.href}
+              underlineHeight="0.5px"
+            >
               {link.name}
-            </FlipLink>
+            </SlidingLink>
           ))}
         </nav>
       </div>

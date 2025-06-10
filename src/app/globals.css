@@ -22,8 +22,7 @@
 }
 
 body {
-  /* background: var(--background);
-  color: var(--foreground); */
+  /* cursor: none; */
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -35,6 +34,27 @@ body {
   display: none; /* Safari and Chrome */
 }
 
-/* custom cursor */
+/* link hover animations */
+.link-underline-anim {
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+}
 
+.link-underline-anim::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--underline-height, 1px);
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.2s ease;
+}
 
+.link-underline-anim:hover:before {
+  transform: scaleX(1);
+  transform-origin: left;
+}

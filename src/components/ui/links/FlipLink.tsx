@@ -6,12 +6,18 @@ interface FlipLinkProps {
   children: string;
   href: string;
   className?: string;
+  underline?: boolean;
 }
 
 const DURATION = 0.4;
 const STAGGER = 0.025;
 
-const FlipLink: FC<FlipLinkProps> = ({ children, href, className }) => {
+const FlipLink: FC<FlipLinkProps> = ({
+  children,
+  href,
+  underline,
+  className,
+}) => {
   const letters = children.split("");
 
   return (
@@ -19,7 +25,8 @@ const FlipLink: FC<FlipLinkProps> = ({ children, href, className }) => {
       initial="initial"
       whileHover="hovered"
       className={cn(
-        "relative block overflow-hidden whitespace-nowrap",
+        "relative block overflow-hidden whitespace-nowrap leading-5",
+        underline && "link-underline-anim",
         className
       )}
       href={href}
