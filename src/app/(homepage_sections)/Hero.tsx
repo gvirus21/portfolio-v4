@@ -16,23 +16,12 @@ export const HeroSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-40">
         {/* First Image */}
         <div className="relative aspect-[4/3] w-full bg-gray-200">
-          {/* <Image
-            src="/workspace-image.jpg" // Replace with your actual image path
-            alt="Developer working at desk"
-            fill
-            className="object-cover rounded-lg"
-            priority
-          /> */}
+          {/* Image */}
         </div>
 
         {/* Second Image */}
         <div className="relative aspect-[4/3] w-full bg-gray-200">
-          {/* <Image
-            src="/sunset-coding.jpg" // Replace with your actual image path
-            alt="Developer coding at sunset"
-            fill
-            className="object-cover rounded-lg"
-          /> */}
+          {/* Image */}
         </div>
       </div>
     </section>
