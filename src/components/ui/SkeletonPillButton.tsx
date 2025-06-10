@@ -6,19 +6,19 @@ import { cn } from "@/lib/utils";
 import { TfiArrowTopRight } from "react-icons/tfi";
 import { motion } from "motion/react";
 
-interface PillButtonProps {
+interface SkeletonPillButtonProps {
   children: string;
   link: string;
   className?: string;
 }
 
-const PillButton = ({ children, link, className }: PillButtonProps) => {
+const SkeletonPillButton = ({ children, link, className }: SkeletonPillButtonProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <Link
       className={cn(
-        "relative flex justify-center items-center px-5 h-8 text-sm text-white bg-black rounded-full font-light hover:opacity-90 transition-opacity overflow-clip",
+        "relative flex justify-center items-center px-5 h-8 text-sm text-black rounded-full font-light hover:opacity-90 transition-opacity overflow-clip border border-black",
         className
       )}
       href={link}
@@ -26,28 +26,26 @@ const PillButton = ({ children, link, className }: PillButtonProps) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div
-        className="absolute top-[30%]"
         animate={{
-          x: isHovered ? -50 : -30,
+          scale: isHovered ? 40 : 1,
+          backgroundColor: isHovered ? "black" : "black",
         }}
-      >
-        <TfiArrowTopRight />
-      </motion.div>
-
+        transition={{ duration: 0.2, ease: "easeIn" }}
+        className="absolute top-[50%] -translate-y-0.5 left-3 h-[6px] w-[6px] rounded-full bg-black"
+      />
       <motion.span
         className="z-10"
-        initial={{ y: 0 }}
         animate={{
           x: isHovered ? -8 : 8,
+          color: isHovered ? "white" : "black",
         }}
       >
         {children}
       </motion.span>
       <motion.div
         className="absolute top-[30%]"
-        initial={{ y: 1 }}
         animate={{
-          x: isHovered ? 25 : 60,
+          x: isHovered ? 30 : 60,
           color: isHovered ? "white" : "black",
         }}
       >
@@ -57,4 +55,4 @@ const PillButton = ({ children, link, className }: PillButtonProps) => {
   );
 };
 
-export default PillButton;
+export default SkeletonPillButton;

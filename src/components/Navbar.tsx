@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import FlipLink from "./ui/FlipLink";
-import PillButton from "./ui/PillButton";
+import SkeletonPillButton from "./ui/SkeletonPillButton";
 
 const Navbar = () => {
   return (
@@ -27,7 +27,7 @@ const Navbar = () => {
         {/* <p>Playground</p> */}
         {/* <p>Blog</p> */}
 
-        <PillButton link="/about">Let&apos;s talk</PillButton>
+        <SkeletonPillButton link="/about">Let&apos;s talk</SkeletonPillButton>
       </div>
     </nav>
   );

@@ -38,7 +38,7 @@ export const ValueSection = () => {
           </div>
 
           <div className="flex justify-end mt-4">
-            <PillButton title="Contact" link="/contact"></PillButton>
+            <PillButton link="/contact">Contact</PillButton>
           </div>
         </div>
 
