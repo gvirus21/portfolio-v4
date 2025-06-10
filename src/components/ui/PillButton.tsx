@@ -1,23 +1,56 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { TfiArrowTopRight } from "react-icons/tfi";
+import { motion } from "motion/react";
 
 interface PillButtonProps {
-  title: string;
+  children: string;
   link: string;
   className?: string;
 }
 
-const PillButton = ({ title, link, className }: PillButtonProps) => {
+const PillButton = ({ children, link, className }: PillButtonProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <Link href={link}>
-      <div
-        className={cn(
-          "inline-block px-3 py-1 text-sm bg-black text-white rounded-full font-light hover:opacity-90 transition-opacity",
-          className
-        )}
+    <Link
+      className={cn(
+        "relative flex justify-center items-center px-5 py-1 text-sm text-black rounded-full font-light hover:opacity-90 transition-opacity overflow-clip border border-black",
+        className
+      )}
+      href={link}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <motion.div
+        animate={{
+          scale: isHovered ? 40 : 1,
+          backgroundColor: isHovered ? "black" : "black",
+        }}
+        transition={{ duration: 0.2, ease: "easeIn" }}
+        className="absolute top-[50%] -translate-y-0.5 left-3 h-[6px] w-[6px] rounded-full bg-black"
+      />
+      <motion.span
+        className="z-10"
+        animate={{
+          x: isHovered ? -8 : 8,
+          color: isHovered ? "white" : "black",
+        }}
       >
-        {title}
-      </div>
+        {children}
+      </motion.span>
+      <motion.div
+        className="absolute top-[30%]"
+        animate={{
+          x: isHovered ? 30 : 60,
+          color: isHovered ? "white" : "black",
+        }}
+      >
+        <TfiArrowTopRight />
+      </motion.div>
     </Link>
   );
 };

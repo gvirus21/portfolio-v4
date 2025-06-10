@@ -8,7 +8,7 @@ interface FlipLinkProps {
   className?: string;
 }
 
-const DURATION = 0.25;
+const DURATION = 0.4;
 const STAGGER = 0.025;
 
 const FlipLink: FC<FlipLinkProps> = ({ children, href, className }) => {

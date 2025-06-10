@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import FlipLink from "./ui/FlipLink";
-// import PillButton from "./ui/PillButton";
+import PillButton from "./ui/PillButton";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 z-50 w-full pt-4 pb-3 px-10 flex justify-between items-start bg-white">
+    <nav className="fixed top-0 z-50 w-full pt-4 pb-3 px-10 flex justify-between items-start">
       <div className="font-light">
         <Link href="/">@gourav.kumar__</Link>
       </div>
@@ -26,9 +26,8 @@ const Navbar = () => {
         </FlipLink>
         {/* <p>Playground</p> */}
         {/* <p>Blog</p> */}
-        <div className="bg-black px-2 py-1 text-sm rounded-full text-white">
-          Let&apos;s talk
-        </div>
+
+        <PillButton link="/about">Let&apos;s talk</PillButton>
       </div>
     </nav>
   );
