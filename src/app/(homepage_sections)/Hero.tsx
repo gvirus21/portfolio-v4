@@ -61,16 +61,14 @@ export const HeroSection = () => {
 
   const imageVariants = {
     initial: {
-      opacity: 0,
-      scale: "110%",
+      scale: "140%",
     },
     animate: {
-      opacity: 1,
       scale: "100%",
       transition: {
-        delay: 2.7,
-        duration: 1.2,
-        ease: [0.25, 0.86, 0.45, 0.99],
+        delay: 2.5,
+        duration: 1.5,
+        ease: [0.25, 0.86, 0.45, 0.98],
       },
     },
   };
@@ -88,10 +86,10 @@ export const HeroSection = () => {
       {/* Images Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-40">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 1,
+            duration: 1.2,
             ease: [0.25, 0.46, 0.45, 0.94],
             delay: 3.2,
           }}
@@ -112,10 +110,10 @@ export const HeroSection = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 1,
+            duration: 1.2,
             ease: [0.25, 0.46, 0.45, 0.94],
             delay: 3.2,
           }}
