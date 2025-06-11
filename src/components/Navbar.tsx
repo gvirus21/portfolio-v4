@@ -1,12 +1,22 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "motion/react";
 import FlipLink from "./ui/links/FlipLink";
 import SkeletonPillButton from "./ui/buttons/SkeletonPillButton";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 z-50 w-full bg-white pt-4 pb-3 px-10 flex justify-between items-start">
+    <motion.nav
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94],
+        delay: 2.7,
+      }}
+      className="fixed top-0 z-50 w-full bg-white pt-4 pb-3 px-10 flex justify-between items-start"
+    >
       <div className="font-light">
         <Link href="/">@gourav.kumar__</Link>
       </div>
@@ -14,10 +24,12 @@ const Navbar = () => {
         <span>WEB DEVELOPER & DESIGNER</span>
         <div className="text-sm text-gray-500">VIZAG, INDIA</div>
       </div>
+
       <div className="flex items-center gap-4">
         <FlipLink underline className="uppercase" href="/about">
           About
         </FlipLink>
+
         <FlipLink
           underline
           className="uppercase"
@@ -25,12 +37,10 @@ const Navbar = () => {
         >
           Instagram
         </FlipLink>
-        {/* <p>Playground</p> */}
-        {/* <p>Blog</p> */}
 
         <SkeletonPillButton link="/about">Let&apos;s talk</SkeletonPillButton>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

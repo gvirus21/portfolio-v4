@@ -30,12 +30,15 @@ export default function Home() {
   };
 
   return (
-    <>
-      {showLoader ? (
-        <Loader onComplete={handleLoadingComplete} />
-      ) : (
-        <MainContent />
+    <div className="relative">
+      <MainContent />
+
+      {/* Loader overlays on top */}
+      {showLoader && (
+        <div className="fixed inset-0 z-50">
+          <Loader onComplete={handleLoadingComplete} />
+        </div>
       )}
-    </>
+    </div>
   );
 }
