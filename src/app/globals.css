@@ -1,4 +1,5 @@
 @import "tailwindcss";
+/* @import url("normalise.css"); */
 
 :root {
   --background: #ffffff;
@@ -20,6 +21,12 @@
     --foreground: #ededed;
   }
 }
+
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
 
 body {
   /* cursor: none; */
@@ -57,4 +64,12 @@ body {
 .link-underline-anim:hover:before {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+/* firefox wrong font weight fix */
+@-moz-document url-prefix() {
+  #content {
+    outline: 1px solid #b9bdbe;
+    outline-offset: -11px;
+  }
 }

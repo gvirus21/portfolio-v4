@@ -106,7 +106,7 @@ export default function Link({
           <p className="text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider w-[13.5rem]">
             Client
           </p>
-          <p className="text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider text-left sm:text-left w-[10rem]">
+          <p className="text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider text-left sm:text-left w-[21.5rem]">
             Category
           </p>
           <p className="text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider">
@@ -114,6 +114,7 @@ export default function Link({
           </p>
         </div>
       )}
+
       <div
         onClick={handleClick}
         onMouseEnter={manageMouseEnter}
@@ -162,10 +163,10 @@ const DefaultVisibleTableRows = ({
   index: number;
 }) => {
   return (
-    <div className="relative group flex justify-between items-center top-0 overflow-hidden py-2 cursor-pointer text-[12px] 2xs:text-[14px] sm:text-sm w-full">
+    <div className="relative group flex justify-between items-center top-0 overflow-hidden py-4 cursor-pointer text-lg w-full">
       <p className="text-white w-[15rem]">{name}</p>
 
-      <p className="text-right sm:text-left w-[10rem] text-white">{category}</p>
+      <p className="text-right sm:text-left w-[20rem] text-white">{category}</p>
 
       <p className="text-white">{date}</p>
     </div>
@@ -187,12 +188,12 @@ const HoveredVisibleTableRows = ({
   dateRef: React.RefObject<HTMLParagraphElement | null>;
 }) => {
   return (
-    <div className="relative group flex justify-between items-center top-0 overflow-hidden py-2 cursor-pointer text-[12px] 2xs:text-[14px] sm:text-sm w-full">
+    <div className="relative group flex justify-between items-center top-0 overflow-hidden py-2 cursor-pointer  text-lg w-full">
       <p ref={nameRef} className="text-white w-[15rem] will-change-transform">
         {name}
       </p>
 
-      <p className="text-right sm:text-left w-[10rem] text-white">{category}</p>
+      <p className="text-right sm:text-left w-[20rem] text-white">{category}</p>
 
       <p ref={dateRef} className="text-white will-change-transform">
         {date}

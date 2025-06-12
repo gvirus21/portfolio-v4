@@ -24,8 +24,8 @@ export const ValueSection = () => {
       <div className="w-full">
         <div className="flex justify-between">
           <H2>How I Deliver Value</H2>
-          <div className="flex justify-between items-center w-6/12">
-            <div className="space-y-4">
+          <div className="flex flex-col justify-between items-start w-4/12 mr-[20rem]">
+            <div className="space-y-5">
               {deliverySteps.map((step) => (
                 <p
                   key={step.id}
@@ -35,10 +35,9 @@ export const ValueSection = () => {
                 </p>
               ))}
             </div>
-          </div>
-
-          <div className="flex justify-end mt-4">
-            <PillButton link="/contact">Contact</PillButton>
+            <div className="flex justify-end mt-10">
+              <PillButton link="/contact">Contact</PillButton>
+            </div>
           </div>
         </div>
 

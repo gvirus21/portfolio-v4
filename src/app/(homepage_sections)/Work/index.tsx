@@ -88,8 +88,7 @@ export const WorkSection = () => {
   return (
     <section className="mt-10 pt-[1rem] lg:pt-[6rem] px-10">
       <H2>Brands I&apos;ve Worked With</H2>
-
-      <div className="flex flex-col justify-between mt-10 font-normal tracking-tighter">
+      <div className="flex flex-col justify-between mt-28 font-normal tracking-tighter">
         <div className={styles.table}>
           <div className={styles.body}>
             {projects.map((project, index) => (

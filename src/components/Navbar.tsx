@@ -27,9 +27,14 @@ const Navbar = () => {
 
       <div className="flex items-center gap-4">
         <FlipLink underline className="uppercase" href="/about">
-          About
+          Playground
         </FlipLink>
-
+        <FlipLink underline className="uppercase" href="/about">
+          Services
+        </FlipLink>
+        <FlipLink underline className="uppercase" href="/about">
+          Blog
+        </FlipLink>
         <FlipLink
           underline
           className="uppercase"
