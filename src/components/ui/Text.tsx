@@ -1,8 +1,27 @@
 import { cn } from "@/lib/utils";
 
-export const H2 = ({ children }: Readonly<{ children: React.ReactNode }>) => {
+export const H2 = ({
+  children,
+  className,
+}: Readonly<{ children: React.ReactNode; className?: string }>) => {
   return (
-    <h2 className="text-9xl tracking-tight">{children}</h2>
+    <h2 className={cn("text-8xl tracking-tight", className)}>{children}</h2>
+  );
+};
+
+export const H4 = ({
+  children,
+  className,
+}: Readonly<{ children: React.ReactNode; className?: string }>) => {
+  return (
+    <h2
+      className={cn(
+        "text-6xl font-normal uppercase tracking-tighter",
+        className
+      )}
+    >
+      {children}
+    </h2>
   );
 };
 

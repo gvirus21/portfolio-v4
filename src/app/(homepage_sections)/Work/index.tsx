@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import ProjectItem from "./row";
-import { H2 } from "../../../components/ui/Text";
+import { H4 } from "../../../components/ui/Text";
 import styles from "./style.module.scss";
 
 interface Project {
@@ -86,8 +86,8 @@ export const WorkSection = () => {
   const [activeProject, setActiveProject] = useState<number | null>(null);
 
   return (
-    <section className="mt-10 pt-[1rem] lg:pt-[6rem] px-10">
-      <H2>Brands I&apos;ve Worked With</H2>
+    <section className="px-10 mt-60">
+      <H4>Brands I&apos;ve Worked With</H4>
       <div className="flex flex-col justify-between mt-28 font-normal tracking-tighter">
         <div className={styles.table}>
           <div className={styles.body}>

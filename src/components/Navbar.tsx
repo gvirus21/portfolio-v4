@@ -27,21 +27,24 @@ const Navbar = () => {
 
       <div className="flex items-center gap-4">
         <FlipLink underline className="uppercase" href="/about">
+          About
+        </FlipLink>
+        <FlipLink underline className="uppercase" href="/about">
           Playground
+        </FlipLink>
+        <FlipLink underline className="uppercase" href="/about">
+          Journal
         </FlipLink>
         <FlipLink underline className="uppercase" href="/about">
           Services
         </FlipLink>
-        <FlipLink underline className="uppercase" href="/about">
-          Blog
-        </FlipLink>
-        <FlipLink
+        {/* <FlipLink
           underline
           className="uppercase"
           href="https://instagram.com/gourav.kumar__"
         >
           Instagram
-        </FlipLink>
+        </FlipLink> */}
 
         <SkeletonPillButton link="/about">Let&apos;s talk</SkeletonPillButton>
       </div>

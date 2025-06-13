@@ -1,4 +1,4 @@
-import { H2 } from "../../components/ui/Text";
+import { H2, H4 } from "../../components/ui/Text";
 
 const approachItems = [
   {
@@ -15,8 +15,8 @@ const approachItems = [
 
 export const MyApproachSection = () => {
   return (
-    <section className="h-[70vh] 2xl:h-[60vh] px-10">
-      <H2>My Approach.</H2>
+    <section className="h-[70vh] 2xl:h-[60vh] px-10 mt-40">
+      <H4 className="capitalize font-light tracking-[-1px] ">My Approach.</H4>
 
       <div className="mt-20">
         {approachItems.map((item, index) => (

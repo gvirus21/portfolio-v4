@@ -1,6 +1,6 @@
 "use client";
 
-import { H2 } from "../../components/ui/Text";
+import { H4 } from "../../components/ui/Text";
 import PillButton from "../../components/ui/buttons/PillButton";
 
 const deliverySteps = [
@@ -20,11 +20,11 @@ const deliverySteps = [
 
 export const ValueSection = () => {
   return (
-    <section className="py-16 px-4 md:px-8 mt-60">
+    <section className="pt-16 px-4 md:px-8 mt-60">
       <div className="w-full">
         <div className="flex justify-between">
-          <H2>How I Deliver Value</H2>
-          <div className="flex flex-col justify-between items-start w-4/12 mr-[20rem]">
+            <H4 className="text-8xl">How I Deliver Value</H4>
+          <div className="flex flex-col justify-between items-start w-5/12 mt-16 mr-[14rem]">
             <div className="space-y-5">
               {deliverySteps.map((step) => (
                 <p

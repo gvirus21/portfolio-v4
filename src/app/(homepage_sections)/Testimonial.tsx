@@ -1,4 +1,4 @@
-import { H2 } from "../../components/ui/Text";
+import { H4 } from "../../components/ui/Text";
 
 const hideScrollbarStyles = `
   .hide-scrollbar::-webkit-scrollbar {
@@ -45,13 +45,6 @@ const testimonials = [
     testimonial:
       "I have had the pleasure of working with Gourav, and I can confidently say he is exceptional with frontend technologies. His expertise in crafting animations and creating minimalist designs is truly impressive. Gourav's attention to detail ensures not only aesthetically pleasing interfaces but also a stable and high-quality codebase. His commitment to maintaining code quality throughout the development process is admirable. I highly recommend Gourav for any project requiring top-notch frontend skills and a keen eye for design.",
   },
-  // {
-  //   id: 4,
-  //   clientName: "Jane Doe",
-  //   profileLink: "https://www.example.com",
-  //   testimonial:
-  //     "Personal Intro - sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla.Personal Intro - sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla. sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla.Personal Intro - sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla. Personal Intro - sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla.",
-  // },
 ];
 
 export const TestimonialSection = () => {
@@ -59,11 +52,11 @@ export const TestimonialSection = () => {
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="min-h-[50vh] w-full px-10 mt-[10rem]">
+    <section className="min-h-[50vh] w-full px-10 mt-60">
       <style>{hideScrollbarStyles}</style>
-      <H2>Clients Success Stories</H2>
+      <H4 className="text-[6rem] tracking-[-6px]">Clients Success Stories</H4>
 
-      <div className="overflow-hidden mt-24 mb-40">
+      <div className="overflow-hidden mt-24">
         <div className="flex gap-4 auto-scroll-container items-start">
           {duplicatedTestimonials.map((testimonial, index) => (
             <div
