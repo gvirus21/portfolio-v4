@@ -29,22 +29,22 @@ const Navbar = () => {
         <FlipLink underline className="uppercase" href="/about">
           About
         </FlipLink>
-        <FlipLink underline className="uppercase" href="/about">
+        {/* <FlipLink underline className="uppercase" href="/about">
           Playground
         </FlipLink>
         <FlipLink underline className="uppercase" href="/about">
           Journal
-        </FlipLink>
+        </FlipLink> */}
         <FlipLink underline className="uppercase" href="/about">
           Services
         </FlipLink>
-        {/* <FlipLink
+        <FlipLink
           underline
           className="uppercase"
           href="https://instagram.com/gourav.kumar__"
         >
           Instagram
-        </FlipLink> */}
+        </FlipLink>
 
         <SkeletonPillButton link="/about">Let&apos;s talk</SkeletonPillButton>
       </div>

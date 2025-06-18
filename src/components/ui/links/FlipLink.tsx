@@ -30,8 +30,6 @@ const FlipLink: FC<FlipLinkProps> = ({
         className
       )}
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
     >
       <div>
         {letters.map((letter, i) => (

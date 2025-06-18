@@ -66,6 +66,10 @@ export const TestimonialSection = () => {
               <p className="text-lg font-light mb-2 w-[32rem]">
                 {testimonial.testimonial}
               </p>
+
+              <div>
+                <h1>Hello people how are you doing???</h1>
+              </div>
               <p className="text-sm font-medium mt-10">
                 <a
                   href={testimonial.profileLink}
