@@ -15,7 +15,7 @@ const Navbar = () => {
         ease: [0.25, 0.46, 0.45, 0.94],
         delay: 2.7,
       }}
-      className="fixed top-0 z-50 w-full bg-white pt-4 pb-3 px-10 flex justify-between items-start"
+      className="fixed top-0 z-50 w-full bg-background pt-4 pb-3 px-10 flex justify-between items-start"
     >
       <div className="font-light">
         <Link href="/">@gourav.kumar__</Link>
@@ -35,8 +35,8 @@ const Navbar = () => {
         <FlipLink underline className="uppercase" href="/about">
           Journal
         </FlipLink> */}
-        <FlipLink underline className="uppercase" href="/about">
-          Services
+        <FlipLink underline className="uppercase" href="/pricing">
+          Pricing
         </FlipLink>
         <FlipLink
           underline

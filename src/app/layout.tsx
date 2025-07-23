@@ -52,6 +52,12 @@ const sequelSans = localFont({
   ],
 });
 
+const scotch = localFont({
+  display: "swap",
+  variable: "--font-scotch",
+  src: "../../public/fonts/Scotch Display Light.otf",
+});
+
 export const metadata: Metadata = {
   title: "Gourav Kumar",
   description: "web portfolio of Gourav Kumar",
@@ -65,7 +71,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <LenisProvider>
-        <body className={`${sequelSans.variable} antialiased font-main`}>
+        <body className={`${sequelSans.variable} ${scotch.variable} antialiased font-main bg-background`}>
           <Navbar />
           {children}
           <CustomCursor />

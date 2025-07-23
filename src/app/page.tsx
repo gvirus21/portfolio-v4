@@ -11,8 +11,11 @@ import {
 import Loader from "../components/Loader";
 import Footer from "../components/Footer";
 
+const variable = "Hello World";
+
+
 const MainContent = () => (
-  <main className="min-h-screen bg-white max-w-screen font-main font-light">
+  <main className="min-h-screen bg-background max-w-screen font-main font-light">
     <HeroSection />
     <ValueSection />
     <WorkSection />
@@ -37,6 +40,11 @@ export default function Home() {
       {showLoader && (
         <div className="fixed inset-0 z-50">
           <Loader onComplete={handleLoadingComplete} />
+          <Loader onComplete={handleLoadingComplete} />
+
+          <footer>
+            <li> {variable}</li>
+          </footer>
         </div>
       )}
     </div>

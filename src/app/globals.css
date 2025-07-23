@@ -1,10 +1,14 @@
 @import "tailwindcss";
+@import url("https://use.typekit.net/xtz4xmy.css"); 
+
 /* @import url("normalise.css"); */
 
 :root {
-  --background: #ffffff;
+  --background: #EBEBEB;
   --foreground: #171717;
 }
+
+/* #EBEBEB #f9fafd*/
 
 @theme inline {
   --color-background: var(--background);
@@ -13,9 +17,10 @@
   --font-mono: var(--font-geist-mono);
   --font-mono: var(--font-geist-mono);
   --font-main: var(--font-sequel-sans);
+  --font-scotch: var(--font-scotch);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
@@ -30,7 +35,7 @@
 
 body {
   /* cursor: none; */
-  font-family: var(--font-main);
+  font-family: var(--font-main), var(--font-scotch);
 }
 
 .scrollbar-hide {
