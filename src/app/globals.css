@@ -1,10 +1,10 @@
 @import "tailwindcss";
-@import url("https://use.typekit.net/xtz4xmy.css"); 
+@import url("https://use.typekit.net/xtz4xmy.css");
 
 /* @import url("normalise.css"); */
 
 :root {
-  --background: #EBEBEB;
+  --background: #ebebeb;
   --foreground: #171717;
 }
 
@@ -18,6 +18,10 @@
   --font-mono: var(--font-geist-mono);
   --font-main: var(--font-sequel-sans);
   --font-scotch: var(--font-scotch);
+}
+
+@theme {
+  --breakpoint-xs: 2000px;
 }
 
 @media (prefers-color-scheme: light) {
