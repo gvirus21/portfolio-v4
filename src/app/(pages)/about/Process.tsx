@@ -39,7 +39,7 @@ export const ProcessSection = () => {
   return (
     <div className="flex">
       {/* Left Side - Sticky */}
-      <div className="w-1/2 p-12 flex flex-col justify-start bg-white sticky top-0 h-screen">
+      <div className="w-1/2 p-12 flex flex-col justify-start sticky top-0 h-screen">
         {/* Main Content */}
         <div className="flex-1 flex flex-col justify-start mt-0">
           <div className="flex justify-between items-start mb-8">

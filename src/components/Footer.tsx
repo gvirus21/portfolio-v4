@@ -19,7 +19,7 @@ const SOCIAL_MEDIA_LINKS = [
 
 const DesktopFooterLinks: React.FC = React.memo(() => (
   <div className="flex justify-between w-full mt-5 lg:max-w-[24rem] 2xl:max-w-[30rem] text-sm">
-    <nav className="flex flex-col justify-between space-y-4">
+    <nav className="flex flex-col justify-between space-y-2 xl:space-y-3">
       {FOOTER_LINKS.map((link) => (
         <Link key={link.name} href={link.href} passHref legacyBehavior>
           <a>
@@ -35,7 +35,7 @@ const DesktopFooterLinks: React.FC = React.memo(() => (
     </nav>
     {/* Social Media links */}
     <div>
-      <nav className="flex flex-col h-[4rem] justify-between mr-[5rem] 2xl:mr-[8rem]">
+      <nav className="flex flex-col justify-between mr-[5rem] 2xl:mr-[8rem]">
         {SOCIAL_MEDIA_LINKS.map((link) => (
           <SlidingLink
             key={link.name}
@@ -43,6 +43,7 @@ const DesktopFooterLinks: React.FC = React.memo(() => (
             underlineHeight="0.5px"
             target="_blank"
             rel="noopener noreferrer"
+            className="-mb-1 xl:mb-0"
           >
             {link.name}
           </SlidingLink>
@@ -55,15 +56,15 @@ DesktopFooterLinks.displayName = "DesktopFooterLinks";
 
 export const Footer: React.FC = () => (
   <section
-    className="relative h-[65vh] md:h-[50vh] lg:h-[40vh]"
+    className="relative h-[60vh] md:h-[40vh] lg:h-[40vh] xl:h-[50vh] 2xl:h-[40vh]"
     style={{
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
     }}
   >
     {/* Desktop Footer */}
-    <div className="fixed bottom-0 hidden lg:flex flex-col justify-between h-[40vh] w-full bg-black text-white pt-10 px-10">
+    <div className="fixed bottom-0 hidden lg:flex flex-col justify-between h-[40vh] xl:h-[50vh] 2xl:h-[40vh] w-full bg-black text-white pt-6 xl:pt-10 px-10">
       <div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl tracking-normal font-thin text-center lg:text-left">
+        <h2 className="lg:text-4xl xl:text-5xl tracking-normal font-thin text-center lg:text-left">
           Do it Once, Do it right.
         </h2>
         <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start lg:justify-between">
@@ -92,7 +93,7 @@ export const Footer: React.FC = () => (
     </div>
 
     {/* Mobile footer */}
-    <div className="fixed bottom-0 flex lg:hidden flex-col justify-between gap-4 h-[65vh] md:h-[50vh] w-full bg-black text-white pt-5 px-4">
+    <div className="fixed bottom-0 flex lg:hidden flex-col justify-between gap-4 h-[60vh] md:h-[40vh] w-full bg-[#131313] text-white pt-5 px-4">
       <div className="flex justify-between">
         <div className="text-3xl flex flex-col md:flex-row justify-between gap-0 md:gap-4 px-1 font-thin">
           {FOOTER_LINKS.map((link) => (
@@ -122,7 +123,7 @@ export const Footer: React.FC = () => (
         </div>
       </div>
 
-      <div className="flex flex-col justify-end gap-5">
+      <div className="flex flex-col justify-end gap-4">
         <div>
           <p className="text-xl font-thin tracking-tight mb-2">
             Your product deserves a better site.

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   HeroSection,
   TestimonialSection,
@@ -12,7 +12,6 @@ import Loader from "../components/Loader";
 import Footer from "../components/Footer";
 
 const variable = "Hello World";
-
 
 const MainContent = () => (
   <main className="min-h-screen bg-background max-w-screen font-main font-light">
@@ -26,10 +25,22 @@ const MainContent = () => (
 );
 
 export default function Home() {
-  const [showLoader, setShowLoader] = useState(true);
+  const [showLoader, setShowLoader] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hasVisited = sessionStorage.getItem("hasVisitedHome");
+      if (!hasVisited) {
+        setShowLoader(true);
+      }
+    }
+  }, []);
 
   const handleLoadingComplete = () => {
     setShowLoader(false);
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("hasVisitedHome", "true");
+    }
   };
 
   return (
@@ -40,8 +51,6 @@ export default function Home() {
       {showLoader && (
         <div className="fixed inset-0 z-50">
           <Loader onComplete={handleLoadingComplete} />
-          <Loader onComplete={handleLoadingComplete} />
-
           <footer>
             <li> {variable}</li>
           </footer>

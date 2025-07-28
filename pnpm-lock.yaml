@@ -23,6 +23,9 @@ dependencies:
   next:
     specifier: 15.2.3
     version: 15.2.3(react-dom@19.1.0)(react@19.1.0)(sass@1.89.1)
+  next-view-transitions:
+    specifier: ^0.3.4
+    version: 0.3.4(next@15.2.3)(react-dom@19.1.0)(react@19.1.0)
   react:
     specifier: ^19.0.0
     version: 19.1.0
@@ -2727,6 +2730,18 @@ packages:
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
+
+  /next-view-transitions@0.3.4(next@15.2.3)(react-dom@19.1.0)(react@19.1.0):
+    resolution: {integrity: sha512-SSiskenQ8JkEFGzPjvFwC5LGGoqgTxM5dxexkeugxvcXFLpWI2ZUh4IsCURD3ovW+8Ue7xXlrtrpy8b7XR7IwQ==}
+    peerDependencies:
+      next: '>=14.0.0'
+      react: ^18.2.0
+      react-dom: ^18.2.0
+    dependencies:
+      next: 15.2.3(react-dom@19.1.0)(react@19.1.0)(sass@1.89.1)
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
+    dev: false
 
   /next@15.2.3(react-dom@19.1.0)(react@19.1.0)(sass@1.89.1):
     resolution: {integrity: sha512-x6eDkZxk2rPpu46E1ZVUWIBhYCLszmUY6fvHBFcbzJ9dD+qRX6vcHusaqqDlnY+VngKzKbAiG2iRCkPbmi8f7w==}
