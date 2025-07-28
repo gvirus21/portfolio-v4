@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import FlipLink from "./ui/links/FlipLink";
 import SkeletonPillButton from "./ui/buttons/SkeletonPillButton";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import MobileMenu from "./MobileMenu";
 import { useTransitionRouter } from "next-view-transitions";
@@ -12,18 +12,16 @@ import { TransitionOptions } from "@/lib/page-transition-animation";
 
 const Navbar = () => {
   const pathname = usePathname();
-  const hasAnimated = useRef(false);
 
   const router = useTransitionRouter();
 
-  const shouldAnimate =
-    pathname === "/" && typeof window !== "undefined" && !hasAnimated.current;
+  const [firstLoad, setFirstLoad] = useState(false);
 
   useEffect(() => {
-    if (shouldAnimate) {
-      hasAnimated.current = true;
-    }
-  }, [shouldAnimate]);
+    const visited = window.sessionStorage.getItem("hasVisitedHome");
+    setFirstLoad(Boolean(visited));
+    window.sessionStorage.setItem("hasVisitedHome", "true");
+  }, []);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
@@ -34,7 +32,7 @@ const Navbar = () => {
         transition={{
           duration: 0.8,
           ease: [0.25, 0.46, 0.45, 0.94],
-          delay: shouldAnimate ? 2.7 : 0,
+          delay: firstLoad ? 2.7 : 1.5,
         }}
         className="fixed top-0 z-50 w-full bg-background pt-4 pb-3 px-4 sm:px-10 flex justify-between items-start"
       >
