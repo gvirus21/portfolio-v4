@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import {
   HeroSection,
@@ -10,8 +9,6 @@ import {
 } from "./(homepage_sections)";
 import Loader from "../components/Loader";
 import Footer from "../components/Footer";
-
-const variable = "Hello World";
 
 const MainContent = () => (
   <main className="min-h-screen bg-background max-w-screen font-main font-light">
@@ -29,18 +26,33 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const hasVisited = sessionStorage.getItem("hasVisitedHome");
-      if (!hasVisited) {
+      // Check if this is a page reload or direct URL visit
+      const isPageReload =
+        window.performance.getEntriesByType("navigation")[0]?.type ===
+          "reload" ||
+        window.performance.navigation?.type ===
+          window.performance.navigation?.TYPE_RELOAD;
+
+      // Check if user came from external source (no referrer or different domain)
+      const isExternalNavigation =
+        !document.referrer ||
+        !document.referrer.includes(window.location.origin);
+
+      // Check if this is the first page load in the session
+      const isFirstVisit = !sessionStorage.getItem("appNavigated");
+
+      // Show loader if it's a reload, external navigation, or first visit
+      if (isPageReload || isExternalNavigation || isFirstVisit) {
         setShowLoader(true);
       }
+
+      // Mark that user has navigated within the app
+      sessionStorage.setItem("appNavigated", "true");
     }
   }, []);
 
   const handleLoadingComplete = () => {
     setShowLoader(false);
-    if (typeof window !== "undefined") {
-      sessionStorage.setItem("hasVisitedHome", "true");
-    }
   };
 
   return (
@@ -51,9 +63,6 @@ export default function Home() {
       {showLoader && (
         <div className="fixed inset-0 z-50">
           <Loader onComplete={handleLoadingComplete} />
-          <footer>
-            <li> {variable}</li>
-          </footer>
         </div>
       )}
     </div>
