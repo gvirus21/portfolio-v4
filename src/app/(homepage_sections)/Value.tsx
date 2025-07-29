@@ -20,11 +20,11 @@ const deliverySteps = [
 
 export const ValueSection = () => {
   return (
-    <section className="pt-16 px-4 md:px-8 mt-60">
+    <section className="pt-16 px-4 md:px-8 mt-20 sm:mt-60">
       <div className="w-full">
-        <div className="flex justify-between">
-            <H4 className="text-8xl">How I Deliver Value</H4>
-          <div className="flex flex-col justify-between items-start w-5/12 mt-16 mr-[14rem]">
+        <div className="flex flex-col sm:flex-row justify-between">
+          <H4 className="text-5xl sm:text-8xl">How I Deliver Value</H4>
+          <div className="flex flex-col justify-between items-start w-11/12 sm:w-5/12 mt-10 sm:mt-16 mr-[14rem]">
             <div className="space-y-5">
               {deliverySteps.map((step) => (
                 <p
@@ -35,14 +35,14 @@ export const ValueSection = () => {
                 </p>
               ))}
             </div>
-            <div className="flex justify-end mt-10">
+            <div className="flex justify-end mt-5 sm:mt-10">
               <PillButton link="/contact">Contact</PillButton>
             </div>
           </div>
         </div>
 
         {/* Image section */}
-        <div className="mt-44 relative aspect-[16/9] w-10/12 2xl:w-8/12 mx-auto overflow-hidden bg-gray-300"></div>
+        <div className="mt-20 sm:mt-44 relative aspect-[4/3] sm:aspect-[16/9] w-full 2xl:w-8/12 mx-auto overflow-hidden bg-gray-300"></div>
       </div>
     </section>
   );

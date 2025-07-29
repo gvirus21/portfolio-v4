@@ -40,20 +40,20 @@ const Loader = ({ onComplete }: { onComplete?: () => void }) => {
             duration: 0.8,
             ease: [0.76, 0, 0.24, 1],
           }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-100"
+          className="fixed inset-0 max-h-screen w-screen z-50 flex items-center justify-center bg-slate-100"
         >
           {/* Progress Section */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="flex items-center justify-between space-x-4"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-betweens space-x-0 md:space-x-4"
           >
-            <p className="text-sm text-gray-500 tracking-wide uppercase">
+            <p className="text-[10px] md:text-sm text-gray-500 tracking-wide uppercase w-full">
               Loading Experience
             </p>
             {/* Progress Bar */}
-            <div className="w-32 h-[2px] bg-gray-200 rounded-full overflow-hidden shadow-inner">
+            <div className="w-26 md:w-32 h-[1px] md:h-[2px] bg-gray-200 rounded-full overflow-hidden shadow-inner">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${progress}%` }}
@@ -61,7 +61,7 @@ const Loader = ({ onComplete }: { onComplete?: () => void }) => {
                 className="h-full bg-black"
               />
             </div>
-            <div className="text-base font-light text-gray-600 w-10">
+            <div className="text-sm md:text-base font-light text-gray-600 w-10 ml-3 md:ml-0">
               {Math.round(progress)}%
             </div>
           </motion.div>

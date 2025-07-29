@@ -49,7 +49,8 @@ export const HeroSection = () => {
         duration: 1,
         stagger: 0.08,
         ease: "power2.out",
-        delay: hasVisited ? 0 : 1.3,
+        // delay: hasVisited ? 0 : 1.3,
+        delay: hasVisited ? 0 : 2.5,
       });
 
       return () => {
@@ -67,29 +68,32 @@ export const HeroSection = () => {
       transition: {
         duration: 1.2,
         ease: [0.25, 0.46, 0.45, 0.94],
-        delay: hasVisited ? 3.2 : 1.7,
+        // delay: hasVisited ? 3.2 : 1.7,
+        delay: hasVisited ? 3.2 : 2.7,
       },
     },
   };
 
   const imageVariants = {
-    initial: { scale: "140%" },
+    // initial: { scale: "140%" }, // 140% is for desktop version
+    initial: { scale: "110%" },
     animate: {
       scale: "100%",
       transition: {
         duration: 1.5,
         ease: [0.25, 0.86, 0.45, 0.98],
-        delay: hasVisited ? 2.5 : 1,
+        // delay: hasVisited ? 2.5 : 1,
+        delay: hasVisited ? 2.5 : 2.7,
       },
     },
   };
 
   return (
-    <section ref={containerRef} className="w-full mx-auto pt-44 px-10">
-      <div className="max-w-[38rem] mb-16 mt-[10rem]">
+    <section ref={containerRef} className="w-full mx-auto pt-44 px-4 sm:px-10">
+      <div className="max-w-[38rem] mb-0 sm:mb-16 mt-[0rem] sm:mt-[10rem]">
         <h1
           ref={textRef}
-          className="text-lg md:text-3xl lg:text-2xl leading-8"
+          className="text-lg md:text-3xl lg:text-2xl leading-6 sm:leading-8"
           style={{ visibility: "hidden" }}
         >
           I&apos;m Gourav Kumar, a Web designer & Developer based in India. I
@@ -97,7 +101,7 @@ export const HeroSection = () => {
           their business needs via website.
         </h1>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-40">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-32 sm:mt-40">
         {HERO_IMAGES.map((img, idx) => (
           <motion.div
             key={img}

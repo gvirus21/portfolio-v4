@@ -48,44 +48,81 @@ const testimonials = [
 ];
 
 export const TestimonialSection = () => {
-  // Duplicate testimonials for seamless infinite scroll
-  const duplicatedTestimonials = [...testimonials, ...testimonials];
-
   return (
-    <section className="min-h-[50vh] w-full px-10 mt-60">
+    <section className="min-h-[50vh] w-full px-4 sm:px-10 mt-20 sm:mt-60">
       <style>{hideScrollbarStyles}</style>
-      <H4 className="text-[6rem] tracking-[-6px]">Clients Success Stories</H4>
-
-      <div className="overflow-hidden mt-24">
-        <div className="flex gap-4 auto-scroll-container items-start">
-          {duplicatedTestimonials.map((testimonial, index) => (
-            <div
-              key={`${testimonial.id}-${index}`}
-              className="flex flex-col justify-between h-auto p-6 pr-10 mx-2 rounded-xl bg-gray-200 flex-shrink-0"
-            >
-              <p className="text-lg font-light mb-2 w-[32rem]">
-                {testimonial.testimonial}
-              </p>
-
-              <div>
-                <h1>Hello people how are you doing???</h1>
-              </div>
-              <p className="text-sm font-medium mt-10">
-                <a
-                  href={testimonial.profileLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-light italic"
-                >
-                  {testimonial.clientName}
-                </a>
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
+      <H4 className="text-6xl sm:text-[6rem] tracking-[-2px] sm:tracking-[-6px]">
+        Clients Success Stories
+      </H4>
+      <DesktopTestimonial />
+      <MobileTestimonial />
     </section>
   );
 };
+
+
+const DesktopTestimonial = () => {
+  // Duplicate testimonials for seamless infinite scroll
+  const duplicatedTestimonials = [...testimonials, ...testimonials];
+  return (
+    <div className="hidden md:flex overflow-hidden mt-24">
+      <div className="flex gap-4 auto-scroll-container items-start">
+        {duplicatedTestimonials.map((testimonial, index) => (
+          <div
+            key={`${testimonial.id}-${index}`}
+            className="flex flex-col justify-between h-auto p-6 pr-10 mx-2 rounded-xl bg-gray-200 flex-shrink-0"
+          >
+            <p className="text-lg font-light mb-2 w-[32rem]">
+              {testimonial.testimonial}
+            </p>
+
+            <div>
+              <h1>Hello people how are you doing???</h1>
+            </div>
+            <p className="text-sm font-medium mt-10">
+              <a
+                href={testimonial.profileLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-light italic"
+              >
+                {testimonial.clientName}
+              </a>
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const MobileTestimonial = () => {
+  return (
+    <div className="flex flex-col gap-6 mt-10 md:hidden">
+      {testimonials.map((testimonial) => (
+        <div
+          key={testimonial.id}
+          className="flex flex-col justify-between h-auto p-6 rounded-xl bg-gray-200"
+        >
+          <p className="text-base font-light mb-2">
+            {testimonial.testimonial}
+          </p>
+          <p className="text-sm font-medium mt-6">
+            <a
+              href={testimonial.profileLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-light italic"
+            >
+              {testimonial.clientName}
+            </a>
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+
 
 export default TestimonialSection;
