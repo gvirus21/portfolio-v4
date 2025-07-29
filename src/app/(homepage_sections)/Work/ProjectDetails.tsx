@@ -30,8 +30,8 @@ const ToolList = ({ tools }: { tools: string[] }) => (
 
 const ProjectImages = () => (
   <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row mt-10 space-x-0 space-y-5 sm:space-y-0 sm:space-x-2 lg:space-x-0 lg:space-y-5 xl:space-y-0 xl:space-x-10">
-    <div className="w-[20rem] sm:w-[18rem] md:w-[24rem] lg:w-[26rem] 2xl:w-[32rem] 3xl:w-[42rem] aspect-video bg-slate-300" />
-    <div className="w-[20rem] sm:w-[18rem] md:w-[24rem] lg:w-[26rem] 2xl:w-[32rem] 3xl:w-[42rem] aspect-video bg-slate-300" />
+    <div className="w-[26rem] sm:w-[18rem] md:w-[24rem] lg:w-[26rem] 2xl:w-[32rem] 3xl:w-[42rem] aspect-video bg-slate-300" />
+    <div className="w-[26rem] sm:w-[18rem] md:w-[24rem] lg:w-[26rem] 2xl:w-[32rem] 3xl:w-[42rem] aspect-video bg-slate-300" />
   </div>
 );
 
@@ -57,21 +57,21 @@ export const ProjectDetails = ({
           }}
           style={{ overflow: "hidden" }}
         >
+
           <div className="flex flex-col justify-start lg:justify-between items-center xl:items-start lg:flex-row mb-6">
             <div className="mt-4">
               <Description
                 variant="lg"
-                className="w-11/12 lg:w-[20rem] xl:w-[24rem] 2xl:w-[40rem] mb-6"
+                className="w-11/12 lg:w-[20rem] xl:w-[24rem] 2xl:w-[40rem]"
               >
                 {description}
               </Description>
-
-              <PillButton link={website} className="inline-flex">
+              <PillButton link={website} className="inline-flex mt-4">
                 Visit Website
               </PillButton>
 
               <div className="mt-10">
-                <h3 className="text-3xl tracking-[-2%] mb-3">
+                <h3 className="text-3xl tracking-tighter mb-5">
                   Challenges We Worked on
                 </h3>
                 <Description

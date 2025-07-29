@@ -106,10 +106,10 @@ export default function Link({
           <p className="text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider w-[13.5rem]">
             Client
           </p>
-          <p className="text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider text-left sm:text-left w-[21.5rem]">
+          <p className="text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider text-left sm:text-left sm:w-[21.5rem]">
             Category
           </p>
-          <p className="text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider">
+          <p className="hidden sm:block text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider">
             Year
           </p>
         </div>
@@ -163,12 +163,10 @@ const DefaultVisibleTableRows = ({
   index: number;
 }) => {
   return (
-    <div className="relative group flex justify-between items-center top-0 overflow-hidden py-4 cursor-pointer text-lg w-full">
-      <p className="text-white w-[15rem]">{name}</p>
-
+    <div className="relative group flex justify-between items-center top-0 overflow-hidden py-4 cursor-pointer text-sm sm:text-lg w-full uppercase">
+      <p className="text-white w-full sm:w-[15rem]">{name}</p>
       <p className="text-right sm:text-left w-[20rem] text-white">{category}</p>
-
-      <p className="text-white">{date}</p>
+      <p className="hidden sm:block text-white">{date}</p>
     </div>
   );
 };
@@ -188,13 +186,11 @@ const HoveredVisibleTableRows = ({
   dateRef: React.RefObject<HTMLParagraphElement | null>;
 }) => {
   return (
-    <div className="relative group flex justify-between items-center top-0 overflow-hidden py-2 cursor-pointer  text-lg w-full">
+    <div className="relative group hidden lg:flex justify-between items-center top-0 overflow-hidden py-2 cursor-pointer  text-lg w-full uppercase">
       <p ref={nameRef} className="text-white w-[15rem] will-change-transform">
         {name}
       </p>
-
       <p className="text-right sm:text-left w-[20rem] text-white">{category}</p>
-
       <p ref={dateRef} className="text-white will-change-transform">
         {date}
       </p>
