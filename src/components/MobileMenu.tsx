@@ -2,6 +2,9 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TfiArrowTopRight } from "react-icons/tfi";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useTransitionRouter } from "next-view-transitions";
+import { TransitionOptions } from "@/lib/page-transition-animation";
 
 interface Props {
   mobileMenuOpen: boolean;
@@ -20,7 +23,7 @@ const containerVariants = {
   visible: {
     y: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.5,
       ease: [0.25, 0.46, 0.45, 0.94],
       staggerChildren: 0.1,
       delayChildren: 0.5,
@@ -61,6 +64,9 @@ const linkVariants = {
 };
 
 export const MobileMenu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
+  const pathname = usePathname();
+  const router = useTransitionRouter();
+
   return (
     <AnimatePresence>
       {mobileMenuOpen && (
@@ -70,22 +76,8 @@ export const MobileMenu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="fixed inset-0 z-[100] flex flex-col px-8 py-20 bg-[#222] text-white overflow-hidden"
+          className="fixed inset-0 z-40 flex flex-col px-8 py-20 bg-[#222] text-white overflow-hidden"
         >
-          {/* Header */}
-          <div className="flex justify-between w-full absolute top-6 left-0 px-6 font-light">
-            <div className="text-sm sm:text-base lg:text-sm xl:text-base font-light">
-              <Link href="/">@gourav.kumar__</Link>
-            </div>
-            <button
-              className="font-light focus:outline-none uppercase tracking-tighter text-base"
-              aria-label="Close menu"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Close
-            </button>
-          </div>
-
           {/* Navigation Links */}
           <nav className="flex flex-col gap-2 mt-[20vh] overflow-hidden">
             {menuItems.map((item) => (
@@ -93,8 +85,15 @@ export const MobileMenu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
                 <motion.div variants={linkVariants}>
                   <Link
                     href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (pathname === item.href) {
+                        return;
+                      }
+                      router.push(item.href, TransitionOptions);
+                      setMobileMenuOpen(false);
+                    }}
                     className="text-6xl font-thin uppercase tracking-wide hover:opacity-70 transition-opacity block"
-                    onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.label}
                   </Link>

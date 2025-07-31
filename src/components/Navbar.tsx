@@ -9,12 +9,12 @@ import { usePathname } from "next/navigation";
 import MobileMenu from "./MobileMenu";
 import { useTransitionRouter } from "next-view-transitions";
 import { TransitionOptions } from "@/lib/page-transition-animation";
+import { cn } from "@/lib/utils";
+import MobileMenuButton from "./ui/buttons/MobileMenuButton";
 
 const Navbar = () => {
   const pathname = usePathname();
-
   const router = useTransitionRouter();
-
   const [firstLoad, setFirstLoad] = useState(false);
 
   useEffect(() => {
@@ -34,9 +34,14 @@ const Navbar = () => {
           ease: [0.25, 0.46, 0.45, 0.94],
           delay: firstLoad ? 2.7 : 1.5,
         }}
-        className="fixed top-0 z-50 w-full bg-background pt-4 pb-3 px-4 sm:px-10 flex justify-between items-start"
+        className={cn(
+          "fixed top-0 z-50 w-full pt-4 pb-3 px-4 sm:px-10 flex justify-between items-start",
+          mobileMenuOpen
+            ? "bg-transparent text-white"
+            : "bg-background text-black"
+        )}
       >
-        <div className="text-sm sm:text-base lg:text-sm xl:text-base font-light">
+        <div className="text-base sm:text-base lg:text-sm xl:text-base font-light z-50">
           <Link
             href="/"
             onClick={(e) => {
@@ -50,15 +55,6 @@ const Navbar = () => {
             @gourav.kumar__
           </Link>
         </div>
-
-        {/* mobile menu */}
-        <button
-          className="flex lg:hidden font-light focus:outline-none"
-          aria-label="Open menu"
-          onClick={() => setMobileMenuOpen(true)}
-        >
-          MENU+
-        </button>
 
         <div className="hidden md:block lg:hidden xl:block absolute top-2 left-1/2 -translate-x-1/2 ml-10 xl:ml-0 text-black font-light mt-1 text-[12px] lg:text-sm">
           <span>WEB DEVELOPER & DESIGNER</span>
@@ -88,7 +84,14 @@ const Navbar = () => {
             Let&apos;s talk
           </SkeletonPillButton>
         </div>
+
+        {/* mobile menu */}
+        <MobileMenuButton
+          menuOpen={mobileMenuOpen}
+          setMenuOpen={setMobileMenuOpen}
+        />
       </motion.nav>
+
       <MobileMenu
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
