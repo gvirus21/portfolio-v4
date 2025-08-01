@@ -37,13 +37,13 @@ export const ProcessSection = () => {
   ];
 
   return (
-    <div className="flex">
+    <div className="flex flex-col lg:flex-row mt-10">
       {/* Left Side - Sticky */}
-      <div className="w-1/2 p-12 flex flex-col justify-start sticky top-0 h-screen">
+      <div className="w-full lg:w-1/2 pt-12 lg:p-12 flex flex-col justify-start sticky top-0 lg:h-screen">
         {/* Main Content */}
         <div className="flex-1 flex flex-col justify-start mt-0">
-          <div className="flex justify-between items-start mb-8">
-            <h1 className="text-7xl font-light mb-8 inline-block tracking-tight leading-tight">
+          <div className="flex justify-between items-start lg:mb-8 bg-background">
+            <h1 className="text-3xl lg:text-7xl font-light mb-8 inline-block tracking-tight leading-tight">
               Website design, application
               <br />
               design, interactive design,
@@ -55,27 +55,27 @@ export const ProcessSection = () => {
       </div>
 
       {/* Right Side - Natural Scroll */}
-      <div className="flex flex-col items-end w-1/2 pr-20">
+      <div className="flex flex-col lg:items-end w-full lg:w-1/2 lg:pr-20">
         {steps.map((step, index) => (
           <div
             key={index}
-            className="flex justify-between items-start h-[50vh] w-7/12 mt-28"
+            className="flex justify-between items-start lg:h-[50vh] lg:w-7/12 mb-12 lg:mb-28"
           >
-            <span className="text-5xl font-light mt-4 tracking-tighter">
+            <span className="text-3xl lg:text-5xl font-light mt-4 tracking-tighter">
               {step.id}
             </span>
 
             <div className="">
-              <h2 className="text-6xl font-light mt-4 mb-8">{step.title}</h2>
-              <div className="mt-0">
-                <div className="text-xs mb-2 ">{step.label}</div>
+              <h2 className="text-4xl lg:text-6xl font-light mt-4 mb-4 lg:mb-8 ml-1 ">{step.title}</h2>
+              <div>
+                <div className="text-xs mb-2">{step.label}</div>
                 <div className="text-xs uppercase tracking-wider">
                   {step.footer.map((line, i) => (
                     <div key={i}>{line}</div>
                   ))}
                 </div>
               </div>
-              <p className="leading-relaxed max-w-lg mt-10 text-xl">
+              <p className="pr-6 lg:pr-0 lg:leading-relaxed max-w-lg mt-6 lg:mt-10 text-xl">
                 {step.content}
               </p>
             </div>

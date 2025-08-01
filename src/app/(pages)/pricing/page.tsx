@@ -2,7 +2,6 @@
 
 import PillButton from "@/components/ui/buttons/PillButton";
 import Card from "./Card";
-import Footer from "@/components/Footer";
 
 const PRICING_CARDS = [
   {
@@ -120,14 +119,11 @@ const LowerBudgetSection = () => (
 
 const PricingPage = () => {
   return (
-    <>
-      <div className="relative w-full min-h-screen max-w-[100vw] pt-10 px-2 sm:px-4 md:px-20 lg:px-0 overflow-x-hidden flex flex-col items-center">
-        <PricingHeader />
-        <PricingCards />
-        <LowerBudgetSection />
-      </div>
-      <Footer />
-    </>
+    <div className="relative w-full min-h-screen max-w-[100vw] pt-10 px-2 sm:px-4 md:px-20 lg:px-0 overflow-x-hidden flex flex-col items-center">
+      <PricingHeader />
+      <PricingCards />
+      <LowerBudgetSection />
+    </div>
   );
 };
 

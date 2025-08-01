@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import CustomCursor from "@/components/custom-cursor";
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
+import Footer from "@/components/Footer";
 
 const sequelSans = localFont({
   display: "swap",
@@ -78,6 +79,7 @@ export default function RootLayout({
           >
             <Navbar />
             {children}
+            <Footer />
             <CustomCursor />
           </body>
         </LenisProvider>

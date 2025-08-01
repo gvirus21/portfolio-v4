@@ -8,7 +8,6 @@ import {
   MyApproachSection,
 } from "./(homepage_sections)";
 import Loader from "../components/Loader";
-import Footer from "../components/Footer";
 
 const MainContent = () => (
   <main className="min-h-screen bg-background max-w-screen font-main font-light">
@@ -17,7 +16,6 @@ const MainContent = () => (
     <WorkSection />
     <TestimonialSection />
     <MyApproachSection />
-    <Footer />
   </main>
 );
 

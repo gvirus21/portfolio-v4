@@ -6,16 +6,15 @@ import {
   ProcessSection,
   WorkSection,
 } from "./index";
-import { Footer } from "@/components/Footer";
 
 export default function AboutPage() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen px-4">
       <HeroSection />
       <PersonalInfoSection />
       <ProcessSection />
       <WorkSection />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

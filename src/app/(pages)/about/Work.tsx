@@ -30,27 +30,26 @@ export const WorkSection = () => {
   ];
 
   return (
-    <section className="min-h-[80vh]">
-      <h2 className="text-8xl w-7/12 font-light text-center mt-20 mb-10 mx-auto leading-[5rem]">
+    <section className="min-h-[80vh] mt-0 lg:mt-[10rem]">
+      <h2 className="text-3xl lg:text-8xl lg:w-7/12 font-light text-center mt-20 mb-10 mx-auto leading-[2rem] lg:leading-[5rem]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis a
         incidunt rem distinctio excepturi explicabo.
       </h2>
 
-      <div className="flex flex-row justify-center items-center mt-[10rem] overflow-x-auto w-10/12 gap-x-20 mx-auto">
+      <div className="flex flex-col lg:flex-row justify-center items-center overflow-x-auto w-full lg:w-10/12 gap-x-20 mx-auto mt-20 pb-28">
         {Works.map((work) => (
           <div
             key={work.id}
-            className="flex flex-col items-center min-w-[300px] rounded-lg"
+            className="flex flex-col items-center w-full"
           >
-            <div className="relative h-[20rem] aspect-square mb-4">
+            <div className="relative w-full aspect-square mb-4">
               <Image
                 src={work.image}
                 alt={work.title}
                 fill
-                className="object-cover rounded-md"
+                className="object-cover"
               />
             </div>
-            <h3 className="text-2xl font-semibold">{work.title}</h3>
           </div>
         ))}
       </div>
