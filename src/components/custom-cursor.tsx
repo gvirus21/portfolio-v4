@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import useCursorState from "@/store/useCursorState";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 
 const Cursor = () => {
   const { cursorText, cursorState } = useCursorState();

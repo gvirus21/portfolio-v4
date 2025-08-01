@@ -1,5 +1,5 @@
 import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 
 interface Props {
   menuOpen: boolean;
@@ -14,7 +14,7 @@ const MobileMenuButton = ({ menuOpen, setMenuOpen }: Props) => {
       onClick={() => setMenuOpen((prev) => !prev)}
     >
       <p className="opacity-0 pointer-events-none">MENU+</p>
-      
+
       <AnimatePresence mode="wait">
         {!menuOpen ? (
           <motion.div
@@ -22,9 +22,9 @@ const MobileMenuButton = ({ menuOpen, setMenuOpen }: Props) => {
             initial={{ y: "100%" }}
             animate={{ y: "0%" }}
             exit={{ y: "-100%" }}
-            transition={{ 
-              duration: 0.3, 
-              ease: "easeIn"
+            transition={{
+              duration: 0.3,
+              ease: "easeIn",
             }}
             className="absolute inset-0 flex items-center px-2"
           >
@@ -36,9 +36,9 @@ const MobileMenuButton = ({ menuOpen, setMenuOpen }: Props) => {
             initial={{ y: "100%" }}
             animate={{ y: "0%" }}
             exit={{ y: "-100%" }}
-            transition={{ 
-              duration: 0.3, 
-              ease: "easeIn"
+            transition={{
+              duration: 0.3,
+              ease: "easeIn",
             }}
             className="absolute inset-0 flex items-center px-2"
           >
