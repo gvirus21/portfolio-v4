@@ -3,9 +3,6 @@
 import { FC } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
-import { useTransitionRouter } from "next-view-transitions";
-import { TransitionOptions } from "@/lib/page-transition-animation";
 
 interface FlipLinkProps {
   children: string;
@@ -25,9 +22,6 @@ const FlipLink: FC<FlipLinkProps> = ({
 }) => {
   const letters = children.split("");
 
-  const router = useTransitionRouter();
-  const pathname = usePathname();
-
   return (
     <motion.a
       initial="initial"
@@ -38,13 +32,13 @@ const FlipLink: FC<FlipLinkProps> = ({
         className
       )}
       href={href}
-      onClick={(e) => {
-        e.preventDefault();
-        if (pathname === href) {
-          return;
-        }
-        router.push(href, TransitionOptions);
-      }}
+      // onClick={(e) => {
+      //   e.preventDefault();
+      //   if (pathname === href) {
+      //     return;
+      //   }
+      //   router.push(href, TransitionOptions);
+      // }}
     >
       <div>
         {letters.map((letter, i) => (

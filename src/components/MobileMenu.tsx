@@ -2,9 +2,6 @@ import React from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { TfiArrowTopRight } from "react-icons/tfi";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useTransitionRouter } from "next-view-transitions";
-import { TransitionOptions } from "@/lib/page-transition-animation";
 
 interface Props {
   mobileMenuOpen: boolean;
@@ -64,9 +61,6 @@ const linkVariants = {
 };
 
 export const MobileMenu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
-  const pathname = usePathname();
-  const router = useTransitionRouter();
-
   return (
     <AnimatePresence>
       {mobileMenuOpen && (
@@ -87,10 +81,6 @@ export const MobileMenu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
                     href={item.href}
                     onClick={(e) => {
                       e.preventDefault();
-                      if (pathname === item.href) {
-                        return;
-                      }
-                      router.push(item.href, TransitionOptions);
                       setMobileMenuOpen(false);
                     }}
                     className="text-6xl font-thin uppercase tracking-wide hover:opacity-70 transition-opacity block"

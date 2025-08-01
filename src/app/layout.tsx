@@ -4,7 +4,6 @@ import { LenisProvider } from "./providers";
 import type { Metadata } from "next";
 import CustomCursor from "@/components/custom-cursor";
 import "./globals.css";
-import { ViewTransitions } from "next-view-transitions";
 import Footer from "@/components/Footer";
 
 const sequelSans = localFont({
@@ -71,19 +70,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ViewTransitions>
-      <html lang="en">
-        <LenisProvider>
-          <body
-            className={`${sequelSans.variable} ${scotch.variable} antialiased font-main bg-background`}
-          >
-            <Navbar />
-            {children}
-            <Footer />
-            <CustomCursor />
-          </body>
-        </LenisProvider>
-      </html>
-    </ViewTransitions>
+    <html lang="en">
+      <LenisProvider>
+        <body
+          className={`${sequelSans.variable} ${scotch.variable} antialiased font-main bg-background`}
+        >
+          <Navbar />
+          {children}
+          <Footer />
+          <CustomCursor />
+        </body>
+      </LenisProvider>
+    </html>
   );
 }

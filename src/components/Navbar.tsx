@@ -5,16 +5,11 @@ import { motion } from "motion/react";
 import FlipLink from "./ui/links/FlipLink";
 import SkeletonPillButton from "./ui/buttons/SkeletonPillButton";
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import MobileMenu from "./MobileMenu";
-import { useTransitionRouter } from "next-view-transitions";
-import { TransitionOptions } from "@/lib/page-transition-animation";
 import { cn } from "@/lib/utils";
 import MobileMenuButton from "./ui/buttons/MobileMenuButton";
 
 const Navbar = () => {
-  const pathname = usePathname();
-  const router = useTransitionRouter();
   const [firstLoad, setFirstLoad] = useState(false);
 
   useEffect(() => {
@@ -42,18 +37,7 @@ const Navbar = () => {
         )}
       >
         <div className="text-base sm:text-base lg:text-sm xl:text-base font-light z-50">
-          <Link
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              if (pathname === "/") {
-                return;
-              }
-              router.push("/", TransitionOptions);
-            }}
-          >
-            @gourav.kumar__
-          </Link>
+          <Link href="/">@gourav.kumar__</Link>
         </div>
 
         <div className="hidden md:block lg:hidden xl:block absolute top-2 left-1/2 -translate-x-1/2 ml-10 xl:ml-0 text-black font-light mt-1 text-[12px] lg:text-sm">
