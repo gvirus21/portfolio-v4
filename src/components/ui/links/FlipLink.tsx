@@ -3,6 +3,7 @@
 import { FC } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { useTransitionRouter } from "next-view-transitions";
 
 interface FlipLinkProps {
   children: string;
@@ -20,7 +21,46 @@ const FlipLink: FC<FlipLinkProps> = ({
   underline,
   className,
 }) => {
+  const router = useTransitionRouter();
   const letters = children.split("");
+
+  const pageAnimation = () => {
+    const overlay = document.getElementById(
+      "loader-overlay"
+    ) as HTMLElement | null;
+    if (!overlay) return;
+
+    const ENTER_DURATION = 500;
+    const HOLD_DURATION = 500;
+    const EXIT_DURATION = 500;
+    const EASING = "cubic-bezier(0.76, 0, 0.24, 1)";
+
+    // Cancel any running animations
+    try {
+      overlay.getAnimations?.().forEach((a) => a.cancel());
+    } catch {}
+
+    // Use WAAPI sequence fully on current page
+    const enter = overlay.animate(
+      [{ transform: "translateY(100%)" }, { transform: "translateY(0%)" }],
+      { duration: ENTER_DURATION, easing: EASING, fill: "forwards" }
+    );
+
+    enter.finished
+      .then(() =>
+        new Promise<void>((resolve) => setTimeout(resolve, HOLD_DURATION)).then(
+          () =>
+            overlay.animate(
+              [
+                { transform: "translateY(0%)" },
+                { transform: "translateY(-100%)" },
+              ],
+              { duration: EXIT_DURATION, easing: EASING, fill: "forwards" }
+            ).finished
+        )
+      )
+      .catch(() => {});
+  };
 
   return (
     <motion.a
@@ -32,13 +72,12 @@ const FlipLink: FC<FlipLinkProps> = ({
         className
       )}
       href={href}
-      // onClick={(e) => {
-      //   e.preventDefault();
-      //   if (pathname === href) {
-      //     return;
-      //   }
-      //   router.push(href, TransitionOptions);
-      // }}
+      onClick={(e) => {
+        e.preventDefault();
+        router.push(href, {
+          onTransitionReady: pageAnimation,
+        });
+      }}
     >
       <div>
         {letters.map((letter, i) => (
@@ -83,3 +122,11 @@ const FlipLink: FC<FlipLinkProps> = ({
 };
 
 export default FlipLink;
+
+// onClick={(e) => {
+//   e.preventDefault();
+//   if (pathname === href) {
+//     return;
+//   }
+//   router.push(href, TransitionOptions);
+// }}
