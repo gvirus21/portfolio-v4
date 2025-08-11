@@ -8,7 +8,6 @@ import React, {
 } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { useTransitionRouter } from "next-view-transitions";
 import { usePageLoader } from "@/hooks/usePageLoader";
 
 interface FlipLinkProps {
@@ -18,7 +17,6 @@ interface FlipLinkProps {
   underline?: boolean;
 }
 
-// Animation timing
 const DURATION = 0.4;
 const STAGGER = 0.025;
 
@@ -28,27 +26,26 @@ const FlipLink: React.FC<FlipLinkProps> = ({
   underline,
   className,
 }) => {
-  const router = useTransitionRouter();
   const letters = useMemo(() => children.split(""), [children]);
-  const { pageAnimation } = usePageLoader();
+  const { navigateWithAnimation } = usePageLoader();
 
   const handleNavigate = useCallback(
     (e: MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault();
       if (!href) return;
-      router.push(href, { onTransitionReady: pageAnimation });
+      navigateWithAnimation(href);
     },
-    [href, router, pageAnimation]
+    [href, navigateWithAnimation]
   );
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent<HTMLAnchorElement>) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        router.push(href, { onTransitionReady: pageAnimation });
+        navigateWithAnimation(href);
       }
     },
-    [href, router, pageAnimation]
+    [href, navigateWithAnimation]
   );
 
   return (
