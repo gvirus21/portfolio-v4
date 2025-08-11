@@ -1,9 +1,15 @@
 "use client";
 
-import { FC } from "react";
+import React, {
+  useCallback,
+  useMemo,
+  type KeyboardEvent,
+  type MouseEvent,
+} from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { useTransitionRouter } from "next-view-transitions";
+import { usePageLoader } from "@/hooks/usePageLoader";
 
 interface FlipLinkProps {
   children: string;
@@ -12,51 +18,38 @@ interface FlipLinkProps {
   underline?: boolean;
 }
 
+// Animation timing
 const DURATION = 0.4;
 const STAGGER = 0.025;
 
-const FlipLink: FC<FlipLinkProps> = ({
+const FlipLink: React.FC<FlipLinkProps> = ({
   children,
   href,
   underline,
   className,
 }) => {
   const router = useTransitionRouter();
-  const letters = children.split("");
+  const letters = useMemo(() => children.split(""), [children]);
+  const { pageAnimation } = usePageLoader();
 
-  const pageAnimation = () => {
-    const overlay = document.getElementById(
-      "loader-overlay"
-    ) as HTMLElement | null;
-    if (!overlay) return;
+  const handleNavigate = useCallback(
+    (e: MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      if (!href) return;
+      router.push(href, { onTransitionReady: pageAnimation });
+    },
+    [href, router, pageAnimation]
+  );
 
-    const ENTER_DURATION = 1000;
-    const HOLD_DURATION = 100;
-    const EXIT_DURATION = 1000;
-
-    const EASING = "cubic-bezier(0.76, 0, 0.24, 1)";
-
-    // Use WAAPI sequence fully on current page
-    const enter = overlay.animate(
-      [{ transform: "translateY(0%)" }, { transform: "translateY(-100%)" }],
-      { duration: ENTER_DURATION, easing: EASING, fill: "forwards" }
-    );
-
-    enter.finished
-      .then(() =>
-        new Promise<void>((resolve) => setTimeout(resolve, HOLD_DURATION)).then(
-          () =>
-            overlay.animate(
-              [
-                { transform: "translateY(-100%)" },
-                { transform: "translateY(-200%)" },
-              ],
-              { duration: EXIT_DURATION, easing: EASING, fill: "forwards" }
-            ).finished
-        )
-      )
-      .catch(() => {});
-  };
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLAnchorElement>) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        router.push(href, { onTransitionReady: pageAnimation });
+      }
+    },
+    [href, router, pageAnimation]
+  );
 
   return (
     <motion.a
@@ -68,22 +61,17 @@ const FlipLink: FC<FlipLinkProps> = ({
         className
       )}
       href={href}
-      onClick={(e) => {
-        e.preventDefault();
-        router.push(href, {
-          onTransitionReady: pageAnimation,
-        });
-      }}
+      onClick={handleNavigate}
+      onKeyDown={handleKeyDown}
+      role="link"
+      aria-label={children}
     >
       <div>
         {letters.map((letter, i) => (
           <motion.span
             key={`top-${i}-${letter}`}
             className="inline-block"
-            variants={{
-              initial: { y: 0 },
-              hovered: { y: "-100%" },
-            }}
+            variants={{ initial: { y: 0 }, hovered: { y: "-100%" } }}
             transition={{
               duration: DURATION,
               delay: i * STAGGER,
@@ -99,10 +87,7 @@ const FlipLink: FC<FlipLinkProps> = ({
           <motion.span
             key={`bottom-${i}-${letter}`}
             className="inline-block"
-            variants={{
-              initial: { y: "100%" },
-              hovered: { y: 0 },
-            }}
+            variants={{ initial: { y: "100%" }, hovered: { y: 0 } }}
             transition={{
               duration: DURATION,
               delay: i * STAGGER,
@@ -118,11 +103,3 @@ const FlipLink: FC<FlipLinkProps> = ({
 };
 
 export default FlipLink;
-
-// onClick={(e) => {
-//   e.preventDefault();
-//   if (pathname === href) {
-//     return;
-//   }
-//   router.push(href, TransitionOptions);
-// }}
