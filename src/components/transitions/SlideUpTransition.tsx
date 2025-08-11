@@ -7,7 +7,7 @@ export default function SlideUpTransition() {
     <motion.div id="loader-wall" className="relative">
       <div
         id="loader-overlay"
-        className="fixed inset-0 z-[100] bg-black/40 origin-bottom pointer-events-none"
+        className="fixed inset-0 z-[100] translate-y-full bg-black/40 origin-bottom pointer-events-none"
       />
     </motion.div>
   );

@@ -30,19 +30,15 @@ const FlipLink: FC<FlipLinkProps> = ({
     ) as HTMLElement | null;
     if (!overlay) return;
 
-    const ENTER_DURATION = 500;
-    const HOLD_DURATION = 500;
-    const EXIT_DURATION = 500;
-    const EASING = "cubic-bezier(0.76, 0, 0.24, 1)";
+    const ENTER_DURATION = 1000;
+    const HOLD_DURATION = 100;
+    const EXIT_DURATION = 1000;
 
-    // Cancel any running animations
-    try {
-      overlay.getAnimations?.().forEach((a) => a.cancel());
-    } catch {}
+    const EASING = "cubic-bezier(0.76, 0, 0.24, 1)";
 
     // Use WAAPI sequence fully on current page
     const enter = overlay.animate(
-      [{ transform: "translateY(100%)" }, { transform: "translateY(0%)" }],
+      [{ transform: "translateY(0%)" }, { transform: "translateY(-100%)" }],
       { duration: ENTER_DURATION, easing: EASING, fill: "forwards" }
     );
 
@@ -52,8 +48,8 @@ const FlipLink: FC<FlipLinkProps> = ({
           () =>
             overlay.animate(
               [
-                { transform: "translateY(0%)" },
                 { transform: "translateY(-100%)" },
+                { transform: "translateY(-200%)" },
               ],
               { duration: EXIT_DURATION, easing: EASING, fill: "forwards" }
             ).finished
