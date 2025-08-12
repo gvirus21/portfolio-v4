@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "motion/react";
 import FlipLink from "./ui/links/FlipLink";
 import SkeletonPillButton from "./ui/buttons/SkeletonPillButton";
@@ -9,10 +8,13 @@ import MobileMenu from "./MobileMenu";
 import { cn } from "@/lib/utils";
 import MobileMenuButton from "./ui/buttons/MobileMenuButton";
 import { usePageLoader } from "@/hooks/usePageLoader";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [firstLoad, setFirstLoad] = useState(false);
   const { handleKeyDown, handleNavigate } = usePageLoader();
+
+  const pathname = usePathname();
 
   useEffect(() => {
     const visited = window.sessionStorage.getItem("hasVisitedHome");
@@ -39,13 +41,13 @@ const Navbar = () => {
         )}
       >
         <div className="text-base sm:text-base lg:text-sm xl:text-base font-light z-50">
-          <Link
-            href="/"
+          <a
+            href={pathname === "/" ? undefined : "/"}
             onClick={(e) => handleNavigate(e, "/")}
             onKeyDown={(e) => handleKeyDown(e, "/")}
           >
             @gourav.kumar__
-          </Link>
+          </a>
         </div>
 
         <div className="hidden md:block lg:hidden xl:block absolute top-2 left-1/2 -translate-x-1/2 ml-10 xl:ml-0 text-black font-light mt-1 text-[12px] lg:text-sm">
@@ -65,6 +67,7 @@ const Navbar = () => {
             underline
             className="uppercase"
             href="https://instagram.com/gourav.kumar__"
+            should_transition={false}
           >
             Instagram
           </FlipLink>

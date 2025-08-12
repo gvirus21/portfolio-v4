@@ -6,6 +6,8 @@ import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
+import { useIsReadyForHeroEntry } from "@/store/useAnimationState";
+import { heroImageContainerVariants, heroImageVariants } from "./anim";
 
 gsap.registerPlugin(SplitText);
 
@@ -15,6 +17,7 @@ export const HeroSection = () => {
   const [hasVisited, setHasVisited] = useState(false);
   const textRef = useRef<HTMLHeadingElement | null>(null);
   const containerRef = useRef<HTMLElement | null>(null);
+  const isReadyForHeroEntry = useIsReadyForHeroEntry();
 
   useEffect(() => {
     const visited = window.sessionStorage.getItem("hasVisitedHome");
@@ -24,7 +27,7 @@ export const HeroSection = () => {
 
   useGSAP(
     () => {
-      if (!textRef.current) return;
+      if (!textRef.current || !isReadyForHeroEntry) return;
 
       gsap.set(textRef.current, { visibility: "visible" });
 
@@ -49,44 +52,15 @@ export const HeroSection = () => {
         duration: 1,
         stagger: 0.08,
         ease: "power2.out",
-        // delay: hasVisited ? 0 : 1.3,
-        delay: hasVisited ? 0 : 2.5,
+        delay: 0.5,
       });
 
       return () => {
         splitText.revert();
       };
     },
-    { scope: containerRef, dependencies: [hasVisited] }
+    { scope: containerRef, dependencies: [hasVisited, isReadyForHeroEntry] }
   );
-
-  const imageContainerVariants = {
-    initial: { opacity: 0, y: 40 },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 1.2,
-        ease: [0.25, 0.46, 0.45, 0.94],
-        // delay: hasVisited ? 3.2 : 1.7,
-        delay: hasVisited ? 3.2 : 2.7,
-      },
-    },
-  };
-
-  const imageVariants = {
-    // initial: { scale: "140%" }, // 140% is for desktop version
-    initial: { scale: "110%" },
-    animate: {
-      scale: "100%",
-      transition: {
-        duration: 1.5,
-        ease: [0.25, 0.86, 0.45, 0.98],
-        // delay: hasVisited ? 2.5 : 1,
-        delay: hasVisited ? 2.5 : 2.7,
-      },
-    },
-  };
 
   return (
     <section ref={containerRef} className="w-full mx-auto pt-44 px-4 sm:px-10">
@@ -94,7 +68,7 @@ export const HeroSection = () => {
         <h1
           ref={textRef}
           className="text-lg md:text-3xl lg:text-2xl leading-6 sm:leading-8"
-          style={{ visibility: "hidden" }}
+          style={{ visibility: isReadyForHeroEntry ? "visible" : "hidden" }}
         >
           I&apos;m Gourav Kumar, a Web designer & Developer based in India. I
           like to solve design problems for businesses & Startups to elevate
@@ -105,13 +79,13 @@ export const HeroSection = () => {
         {HERO_IMAGES.map((img, idx) => (
           <motion.div
             key={img}
-            variants={imageContainerVariants}
+            variants={heroImageContainerVariants}
             initial="initial"
-            animate="animate"
+            animate={isReadyForHeroEntry ? "animate" : "initial"}
             className="relative aspect-[4/3] w-full overflow-clip"
           >
             <motion.div
-              variants={imageVariants}
+              variants={heroImageVariants}
               className="absolute inset-0 w-full h-full"
             >
               <Image

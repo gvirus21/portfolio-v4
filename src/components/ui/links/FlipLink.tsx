@@ -4,10 +4,12 @@ import React, { useMemo } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { usePageLoader } from "@/hooks/usePageLoader";
+import { usePathname } from "next/navigation";
 
 interface FlipLinkProps {
   children: string;
   href: string;
+  should_transition?: boolean;
   className?: string;
   underline?: boolean;
 }
@@ -19,24 +21,15 @@ const STAGGER = 0.025;
 const FlipLink: React.FC<FlipLinkProps> = ({
   children,
   href,
+  should_transition = true,
   underline,
   className,
 }) => {
   const letters = useMemo(() => children.split(""), [children]);
   const { handleKeyDown, handleNavigate } = usePageLoader();
+  const pathname = usePathname();
 
-  // const handleNavigate = (e: MouseEvent<HTMLAnchorElement>) => {
-  //   e.preventDefault();
-  //   if (!href) return;
-  //   navigateWithAnimation(href);
-  // };
-
-  // const handleKeyDown = (e: KeyboardEvent<HTMLAnchorElement>) => {
-  //   if (e.key === "Enter" || e.key === " ") {
-  //     e.preventDefault();
-  //     navigateWithAnimation(href);
-  //   }
-  // };
+  const isCurrentPage = pathname === href;
 
   return (
     <motion.a
@@ -47,9 +40,21 @@ const FlipLink: React.FC<FlipLinkProps> = ({
         underline && "link-underline-anim",
         className
       )}
-      href={href}
-      onClick={(e) => handleNavigate(e, href)}
-      onKeyDown={(e) => handleKeyDown(e, href)}
+      href={isCurrentPage ? undefined : href}
+      onClick={(e) => {
+        if (isCurrentPage) {
+          e.preventDefault();
+          return;
+        }
+        handleNavigate(e, href, should_transition);
+      }}
+      onKeyDown={(e) => {
+        if (isCurrentPage) {
+          e.preventDefault();
+          return;
+        }
+        handleKeyDown(e, href, should_transition);
+      }}
       role="link"
       aria-label={children}
     >

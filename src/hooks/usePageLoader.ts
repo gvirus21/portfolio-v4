@@ -49,20 +49,39 @@ export const usePageLoader = () => {
     overlay.classList.add("translate-y-full");
   };
 
+  const isSameUrl = (href: string) => {
+    try {
+      const target = new URL(href, window.location.origin);
+      const current = new URL(window.location.href);
+      return (
+        target.pathname === current.pathname &&
+        target.search === current.search &&
+        target.hash === current.hash
+      );
+    } catch {
+      return false;
+    }
+  };
+
   const handleNavigate = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
+    href: string,
+    allowTransition: boolean = true
   ) => {
-    e.preventDefault();
     if (!href) return;
+    if (!allowTransition || isSameUrl(href)) return;
+    e.preventDefault();
     navigateWithAnimation(href);
   };
 
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLAnchorElement>,
-    href: string
+    href: string,
+    allowTransition: boolean = true
   ) => {
     if (e.key === "Enter" || e.key === " ") {
+      if (!href) return;
+      if (!allowTransition || isSameUrl(href)) return;
       e.preventDefault();
       navigateWithAnimation(href);
     }

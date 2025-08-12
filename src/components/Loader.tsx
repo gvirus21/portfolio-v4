@@ -2,10 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { useAnimationState } from "@/store/useAnimationState";
 
 const Loader = ({ onComplete }: { onComplete?: () => void }) => {
   const [progress, setProgress] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
+  const { setAnimationComplete } = useAnimationState();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -15,6 +17,7 @@ const Loader = ({ onComplete }: { onComplete?: () => void }) => {
 
           setTimeout(() => {
             setIsComplete(true);
+            setAnimationComplete(true);
             setTimeout(() => {
               if (onComplete) onComplete();
             }, 800);
@@ -28,7 +31,7 @@ const Loader = ({ onComplete }: { onComplete?: () => void }) => {
     }, 100);
 
     return () => clearInterval(interval);
-  }, [onComplete]);
+  }, [onComplete, setAnimationComplete]);
 
   return (
     <AnimatePresence>
