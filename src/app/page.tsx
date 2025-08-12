@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import {
   HeroSection,
@@ -23,29 +24,19 @@ export default function Home() {
   const [showLoader, setShowLoader] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      // Check if this is a page reload or direct URL visit
-      const isPageReload =
-        window.performance.getEntriesByType("navigation")[0]?.type ===
-          "reload" ||
-        window.performance.navigation?.type ===
-          window.performance.navigation?.TYPE_RELOAD;
+    if (typeof window === "undefined") return;
+    const win = window as unknown as {
+      __appInit?: boolean;
+      __entryPath?: string;
+    };
 
-      // Check if user came from external source (no referrer or different domain)
-      const isExternalNavigation =
-        !document.referrer ||
-        !document.referrer.includes(window.location.origin);
+    if (!win.__appInit) {
+      win.__appInit = true;
+      win.__entryPath = window.location.pathname;
 
-      // Check if this is the first page load in the session
-      const isFirstVisit = !sessionStorage.getItem("appNavigated");
-
-      // Show loader if it's a reload, external navigation, or first visit
-      if (isPageReload || isExternalNavigation || isFirstVisit) {
-        setShowLoader(true);
-      }
-
-      // Mark that user has navigated within the app
-      sessionStorage.setItem("appNavigated", "true");
+      setShowLoader(window.location.pathname === "/");
+    } else {
+      setShowLoader(false);
     }
   }, []);
 
@@ -55,14 +46,13 @@ export default function Home() {
 
   return (
     <div className="relative">
-      <MainContent />
-
-      {/* Loader overlays on top */}
       {showLoader && (
         <div className="fixed inset-0 z-50">
           <Loader onComplete={handleLoadingComplete} />
         </div>
       )}
+
+      <MainContent />
     </div>
   );
 }

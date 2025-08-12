@@ -8,9 +8,11 @@ import { useEffect, useState } from "react";
 import MobileMenu from "./MobileMenu";
 import { cn } from "@/lib/utils";
 import MobileMenuButton from "./ui/buttons/MobileMenuButton";
+import { usePageLoader } from "@/hooks/usePageLoader";
 
 const Navbar = () => {
   const [firstLoad, setFirstLoad] = useState(false);
+  const { handleKeyDown, handleNavigate } = usePageLoader();
 
   useEffect(() => {
     const visited = window.sessionStorage.getItem("hasVisitedHome");
@@ -37,7 +39,13 @@ const Navbar = () => {
         )}
       >
         <div className="text-base sm:text-base lg:text-sm xl:text-base font-light z-50">
-          <Link href="/">@gourav.kumar__</Link>
+          <Link
+            href="/"
+            onClick={(e) => handleNavigate(e, "/")}
+            onKeyDown={(e) => handleKeyDown(e, "/")}
+          >
+            @gourav.kumar__
+          </Link>
         </div>
 
         <div className="hidden md:block lg:hidden xl:block absolute top-2 left-1/2 -translate-x-1/2 ml-10 xl:ml-0 text-black font-light mt-1 text-[12px] lg:text-sm">

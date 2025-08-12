@@ -1,11 +1,6 @@
 "use client";
 
-import React, {
-  useCallback,
-  useMemo,
-  type KeyboardEvent,
-  type MouseEvent,
-} from "react";
+import React, { useMemo } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { usePageLoader } from "@/hooks/usePageLoader";
@@ -17,6 +12,7 @@ interface FlipLinkProps {
   underline?: boolean;
 }
 
+// Animation timing
 const DURATION = 0.4;
 const STAGGER = 0.025;
 
@@ -27,26 +23,20 @@ const FlipLink: React.FC<FlipLinkProps> = ({
   className,
 }) => {
   const letters = useMemo(() => children.split(""), [children]);
-  const { navigateWithAnimation } = usePageLoader();
+  const { handleKeyDown, handleNavigate } = usePageLoader();
 
-  const handleNavigate = useCallback(
-    (e: MouseEvent<HTMLAnchorElement>) => {
-      e.preventDefault();
-      if (!href) return;
-      navigateWithAnimation(href);
-    },
-    [href, navigateWithAnimation]
-  );
+  // const handleNavigate = (e: MouseEvent<HTMLAnchorElement>) => {
+  //   e.preventDefault();
+  //   if (!href) return;
+  //   navigateWithAnimation(href);
+  // };
 
-  const handleKeyDown = useCallback(
-    (e: KeyboardEvent<HTMLAnchorElement>) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        navigateWithAnimation(href);
-      }
-    },
-    [href, navigateWithAnimation]
-  );
+  // const handleKeyDown = (e: KeyboardEvent<HTMLAnchorElement>) => {
+  //   if (e.key === "Enter" || e.key === " ") {
+  //     e.preventDefault();
+  //     navigateWithAnimation(href);
+  //   }
+  // };
 
   return (
     <motion.a
@@ -58,8 +48,8 @@ const FlipLink: React.FC<FlipLinkProps> = ({
         className
       )}
       href={href}
-      onClick={handleNavigate}
-      onKeyDown={handleKeyDown}
+      onClick={(e) => handleNavigate(e, href)}
+      onKeyDown={(e) => handleKeyDown(e, href)}
       role="link"
       aria-label={children}
     >

@@ -10,43 +10,6 @@ const OVERLAY_ID = "loader-overlay";
 export const usePageLoader = () => {
   const router = useTransitionRouter();
 
-  const pageAnimation = async () => {
-    const overlay = document.getElementById(OVERLAY_ID) as HTMLElement | null;
-    if (!overlay) return;
-
-    // Clean start: cancel any running animations and remove initial hiding class
-    try {
-      overlay.getAnimations?.().forEach((a) => a.cancel());
-    } catch {}
-    overlay.classList.remove("translate-y-full");
-
-    // Enter
-    const enter = overlay.animate(
-      [{ transform: "translateY(100%)" }, { transform: "translateY(0%)" }],
-      { duration: ENTER_DURATION, easing: EASING, fill: "forwards" }
-    );
-
-    try {
-      await enter.finished;
-      await wait(HOLD_DURATION);
-
-      // Exit
-      const exit = overlay.animate(
-        [{ transform: "translateY(0%)" }, { transform: "translateY(-100%)" }],
-        { duration: EXIT_DURATION, easing: EASING, fill: "forwards" }
-      );
-
-      await exit.finished;
-    } finally {
-      // Fully clear any persisted animation effects (fill: forwards)
-      try {
-        overlay.getAnimations?.().forEach((a) => a.cancel());
-      } catch {}
-      overlay.style.transform = "";
-      overlay.classList.add("translate-y-full");
-    }
-  };
-
   const navigateWithAnimation = async (href: string) => {
     const overlay = document.getElementById(OVERLAY_ID) as HTMLElement | null;
     if (!overlay) return;
@@ -86,5 +49,24 @@ export const usePageLoader = () => {
     overlay.classList.add("translate-y-full");
   };
 
-  return { pageAnimation, navigateWithAnimation };
+  const handleNavigate = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    if (!href) return;
+    navigateWithAnimation(href);
+  };
+
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      navigateWithAnimation(href);
+    }
+  };
+
+  return { handleKeyDown, handleNavigate };
 };
