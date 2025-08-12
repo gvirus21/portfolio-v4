@@ -1,7 +1,7 @@
 "use client";
 
-import { H4 } from "../../components/ui/Text";
-import PillButton from "../../components/ui/buttons/PillButton";
+import { H4 } from "@/components/ui/Text";
+import PillButton from "@/components/ui/buttons/PillButton";
 
 const deliverySteps = [
   {

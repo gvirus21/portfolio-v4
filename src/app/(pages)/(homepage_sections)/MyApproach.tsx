@@ -1,4 +1,4 @@
-import { H4 } from "../../components/ui/Text";
+import { H4 } from "@/components/ui/Text";
 
 const approachItems = [
   {

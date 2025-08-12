@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import ProjectItem from "./row";
-import { H4 } from "../../../components/ui/Text";
+import { H4 } from "@/components/ui/Text";
 import styles from "./style.module.scss";
 
 interface Project {
