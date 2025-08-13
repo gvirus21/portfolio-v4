@@ -38,14 +38,14 @@ const Card: React.FC<CardProps> = ({
 
       {/* Premium Badge */}
       {premium && (
-        <div className="absolute top-4 right-4 z-50">
+        <div className="absolute top-4 right-4 z-0">
           <span className="bg-white text-black font-bold px-4 py-1 rounded-full text-xs shadow-lg uppercase tracking-wider font-scotch">
             Premium
           </span>
         </div>
       )}
 
-      <div className="absolute top-10 sm:top-26 lg:top-10 left-0 px-6 md:px-8 lg:px-6 xl:px-8 z-50">
+      <div className="absolute top-10 sm:top-26 lg:top-10 left-0 px-6 md:px-8 lg:px-6 xl:px-8 z-0">
         <div className="flex justify-start items-center gap-2 bg-white px-3 py-1 rounded-full max-w-fit">
           <div className="h-2 w-2 sm:h-3 sm:w-3 lg:h-2 lg:w-2 2xl:h-3 2xl:w-3 bg-black rounded-full"></div>
           <p className="text-black text-[10px] sm:text-sm lg:text-[10px] xl:text-sm uppercase">
