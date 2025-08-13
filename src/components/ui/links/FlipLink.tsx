@@ -46,14 +46,14 @@ const FlipLink: React.FC<FlipLinkProps> = ({
           e.preventDefault();
           return;
         }
-        handleNavigate(e, href, should_transition);
+        handleNavigate(e, href, children, should_transition);
       }}
       onKeyDown={(e) => {
         if (isCurrentPage) {
           e.preventDefault();
           return;
         }
-        handleKeyDown(e, href, should_transition);
+        handleKeyDown(e, href, children, should_transition);
       }}
       role="link"
       aria-label={children}

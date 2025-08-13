@@ -98,7 +98,7 @@ export const MobileMenu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
                         return;
                       }
 
-                      handleNavigate(e, item.href, item.should_transition);
+                      handleNavigate(e, item.href, item.label, item.should_transition);
                       await wait(1000);
                       setMobileMenuOpen(false);
                     }}

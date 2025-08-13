@@ -43,8 +43,8 @@ const Navbar = () => {
         <div className="text-base sm:text-base lg:text-sm xl:text-base font-light z-50">
           <a
             href={pathname === "/" ? undefined : "/"}
-            onClick={(e) => handleNavigate(e, "/")}
-            onKeyDown={(e) => handleKeyDown(e, "/")}
+            onClick={(e) => handleNavigate(e, "/", "HOME")}
+            onKeyDown={(e) => handleKeyDown(e, "/", "HOME")}
           >
             @gourav.kumar__
           </a>

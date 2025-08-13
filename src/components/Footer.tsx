@@ -21,7 +21,8 @@ const SOCIAL_MEDIA_LINKS = [
 interface DesktopFooterLinksProps {
   handleNavigate: (
     e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
+    href: string,
+    pageLabel: string
   ) => void;
   pathname: string;
 }
@@ -38,7 +39,7 @@ const DesktopFooterLinks: React.FC<DesktopFooterLinksProps> = React.memo(
                   e.preventDefault();
                   return;
                 }
-                handleNavigate(e, link.href);
+                handleNavigate(e, link.href, link.name);
               }}
             >
               <span
@@ -130,7 +131,7 @@ export const Footer: React.FC = () => {
                     e.preventDefault();
                     return;
                   }
-                  handleNavigate(e, link.href);
+                  handleNavigate(e, link.href, link.name);
                 }}
                 className="hover:underline underline-offset-4 transition-colors"
               >

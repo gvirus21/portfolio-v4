@@ -1,14 +1,32 @@
 "use client";
 
-import { motion } from "motion/react";
+import React, { useEffect, useState } from "react";
+import { useAnimationState } from "@/store/useAnimationState";
 
-export default function SlideUpTransition() {
+const OVERLAY_ID = "loader-overlay";
+
+export const SlideUpTransition = () => {
+  const [displayLabel, setDisplayLabel] = useState("");
+
+  const { pageLabel } = useAnimationState();
+
+  useEffect(() => {
+    if (pageLabel) {
+      setDisplayLabel(pageLabel);
+      console.log("page label: ", displayLabel);
+    }
+  }, [pageLabel, displayLabel]);
+
   return (
-    <motion.div id="loader-wall" className="relative">
-      <div
-        id="loader-overlay"
-        className="fixed inset-0 z-[100] translate-y-full bg-[#202020] origin-bottom pointer-events-none"
-      />
-    </motion.div>
+    <div
+      id={OVERLAY_ID}
+      className="fixed inset-0 bg-[#202020] z-[999] translate-y-full flex items-center justify-center"
+    >
+      <p className="text-4xl text-white font-thin tracking-tighter">
+        {displayLabel}.
+      </p>
+    </div>
   );
-}
+};
+
+export default SlideUpTransition;

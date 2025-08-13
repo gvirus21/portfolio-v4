@@ -1,5 +1,6 @@
 import { wait } from "@/lib/utils";
 import { useTransitionRouter } from "next-view-transitions";
+import { useAnimationState } from "@/store/useAnimationState";
 
 const ENTER_DURATION = 1000;
 const HOLD_DURATION = 100;
@@ -9,10 +10,13 @@ const OVERLAY_ID = "loader-overlay";
 
 export const usePageLoader = () => {
   const router = useTransitionRouter();
+  const { setPageLabel } = useAnimationState();
 
-  const navigateWithAnimation = async (href: string) => {
+  const navigateWithAnimation = async (href: string, pageLabel: string) => {
     const overlay = document.getElementById(OVERLAY_ID) as HTMLElement | null;
     if (!overlay) return;
+
+    setPageLabel(pageLabel);
 
     // Clean start: cancel any running animations and remove initial hiding class
     try {
@@ -47,6 +51,7 @@ export const usePageLoader = () => {
     } catch {}
     overlay.style.transform = "";
     overlay.classList.add("translate-y-full");
+    setPageLabel(""); // Clear the label after transition
   };
 
   const isSameUrl = (href: string) => {
@@ -66,24 +71,26 @@ export const usePageLoader = () => {
   const handleNavigate = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
+    pageLabel: string,
     allowTransition: boolean = true
   ) => {
     if (!href) return;
     if (!allowTransition || isSameUrl(href)) return;
     e.preventDefault();
-    navigateWithAnimation(href);
+    navigateWithAnimation(href, pageLabel);
   };
 
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLAnchorElement>,
     href: string,
+    pageLabel: string,
     allowTransition: boolean = true
   ) => {
     if (e.key === "Enter" || e.key === " ") {
       if (!href) return;
       if (!allowTransition || isSameUrl(href)) return;
       e.preventDefault();
-      navigateWithAnimation(href);
+      navigateWithAnimation(href, pageLabel);
     }
   };
 
