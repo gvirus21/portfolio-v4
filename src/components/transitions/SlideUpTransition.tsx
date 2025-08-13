@@ -13,7 +13,6 @@ export const SlideUpTransition = () => {
   useEffect(() => {
     if (pageLabel) {
       setDisplayLabel(pageLabel);
-      console.log("page label: ", displayLabel);
     }
   }, [pageLabel, displayLabel]);
 

@@ -15,7 +15,7 @@ const approachItems = [
 
 export const MyApproachSection = () => {
   return (
-    <section className="h-[80vh] sm:h-[70vh] 2xl:h-[60vh] px-4 sm:px-10 mt-20 sm:mt-40">
+    <section className="h-[85vh] sm:h-[80vh] 2xl:h-[60vh] px-4 sm:px-10 mt-20 sm:mt-40">
       <H4 className="text-3xl sm:text-6xl capitalize font-light tracking-[-1px] ">
         My Approach.
       </H4>
@@ -28,7 +28,7 @@ export const MyApproachSection = () => {
               <p className="text-base sm:text-xl 2xl:text-xl w-[5rem] sm:w-[14rem] tracking-[2%]">
                 {item.title}
               </p>
-              <div className="">
+              <div className="xl:w-1/2 2xl:w-1/3">
                 <p className="text-base sm:text-xl w-[14rem] sm:w-[32rem] tracking-wide">
                   {item.description}
                 </p>
