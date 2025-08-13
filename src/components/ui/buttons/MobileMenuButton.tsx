@@ -9,7 +9,7 @@ interface Props {
 const MobileMenuButton = ({ menuOpen, setMenuOpen }: Props) => {
   return (
     <button
-      className="flex flex-col lg:hidden font-light focus:outline-none z-50 h-[1.3rem] overflow-hidden relative px-2"
+      className="flex flex-col text-[#222] lg:hidden font-light focus:outline-none z-50 h-[1.3rem] overflow-hidden relative px-2"
       aria-label="menu toggle"
       onClick={() => setMenuOpen((prev) => !prev)}
     >
@@ -26,7 +26,7 @@ const MobileMenuButton = ({ menuOpen, setMenuOpen }: Props) => {
               duration: 0.3,
               ease: "easeIn",
             }}
-            className="absolute inset-0 flex items-center px-2"
+            className="absolute inset-0 flex items-center px-2 leading-0.5 pt-1"
           >
             <p>MENU+</p>
           </motion.div>
@@ -40,7 +40,7 @@ const MobileMenuButton = ({ menuOpen, setMenuOpen }: Props) => {
               duration: 0.3,
               ease: "easeIn",
             }}
-            className="absolute inset-0 flex items-center px-2"
+            className="absolute inset-0 flex items-center px-2 pt-1"
           >
             <p>CLOSE</p>
           </motion.div>

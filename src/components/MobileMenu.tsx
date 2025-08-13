@@ -1,9 +1,9 @@
 import React from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { TfiArrowTopRight } from "react-icons/tfi";
 import Link from "next/link";
+import { motion, AnimatePresence } from "motion/react";
 import { usePathname } from "next/navigation";
 import { usePageLoader } from "@/hooks/usePageLoader";
+import { TfiArrowTopRight } from "react-icons/tfi";
 import { wait } from "@/lib/utils";
 
 interface Props {
@@ -81,7 +81,7 @@ export const MobileMenu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="fixed inset-0 z-40 flex flex-col px-8 py-20 bg-[#222] text-white overflow-hidden"
+          className="fixed inset-0 z-40 flex flex-col px-8 py-20 bg-[#d9d9d9] text-[#222] overflow-hidden"
         >
           {/* Navigation Links */}
           <nav className="flex flex-col gap-2 mt-[20vh] overflow-hidden">
@@ -98,11 +98,16 @@ export const MobileMenu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
                         return;
                       }
 
-                      handleNavigate(e, item.href, item.label, item.should_transition);
+                      handleNavigate(
+                        e,
+                        item.href,
+                        item.label,
+                        item.should_transition
+                      );
                       await wait(1000);
                       setMobileMenuOpen(false);
                     }}
-                    className="text-6xl font-thin uppercase tracking-wide hover:opacity-70 transition-opacity block"
+                    className="text-5xl font-thin uppercase tracking-wide hover:opacity-70 transition-opacity block"
                   >
                     {item.label}
                   </Link>
@@ -114,7 +119,7 @@ export const MobileMenu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
             <div className="overflow-hidden absolute bottom-20">
               <motion.button
                 variants={linkVariants}
-                className="flex border-b-[0.5px] text-3xl pt-1 pb-2  border-white font-thin"
+                className="flex border-b-[0.5px] text-3xl pt-1 pb-2  border-black font-thin"
               >
                 <span>Let&apos;s talk</span>
                 <TfiArrowTopRight className="text-xl ml-4 mt-3" />
