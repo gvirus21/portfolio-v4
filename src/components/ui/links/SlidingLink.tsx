@@ -6,8 +6,9 @@ import { cn } from "@/lib/utils";
 import { TfiArrowTopRight } from "react-icons/tfi";
 import { motion } from "motion/react";
 
-interface SlidingLinkProps {
-  children: string;
+interface SlidingLinkProps
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  children: React.ReactNode;
   link: string;
   className?: string;
   underlineHeight?: string;
@@ -18,6 +19,7 @@ const SlidingLink = ({
   link,
   className,
   underlineHeight = "1px",
+  ...props
 }: SlidingLinkProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -31,6 +33,7 @@ const SlidingLink = ({
       href={link}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      {...props}
     >
       <motion.div
         className="absolute top-[30%] left-0 text-white"
