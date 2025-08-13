@@ -2,6 +2,9 @@ import React from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { TfiArrowTopRight } from "react-icons/tfi";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { usePageLoader } from "@/hooks/usePageLoader";
+import { wait } from "@/lib/utils";
 
 interface Props {
   mobileMenuOpen: boolean;
@@ -12,7 +15,11 @@ const menuItems = [
   { href: "/", label: "HOME" },
   { href: "/about", label: "ABOUT" },
   { href: "/pricing", label: "PRICING" },
-  { href: "/www.instagram.com/gourav.kumar__", label: "INSTAGRAM" },
+  {
+    href: "/www.instagram.com/gourav.kumar__",
+    label: "INSTAGRAM",
+    should_transition: false,
+  },
 ];
 
 const containerVariants = {
@@ -61,6 +68,10 @@ const linkVariants = {
 };
 
 export const MobileMenu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
+  const { handleNavigate } = usePageLoader();
+
+  const pathname = usePathname();
+
   return (
     <AnimatePresence>
       {mobileMenuOpen && (
@@ -79,8 +90,16 @@ export const MobileMenu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
                 <motion.div variants={linkVariants}>
                   <Link
                     href={item.href}
-                    onClick={(e) => {
-                      e.preventDefault();
+                    onClick={async (e) => {
+                      const isCurrentPage = pathname === item.href;
+
+                      if (isCurrentPage) {
+                        e.preventDefault();
+                        return;
+                      }
+
+                      handleNavigate(e, item.href, item.should_transition);
+                      await wait(1000);
                       setMobileMenuOpen(false);
                     }}
                     className="text-6xl font-thin uppercase tracking-wide hover:opacity-70 transition-opacity block"
