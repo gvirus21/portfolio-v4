@@ -78,7 +78,7 @@ export default function RootLayout({
           <body
             className={`${sequelSans.variable} ${scotch.variable} antialiased font-main bg-background`}
           >
-            <SlideUpTransition  />
+            <SlideUpTransition />
             <Navbar />
             {children}
             <Footer />

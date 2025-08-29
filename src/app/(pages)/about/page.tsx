@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  HeroSection,
+  // HeroSection,
   PersonalInfoSection,
   ProcessSection,
   WorkSection,
@@ -9,12 +9,11 @@ import {
 
 export default function AboutPage() {
   return (
-    <div className="relative min-h-screen px-4">
-      <HeroSection />
+    <div className="relative min-h-screen --px-4 --sm:px-6">
+      {/* <HeroSection /> */}
       <PersonalInfoSection />
       <ProcessSection />
       <WorkSection />
-      {/* <Footer /> */}
     </div>
   );
 }

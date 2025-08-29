@@ -19,6 +19,9 @@ export const MyApproachSection = () => {
       <H4 className="text-3xl sm:text-6xl capitalize font-light tracking-[-1px] ">
         My Approach.
       </H4>
+      {/* <H4 className="text-3xl sm:text-6xl capitalize font-light tracking-[-1px] ">
+        My Approach.
+      </H4> */}
 
       <div className="mt-10 sm:mt-20">
         {approachItems.map((item, index) => (

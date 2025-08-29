@@ -16,7 +16,7 @@ export const H4 = ({
   return (
     <h2
       className={cn(
-        "text-6xl font-normal uppercase tracking-tighter",
+        "text-6xl 2xl:text-7xl font-normal uppercase tracking-tight",
         className
       )}
     >

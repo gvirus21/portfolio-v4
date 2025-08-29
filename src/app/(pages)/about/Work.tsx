@@ -1,60 +1,98 @@
-import Image from "next/image";
-import React from "react";
+import { H4 } from "@/components/ui/Text";
 
 export const WorkSection = () => {
-  const Works = [
-    {
-      id: 1,
-      title: "Playgrounds.xyz",
-      image:
-        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-    },
-    {
-      id: 2,
-      title: "BanklessDAO",
-      image:
-        "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
-    },
-    {
-      id: 3,
-      title: "ForefrontDAO",
-      image:
-        "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
-    },
-    {
-      id: 4,
-      title: "Codewalla",
-      image:
-        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80",
-    },
-  ];
-
   return (
-    <section className="min-h-[80vh] mt-0 lg:mt-[10rem]">
-      <h2 className="text-3xl lg:text-8xl lg:w-7/12 font-light text-center mt-20 mb-10 mx-auto leading-[2rem] lg:leading-[5rem]">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis a
-        incidunt rem distinctio excepturi explicabo.
-      </h2>
-
-      <div className="flex flex-col lg:flex-row justify-center items-center overflow-x-auto w-full lg:w-10/12 gap-x-20 mx-auto mt-20 pb-28">
-        {Works.map((work) => (
-          <div
-            key={work.id}
-            className="flex flex-col items-center w-full"
-          >
-            <div className="relative w-full aspect-square mb-4">
-              <Image
-                src={work.image}
-                alt={work.title}
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-        ))}
-      </div>
+    <section className=" min-h-[150vh] xs:min-h-[130vh] md:min-h-screen lg:h-screen 2xl:h-[130vh] 3xl:h-0 3xl:min-h-0 3xl:max-h-0 3xl:overflow-hidden lg:mt-[5rem] pt-20 px-4 sm:px-6">
+      <H4 className="text-5xl sm:w-[30rem] 2xl:w-[50rem]">
+        Some of my Noteworthy works
+      </H4>
+      <h3 className="text-sm sm:text-base 2xl:text-xl md:w-[32rem] 2xl:w-[44rem] mt-8">
+        Throughout my career, I have worked with some of the most Ambitious and
+        fun brands in the industry, here are some of my favourite ones.
+      </h3>
+      <MasonryGrid />
     </section>
   );
 };
 
 export default WorkSection;
+
+const MasonryGrid = () => {
+  interface Project {
+    id: string;
+    name: string;
+    category: string;
+    year: string;
+    image: string;
+    website: string;
+  }
+
+  const workData: Project[] = [
+    {
+      id: "playgrounds-website",
+      name: "Playground's Website",
+      category: "Development",
+      year: "2023",
+      image: "",
+      website: "https://www.google.com",
+    },
+    {
+      id: "bankless-website",
+      name: "Bankless's Website",
+      category: "Development, Design",
+      year: "2023",
+      image: "",
+      website: "https://www.google.com",
+    },
+    {
+      id: "forefront-website",
+      name: "Forefront's Website",
+      category: "Development, Design",
+      year: "2023",
+      image: "",
+      website: "https://www.google.com",
+    },
+    {
+      id: "codewalla-ios-app",
+      name: "Codewalla",
+      category: "Development",
+      year: "2023",
+      image: "",
+      website: "https://www.google.com",
+    },
+  ];
+
+  return (
+    <div className="w-full max-w-7xl 2xl:max-w-full mx-auto mt-20 px">
+      <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-6 2xl:gap-10">
+        {workData.map((work) => (
+          <a key={work.id} href={work.website ?? "#"} className="block">
+            <div className="w-full overflow-hidden">
+              <div className="w-full h-48 lg:h-[20rem] 2xl:h-[28rem] 3xl:h-auto bg-gray-300">
+                {/* Placeholder for variable-sized image */}
+                {/* <img src={work.image} alt={work.name} /> */}
+              </div>
+              <div>
+                <div className="flex items-start justify-between mt-3 mb-4">
+                  <h4 className="text-sm 2xl:text-3xl tracking-tighter">
+                    ({work.year})
+                  </h4>
+                  <div className="flex flex-col items-end tracking-tight">
+                    <span className="text-[10px] 2xl:text-xl tracking-tighter font-medium block">
+                      {work.category}
+                    </span>
+                    <span className="text-[10px] 2xl:text-base tracking-tighter uppercase block">
+                      {work.name}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// </section>;

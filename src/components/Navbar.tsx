@@ -37,7 +37,7 @@ const Navbar = () => {
           delay: firstLoad ? 2.7 : 1.5,
         }}
         className={cn(
-          "fixed top-0 w-full pt-4 pb-3 px-4 sm:px-10 flex justify-between items-start z-50"
+          "fixed top-0 w-full pt-4 pb-3 px-4 sm:px-6 flex justify-between items-start z-50"
         )}
       >
         <div className="flex items-center justify-between w-full z-50">

@@ -19,6 +19,9 @@ export const HeroSection = () => {
   const containerRef = useRef<HTMLElement | null>(null);
   const isReadyForHeroEntry = useIsReadyForHeroEntry();
 
+  // Show/animate only after loader completes, or on subsequent visits
+  const ready = hasVisited || isReadyForHeroEntry;
+
   useEffect(() => {
     const visited = window.sessionStorage.getItem("hasVisitedHome");
     setHasVisited(Boolean(visited));
@@ -27,7 +30,7 @@ export const HeroSection = () => {
 
   useGSAP(
     () => {
-      if (!textRef.current || !isReadyForHeroEntry) return;
+      if (!textRef.current || !ready) return;
 
       gsap.set(textRef.current, { visibility: "visible" });
 
@@ -59,7 +62,7 @@ export const HeroSection = () => {
         splitText.revert();
       };
     },
-    { scope: containerRef, dependencies: [hasVisited, isReadyForHeroEntry] }
+    { scope: containerRef, dependencies: [ready] }
   );
 
   return (
@@ -68,7 +71,7 @@ export const HeroSection = () => {
         <h1
           ref={textRef}
           className="text-lg md:text-3xl lg:text-2xl leading-6 sm:leading-8"
-          style={{ visibility: isReadyForHeroEntry ? "visible" : "hidden" }}
+          style={{ visibility: ready ? "visible" : "hidden" }}
         >
           I&apos;m Gourav Kumar, a Web designer & Developer based in India. I
           like to solve design problems for businesses & Startups to elevate
@@ -81,7 +84,7 @@ export const HeroSection = () => {
             key={img}
             variants={heroImageContainerVariants}
             initial="initial"
-            animate={isReadyForHeroEntry ? "animate" : "initial"}
+            animate={ready ? "animate" : "initial"}
             className="relative aspect-[4/3] w-full overflow-clip"
           >
             <motion.div
