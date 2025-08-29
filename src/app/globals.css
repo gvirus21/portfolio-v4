@@ -1,12 +1,16 @@
 @import "tailwindcss";
 @import url("https://use.typekit.net/xtz4xmy.css");
 
-/* @import url("normalise.css"); */
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
 
 :root {
-  /* --background: #2b2b2b; */
   --background: #ebebeb;
   --foreground: #171717;
+  /* --background: #2b2b2b; */
 }
 
 /* #EBEBEB #f9fafd*/
@@ -22,7 +26,8 @@
 }
 
 @theme {
-  --breakpoint-xs: 2000px;
+  --breakpoint-3xl: 120rem;
+  --breakpoint-xs: 24.375rem;
 }
 
 @media (prefers-color-scheme: light) {
@@ -31,12 +36,6 @@
     --foreground: #ededed;
   }
 }
-
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
 
 body {
   /* cursor: none; */
@@ -109,4 +108,3 @@ body {
   z-index: 1;
   animation: none !important;
 }
-
