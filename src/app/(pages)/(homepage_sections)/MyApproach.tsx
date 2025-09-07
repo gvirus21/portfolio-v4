@@ -1,4 +1,4 @@
-import { H4 } from "@/components/ui/Text";
+import { DisplayMediumText, H4 } from "@/components/ui/Typography";
 
 const approachItems = [
   {
@@ -16,25 +16,20 @@ const approachItems = [
 export const MyApproachSection = () => {
   return (
     <section className="h-[85vh] sm:h-[80vh] 2xl:h-[60vh] px-4 sm:px-10 mt-20 sm:mt-40">
-      <H4 className="text-3xl sm:text-6xl capitalize font-light tracking-[-1px] ">
-        My Approach.
-      </H4>
-      {/* <H4 className="text-3xl sm:text-6xl capitalize font-light tracking-[-1px] ">
-        My Approach.
-      </H4> */}
+      <H4>My Approach.</H4>
 
       <div className="mt-10 sm:mt-20">
         {approachItems.map((item, index) => (
           <div key={index}>
             <div className="h-[0.5px] w-full bg-black mt-14" />
             <div className="flex justify-between pt-5">
-              <p className="text-base sm:text-xl 2xl:text-xl w-[5rem] sm:w-[14rem] tracking-[2%]">
+              <DisplayMediumText className="text-base sm:text-xl 2xl:text-xl w-[5rem] sm:w-[14rem] tracking-[2%]">
                 {item.title}
-              </p>
-              <div className="xl:w-1/2 2xl:w-1/3">
-                <p className="text-base sm:text-xl w-[14rem] sm:w-[32rem] tracking-wide">
+              </DisplayMediumText>
+              <div className="xl:w-1/2 2xl:w-[45%]">
+                <DisplayMediumText className="w-[14rem] sm:w-[32rem] tracking-wide">
                   {item.description}
-                </p>
+                </DisplayMediumText>
               </div>
             </div>
           </div>

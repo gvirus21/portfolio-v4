@@ -1,29 +1,31 @@
-import React, { ElementType } from "react";
+import { ElementType } from "react";
 import { cn } from "@/lib/utils";
 
 type Variant =
-  | "display"
   | "h1"
   | "h2"
   | "h3"
   | "h4"
-  | "lead"
-  | "body"
-  | "small"
-  | "caption"
-  | "overline";
+  | "h6"
+  | "display-lg"
+  | "display-md"
+  | "display-sm"
+  | "caption-lg"
+  | "caption-md"
+  | "caption-sm";
 
-const variantClasses: Record<Variant, string> = {
-  display: "tracking-tight font-light text-6xl sm:text-7xl 2xl:text-8xl",
-  h1: "tracking-tight font-light text-5xl sm:text-6xl 2xl:text-7xl",
-  h2: "tracking-tight font-light text-4xl sm:text-5xl 2xl:text-6xl",
-  h3: "tracking-tight font-light text-3xl sm:text-4xl 2xl:text-5xl",
-  h4: "tracking-tight font-normal uppercase text-2xl sm:text-3xl 2xl:text-4xl",
-  lead: "font-light text-xl sm:text-2xl leading-7 sm:leading-8",
-  body: "font-light text-base sm:text-[1.1rem] leading-6",
-  small: "font-light text-sm leading-5",
-  caption: "text-xs leading-4",
-  overline: "text-[10px] uppercase tracking-wider",
+export const typographyVariants: Record<Variant, string> = {
+  h1: "",
+  h2: "text-xl sm:text-8xl 2xl:text-9xl font-normal uppercase tracking-tight",
+  h3: "text-6xl 2xl:text-7xl font-normal uppercase tracking-tight",
+  h4: "text-3xl sm:text-6xl capitalize font-light tracking-[-1px]",
+  h6: "text-xl tracking-tight mb-3 uppercase",
+  "display-lg": "text-lg md:text-3xl lg:text-2xl leading-6 sm:leading-8",
+  "display-md": "text-lg 2xl:text-xl tracking-wide",
+  "display-sm": "text-base md:text-lg font-light",
+  "caption-lg": "",
+  "caption-md": "",
+  "caption-sm": "text-sm",
 };
 
 type PolymorphicProps<T extends ElementType> = {
@@ -35,7 +37,7 @@ type PolymorphicProps<T extends ElementType> = {
 
 export const Typography = <T extends ElementType = "p">({
   as,
-  variant = "body",
+  variant = "display-md",
   className,
   children,
   ...rest
@@ -43,35 +45,40 @@ export const Typography = <T extends ElementType = "p">({
   const Comp = (as ??
     (variant.startsWith("h") ? (variant as ElementType) : "p")) as ElementType;
   return (
-    <Comp className={cn(variantClasses[variant], className)} {...rest}>
+    <Comp className={cn(typographyVariants[variant], className)} {...rest}>
       {children}
     </Comp>
   );
 };
 
-Typography.displayName = "Typography";
-
-// Convenience wrappers
-export const H1 = (
-  p: React.ComponentPropsWithoutRef<"h1"> & { className?: string }
-) => <Typography as="h1" variant="h1" {...p} />;
-
 export const H2 = (
-  p: React.ComponentPropsWithoutRef<"h2"> & { className?: string }
+  p: React.ComponentPropsWithoutRef<"p"> & { className?: string }
 ) => <Typography as="h2" variant="h2" {...p} />;
 
+export const H3 = (
+  p: React.ComponentPropsWithoutRef<"p"> & { className?: string }
+) => <Typography as="h3" variant="h3" {...p} />;
+
 export const H4 = (
-  p: React.ComponentPropsWithoutRef<"h4"> & { className?: string }
+  p: React.ComponentPropsWithoutRef<"p"> & { className?: string }
 ) => <Typography as="h4" variant="h4" {...p} />;
 
-export const Text = (
+export const H6 = (
   p: React.ComponentPropsWithoutRef<"p"> & { className?: string }
-) => <Typography as="p" variant="body" {...p} />;
+) => <Typography as="h6" variant="h6" {...p} />;
 
-export const Lead = (
+export const DisplayLargeText = (
   p: React.ComponentPropsWithoutRef<"p"> & { className?: string }
-) => <Typography as="p" variant="lead" {...p} />;
+) => <Typography as="p" variant="display-lg" {...p} />;
 
-export const Caption = (
-  p: React.ComponentPropsWithoutRef<"span"> & { className?: string }
-) => <Typography as="span" variant="caption" {...p} />;
+export const DisplayMediumText = (
+  p: React.ComponentPropsWithoutRef<"p"> & { className?: string }
+) => <Typography as="p" variant="display-md" {...p} />;
+
+export const DisplaySmallText = (
+  p: React.ComponentPropsWithoutRef<"p"> & { className?: string }
+) => <Typography as="p" variant="display-sm" {...p} />;
+
+export const CaptionSmallText = (
+  p: React.ComponentPropsWithoutRef<"p"> & { className?: string }
+) => <Typography as="p" variant="caption-sm" {...p} />;

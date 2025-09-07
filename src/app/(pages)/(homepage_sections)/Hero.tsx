@@ -8,6 +8,7 @@ import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import { useIsReadyForHeroEntry } from "@/store/useAnimationState";
 import { heroImageContainerVariants, heroImageVariants } from "./anim";
+import { typographyVariants } from "@/components/ui/Typography";
 
 gsap.registerPlugin(SplitText);
 
@@ -70,7 +71,7 @@ export const HeroSection = () => {
       <div className="max-w-[38rem] mb-0 sm:mb-16 mt-[0rem] sm:mt-[10rem]">
         <h1
           ref={textRef}
-          className="text-lg md:text-3xl lg:text-2xl leading-6 sm:leading-8"
+          className={typographyVariants["display-lg"]}
           style={{ visibility: ready ? "visible" : "hidden" }}
         >
           I&apos;m Gourav Kumar, a Web designer & Developer based in India. I

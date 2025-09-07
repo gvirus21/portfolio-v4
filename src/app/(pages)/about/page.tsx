@@ -9,7 +9,7 @@ import {
 
 export default function AboutPage() {
   return (
-    <div className="relative min-h-screen --px-4 --sm:px-6">
+    <div className="relative min-h-screen">
       {/* <HeroSection /> */}
       <PersonalInfoSection />
       <ProcessSection />

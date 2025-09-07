@@ -1,6 +1,6 @@
 "use client";
 
-import { H4 } from "@/components/ui/Text";
+import { DisplayMediumText, H2 } from "@/components/ui/Typography";
 import PillButton from "@/components/ui/buttons/PillButton";
 
 const deliverySteps = [
@@ -20,22 +20,20 @@ const deliverySteps = [
 
 export const ValueSection = () => {
   return (
-    <section className="pt-16 px-4 md:px-8 mt-20 sm:mt-60">
+    <section className="pt-16 px-4 md:px-8 mt-20 sm:mt-40">
       <div className="w-full">
         <div className="flex flex-col sm:flex-row justify-between">
-          <H4 className="text-5xl sm:text-8xl">How I Deliver Value</H4>
-          <div className="flex flex-col justify-between items-start w-11/12 sm:w-5/12 mt-10 sm:mt-16 mr-[14rem]">
+          <H2 className="w-[60rem] ml-5">How I Deliver Value</H2>
+
+          <div className="flex flex-col justify-between items-start w-11/12 sm:w-4/12 mt-10 sm:mt-16 2xl:mt-44 mr-[20rem]">
             <div className="space-y-5">
               {deliverySteps.map((step) => (
-                <p
-                  key={step.id}
-                  className="text-lg 2xl:text-xl text-black tracking-wide"
-                >
+                <DisplayMediumText key={step.id}>
                   {step.content}
-                </p>
+                </DisplayMediumText>
               ))}
             </div>
-            <div className="flex justify-end mt-5 sm:mt-10">
+            <div className="flex justify-end mt-5 sm:mt-16">
               <PillButton link="/contact">Contact</PillButton>
             </div>
           </div>

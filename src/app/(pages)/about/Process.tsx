@@ -1,3 +1,4 @@
+import { DisplayMediumText } from "@/components/ui/Typography";
 import React from "react";
 
 export const ProcessSection = () => {
@@ -45,7 +46,7 @@ export const ProcessSection = () => {
           <div className="flex justify-between items-start lg:mb-8 bg-background">
             <h1 className="relative text-2xl md:text-3xl xl:text-4xl 3xl:text-5xl font-light mb-8 inline-block tracking-tight leading-tight">
               <span className="mr-6 md:mr-8 xl:mr-10 3xl:mr-14">
-                <div className="absolute top-3 xl:top-4 3xl:top-5 left-0 w-3 h-3 xl:h-4 xl:w-4 3xl:h-6 3xl:w-6 bg-black rounded-full" />
+                <div className="absolute top-3 xl:top-4 3xl:top-6 left-0 3xl:left-4 w-3 h-3 xl:h-4 xl:w-4 bg-black rounded-full" />
               </span>{" "}
               Website design, application
               <br />
@@ -62,7 +63,7 @@ export const ProcessSection = () => {
       </div>
 
       {/* Right Side - Natural Scroll */}
-      <div className="flex flex-col lg:items-end lg:w-[60%] lg:pr-16 3xl:pr-[10rem] lg:pt-60">
+      <div className="flex flex-col lg:items-end lg:w-[60%] lg:pr-16 3xl:pr-[20rem] lg:pt-60">
         {steps.map((step, index) => (
           <div
             key={index}
@@ -70,13 +71,13 @@ export const ProcessSection = () => {
               index === steps.length - 1 ? "lg:mb-0" : "lg:mb-10"
             }`}
           >
-            <span className="text-xl lg:text-2xl font-light mt-4 tracking-tighter">
+            <span className="text-xl lg:text-2xl font-thin mt-4 tracking-tighter">
               {step.id}
             </span>
             <div className="w-[18rem] lg:w-[36rem]">
-              <h2 className="text-2xl lg:text-3xl font-regular mt-4 mb-4 lg:mb-8 ml-1 ">
+              <h4 className="text-2xl lg:text-4xl font-light mt-4 mb-4 lg:mb-8 ml-1 ">
                 {step.title}
-              </h2>
+              </h4>
               <div>
                 <div className="text-xs mb-2">{step.label}</div>
                 <div className="text-xs uppercase tracking-wider">
@@ -85,9 +86,9 @@ export const ProcessSection = () => {
                   ))}
                 </div>
               </div>
-              <p className="pr-6 lg:pr-0 lg:leading-relaxed mt-6 lg:mt-10 text-sm xl:text-xl">
+              <DisplayMediumText className="font-light pr-6 lg:pr-0 mt-6 lg:mt-10">
                 {step.content}
-              </p>
+              </DisplayMediumText>
             </div>
           </div>
         ))}

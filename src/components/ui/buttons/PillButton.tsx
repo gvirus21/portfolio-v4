@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -18,7 +19,7 @@ const PillButton = ({ children, link, className }: PillButtonProps) => {
   return (
     <div
       className={cn(
-        "relative flex items-center justify-center px-5 bg-black rounded-full h-8 text-sm font-light hover:opacity-90 transition-opacity overflow-clip",
+        "relative flex items-center justify-center px-5 bg-black rounded-full h-6 text-sm font-light hover:opacity-90 transition-opacity overflow-clip",
         className
       )}
     >

@@ -2,6 +2,11 @@ import { motion, AnimatePresence } from "motion/react";
 import { Description } from "@/components/ui/Text";
 import { BsDot } from "react-icons/bs";
 import PillButton from "@/components/ui/buttons/PillButton";
+import {
+  DisplayLargeText,
+  DisplaySmallText,
+  H6,
+} from "@/components/ui/Typography";
 
 interface AdditionalDetails {
   website: string;
@@ -57,33 +62,26 @@ export const ProjectDetails = ({
           }}
           style={{ overflow: "hidden" }}
         >
-
           <div className="flex flex-col justify-start lg:justify-between items-center xl:items-start lg:flex-row mb-6">
             <div className="mt-4">
-              <Description
-                variant="lg"
-                className="w-11/12 lg:w-[20rem] xl:w-[24rem] 2xl:w-[40rem]"
-              >
+              <DisplayLargeText className="w-11/12 lg:w-[20rem] xl:w-[24rem] 2xl:w-[50rem]">
                 {description}
-              </Description>
-              <PillButton link={website} className="inline-flex mt-4">
+              </DisplayLargeText>
+              <PillButton link={website} className="inline-flex mt-6">
                 Visit Website
               </PillButton>
 
               <div className="mt-10">
-                <h3 className="text-3xl tracking-tighter mb-5">
+                <h5 className="text-3xl tracking-tighter uppercase mb-6">
                   Challenges We Worked on
-                </h3>
-                <Description
-                  variant="regular"
-                  className="w-11/12 lg:w-[20rem] xl:w-[24rem] 2xl:w-[30rem]"
-                >
+                </h5>
+                <DisplaySmallText className="w-11/12 lg:w-[20rem] xl:w-[24rem] 2xl:w-[30rem]">
                   {challengesDescription}
-                </Description>
+                </DisplaySmallText>
               </div>
 
-              <div className="mt-6">
-                <h3 className="text-xl tracking-[2%] mb-3">Tools</h3>
+              <div className="mt-12">
+                <H6 className="mb-3">Technologies</H6>
                 <ToolList tools={tools} />
               </div>
             </div>
