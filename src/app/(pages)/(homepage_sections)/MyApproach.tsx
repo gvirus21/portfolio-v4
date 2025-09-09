@@ -15,7 +15,7 @@ const approachItems = [
 
 export const MyApproachSection = () => {
   return (
-    <section className="h-[85vh] sm:h-[80vh] 2xl:h-[60vh] px-4 sm:px-10 mt-20 sm:mt-40">
+    <section className="h-[85vh] sm:h-[80vh] 2xl:h-[50vh] px-4 sm:px-10 mt-20 sm:mt-40">
       <H4>My Approach.</H4>
 
       <div className="mt-10 sm:mt-20">

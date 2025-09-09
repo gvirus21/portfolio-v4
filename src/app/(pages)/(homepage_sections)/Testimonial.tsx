@@ -73,7 +73,7 @@ const DesktopTestimonial = () => {
         {duplicatedTestimonials.map((testimonial, index) => (
           <div
             key={`${testimonial.id}-${index}`}
-            className="flex flex-col justify-between h-auto p-6 pr-10 mx-2 rounded-xl bg-gray-200 flex-shrink-0"
+            className="flex flex-col justify-between h-auto p-6 pr-10 mx-2 flex-shrink-0"
           >
             <DisplaySmallText className="w-[32rem]">
               {testimonial.message}
