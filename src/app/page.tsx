@@ -9,7 +9,6 @@ import {
   MyApproachSection,
 } from "@/app/(pages)/(homepage_sections)";
 import Loader from "../components/Loader";
-import GetInTouch from "./(pages)/pricing/GetInTouch";
 
 const MainContent = () => (
   <main className="min-h-screen bg-background max-w-screen font-main font-light">
@@ -18,7 +17,6 @@ const MainContent = () => (
     <WorkSection />
     <TestimonialSection />
     <MyApproachSection />
-    <GetInTouch />
   </main>
 );
 

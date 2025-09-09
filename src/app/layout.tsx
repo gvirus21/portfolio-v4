@@ -7,6 +7,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import { ViewTransitions } from "next-view-transitions";
 import SlideUpTransition from "@/components/transitions/SlideUpTransition";
+import GetInTouch from "@/components/GetInTouch";
 
 const sequelSans = localFont({
   display: "swap",
@@ -81,6 +82,7 @@ export default function RootLayout({
             <SlideUpTransition />
             <Navbar />
             {children}
+            <GetInTouch />
             <Footer />
             <CustomCursor />
           </body>

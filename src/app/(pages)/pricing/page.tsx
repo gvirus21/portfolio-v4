@@ -5,7 +5,6 @@ import Hero from "./Hero";
 import PricingTable from "./PricingTable";
 import Testimonials from "./Testimonials";
 import OtherQuestions from "./OtherQuestions";
-import GetInTouch from "./GetInTouch";
 
 const PricingPage = () => {
   return (
@@ -14,7 +13,6 @@ const PricingPage = () => {
       <PricingTable />
       <Testimonials />
       <OtherQuestions />
-      <GetInTouch />
     </motion.section>
   );
 };

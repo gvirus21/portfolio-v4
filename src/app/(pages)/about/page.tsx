@@ -6,8 +6,6 @@ import {
   ProcessSection,
   WorkSection,
 } from "./index";
-import GetInTouch from "../pricing/GetInTouch";
-
 
 export default function AboutPage() {
   return (
@@ -16,7 +14,6 @@ export default function AboutPage() {
       {/* <PersonalInfoSection /> */}
       <ProcessSection />
       <WorkSection />
-      <GetInTouch />
     </div>
   );
 }
