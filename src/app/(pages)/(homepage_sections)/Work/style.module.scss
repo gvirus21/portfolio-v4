@@ -12,17 +12,6 @@
       perspective: 80vw;
       transform-origin: top;
 
-      // table separator
-
-      border-top: 1px solid black;
-
-      &:first-of-type {
-        border-top: none;
-      }
-
-      &:last-of-type {
-        border-bottom: 1px solid black;
-      }
 
       &:hover {
         .outer {

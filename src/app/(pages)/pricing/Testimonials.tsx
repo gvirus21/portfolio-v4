@@ -1,5 +1,6 @@
 "use client";
 
+import Copy from "@/components/Copy";
 import { CaptionSmallText, DisplaySmallText } from "@/components/ui/Typography";
 
 const TESTIMONIALS = [
@@ -47,9 +48,11 @@ const Testimonials = () => {
   return (
     <section className="relative min-h-[30vh] w-screen max-w-full flex flex-col md:flex-row mt-20 overflow-x-hidden">
       <div className="w-3/12 pt-6">
-        <DisplaySmallText className="text-lg md:text-sm lg:text-lg w-[10rem]">
-          Our Customers Describes us best
-        </DisplaySmallText>
+        <Copy>
+          <DisplaySmallText className="text-lg md:text-sm lg:text-lg w-[10rem]">
+            Our Customers Describes us best
+          </DisplaySmallText>
+        </Copy>
       </div>
 
       <div className="flex flex-col sm:flex-row space-y-4 justify-between w-full overflow-x-scroll scrollbar-hide mt-4 md:mt-0">
@@ -60,29 +63,32 @@ const Testimonials = () => {
             key={testimonial.id}
             className="flex flex-col justify-between w-full sm:min-w-[24rem] xl:min-w-[28rem] 2xl:min-w-[28rem] min-h-0 3xl:max-h-auto 3xl:h-[30rem] mt-6 md:ml-10 rounded-xl"
           >
-              <div className="space-y-3">
-                {testimonial.text.map((paragraph, index) => (
-                  <CaptionSmallText
-                    key={index}
-                    className="font-light leading-relaxed"
-                  >
+            <div className="space-y-3">
+              {testimonial.text.map((paragraph, index) => (
+                <Copy key={index}>
+                  <CaptionSmallText className="font-light leading-relaxed">
                     {paragraph}
                   </CaptionSmallText>
-                ))}
-              </div>
+                </Copy>
+              ))}
+            </div>
 
-              <div className="mt-6 pt-4">
+            <div className="mt-6 pt-4">
+              <Copy>
                 <CaptionSmallText className="text-sm font-light">
                   {testimonial.name}
                 </CaptionSmallText>
+              </Copy>
+              <Copy>
                 <CaptionSmallText className="text-gray-600 text-xs italic">
                   {testimonial.position}
                 </CaptionSmallText>
-              </div>
+              </Copy>
+            </div>
 
-              {index < TESTIMONIALS.length - 1 && (
-                <div className="md:hidden h-[0.5px] w-full bg-slate-400 rounded-full mt-10" />
-              )}
+            {index < TESTIMONIALS.length - 1 && (
+              <div className="md:hidden h-[0.5px] w-full bg-slate-400 rounded-full mt-10" />
+            )}
           </div>
         ))}
       </div>

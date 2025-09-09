@@ -5,6 +5,7 @@ import gsap from "gsap";
 import ProjectDetails from "./ProjectDetails";
 import { cn } from "@/lib/utils";
 import styles from "./style.module.scss";
+import { motion, MotionValue, useTransform } from "motion/react";
 
 interface ProjectData {
   id: string;
@@ -18,6 +19,7 @@ interface ProjectData {
     challengesDescription: string;
     tools: string[];
   };
+  borderBottomWidth: MotionValue<string>;
 }
 
 interface LinkProps {
@@ -25,6 +27,7 @@ interface LinkProps {
   index: number;
   activeProject: number | null;
   setActiveProject: (index: number | null) => void;
+  scrollYProgress: MotionValue<number>;
 }
 
 export default function Link({
@@ -32,8 +35,9 @@ export default function Link({
   index,
   activeProject,
   setActiveProject,
+  scrollYProgress,
 }: LinkProps) {
-  const { name, date, category, additonal_details } = data;
+  const { name, date, category, additonal_details, borderBottomWidth } = data;
   const outer = useRef<HTMLDivElement>(null);
   const inner = useRef<HTMLDivElement>(null);
 
@@ -99,19 +103,31 @@ export default function Link({
     }
   };
 
+  const firstLineWidth = useTransform(
+    scrollYProgress,
+    [0, 0.5],
+    ["20%", "100%"]
+  );
+
   return (
     <div className="">
       {index === 0 && (
-        <div className="flex justify-between items-center py-3">
-          <p className="text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider w-[13.5rem]">
-            Client
-          </p>
-          <p className="text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider text-left sm:text-left sm:w-[21.5rem]">
-            Category
-          </p>
-          <p className="hidden sm:block text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider">
-            Year
-          </p>
+        <div className="flex flex-col wf">
+          <div className="flex justify-between items-center py-3">
+            <p className="text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider w-[13.5rem]">
+              Client
+            </p>
+            <p className="text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider text-left sm:text-left sm:w-[21.5rem]">
+              Category
+            </p>
+            <p className="hidden sm:block text-[10px] 2xs:text-[12px] sm:text-xs uppercase tracking-wider">
+              Year
+            </p>
+          </div>
+          <motion.div
+            style={{ width: firstLineWidth }}
+            className="h-[1px] bg-black"
+          />
         </div>
       )}
 
@@ -126,6 +142,7 @@ export default function Link({
           category={category}
           date={date}
           index={index}
+          separatorWidth={borderBottomWidth}
         />
 
         <div ref={outer} className={styles.outer}>
@@ -156,17 +173,27 @@ const DefaultVisibleTableRows = ({
   name,
   category,
   date,
+  separatorWidth,
 }: {
   name: string;
   category: string;
   date: string;
   index: number;
+  separatorWidth: MotionValue<string>;
 }) => {
   return (
-    <div className="relative group flex justify-between items-center top-0 overflow-hidden py-4 cursor-pointer text-sm sm:text-lg w-full uppercase">
-      <p className="text-white w-full sm:w-[15rem]">{name}</p>
-      <p className="text-right sm:text-left w-[20rem] text-white">{category}</p>
-      <p className="hidden sm:block text-white">{date}</p>
+    <div className="flex flex-col w-full">
+      <div className="relative group flex justify-between items-center top-0 overflow-hidden py-4 cursor-pointer text-sm sm:text-lg w-full uppercase">
+        <p className="text-white w-full sm:w-[15rem]">{name}</p>
+        <p className="text-right sm:text-left w-[20rem] text-white">
+          {category}
+        </p>
+        <p className="hidden sm:block text-white">{date}</p>
+      </div>
+      <motion.div
+        style={{ width: separatorWidth }}
+        className="h-[1px] bg-black"
+      />
     </div>
   );
 };

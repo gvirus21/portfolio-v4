@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useIsReadyForHeroEntry } from "@/store/useAnimationState";
 import { heroImageContainerVariants, heroImageVariants } from "./anim";
 import { typographyVariants } from "@/components/ui/Typography";
+import Copy from "@/components/Copy";
 
 gsap.registerPlugin(SplitText);
 
@@ -69,7 +70,7 @@ export const HeroSection = () => {
   return (
     <section ref={containerRef} className="w-full mx-auto pt-44 px-4 sm:px-10">
       <div className="max-w-[38rem] mb-0 sm:mb-16 mt-[0rem] sm:mt-[10rem]">
-        <h1
+        {/* <h1
           ref={textRef}
           className={typographyVariants["display-lg"]}
           style={{ visibility: ready ? "visible" : "hidden" }}
@@ -77,7 +78,18 @@ export const HeroSection = () => {
           I&apos;m Gourav Kumar, a Web designer & Developer based in India. I
           like to solve design problems for businesses & Startups to elevate
           their business needs via website.
-        </h1>
+        </h1> */}
+        <Copy>
+          <h1
+            ref={textRef}
+            className={typographyVariants["display-lg"]}
+            style={{ visibility: ready ? "visible" : "hidden" }}
+          >
+            I&apos;m Gourav Kumar, a Web designer & Developer based in India. I
+            like to solve design problems for businesses & Startups to elevate
+            their business needs via website.
+          </h1>
+        </Copy>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-32 sm:mt-40">
         {HERO_IMAGES.map((img, idx) => (
