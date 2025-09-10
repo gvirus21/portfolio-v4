@@ -8,7 +8,6 @@ import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import { useIsReadyForHeroEntry } from "@/store/useAnimationState";
 import { heroImageContainerVariants, heroImageVariants } from "./anim";
-import { typographyVariants } from "@/components/ui/Typography";
 import Copy from "@/components/Copy";
 
 gsap.registerPlugin(SplitText);
@@ -82,7 +81,7 @@ export const HeroSection = () => {
         <Copy>
           <h1
             ref={textRef}
-            className={typographyVariants["display-lg"]}
+            className={"text-lg md:text-xl xl:text-2xl 3xl:text-3xl w-full md:w-[36rem] xl:w-[44rem] 3xl:w-[50rem]"}
             style={{ visibility: ready ? "visible" : "hidden" }}
           >
             I&apos;m Gourav Kumar, a Web designer & Developer based in India. I
@@ -91,7 +90,7 @@ export const HeroSection = () => {
           </h1>
         </Copy>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-32 sm:mt-40">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-2 xl:gap-3 mt-32 sm:mt-40 md:mt-20 lg:mt-40">
         {HERO_IMAGES.map((img, idx) => (
           <motion.div
             key={img}

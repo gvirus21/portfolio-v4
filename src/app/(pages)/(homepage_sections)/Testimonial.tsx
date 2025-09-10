@@ -53,9 +53,9 @@ const testimonials = [
 
 export const TestimonialSection = () => {
   return (
-    <section className="min-h-[50vh] w-full px-4 sm:px-10 mt-20 sm:mt-60">
+    <section className="min-h-[50vh] w-full mt-20 sm:mt-60 px-4 sm:px-10 ">
       <style>{hideScrollbarStyles}</style>
-      <H3 className="text-6xl sm:text-[6rem] tracking-[-2px] sm:tracking-[-6px]">
+      <H3 className="lg:w-full 3xl:ml-5 xl:text-[6rem] 3xl:text-[7rem] tracking-[-2px] xl:tracking-[-8px] 3xl:tracking-[-6px]">
         Clients Success Stories
       </H3>
       <DesktopTestimonial />
@@ -68,7 +68,7 @@ const DesktopTestimonial = () => {
   // Duplicate testimonials for seamless infinite scroll
   const duplicatedTestimonials = [...testimonials, ...testimonials];
   return (
-    <div className="hidden md:flex overflow-hidden mt-24">
+    <div className="hidden md:flex w-full mx-auto overflow-hidden mt-24">
       <div className="flex gap-4 auto-scroll-container items-start">
         {duplicatedTestimonials.map((testimonial, index) => (
           <div
@@ -96,7 +96,7 @@ const DesktopTestimonial = () => {
 
 const MobileTestimonial = () => {
   return (
-    <div className="flex flex-col gap-6 mt-10 md:hidden">
+    <div className="flex flex-col gap-6 mt-6 md:hidden">
       {testimonials.map((testimonial) => (
         <div
           key={testimonial.id}

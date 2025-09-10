@@ -16,9 +16,9 @@ type Variant =
 
 export const typographyVariants: Record<Variant, string> = {
   h1: "",
-  h2: "text-xl sm:text-8xl 2xl:text-9xl font-normal uppercase tracking-tight",
+  h2: "text-5xl sm:text-8xl md:text-6xl 2xl:text-8xl font-normal uppercase tracking-tighter xl:tracking-tight",
   h3: "text-6xl 2xl:text-7xl font-normal uppercase tracking-tight",
-  h4: "text-3xl sm:text-6xl capitalize font-light tracking-[-1px]",
+  h4: "text-5xl sm:text-6xl capitalize font-light tracking-[-1px]",
   h6: "text-xl tracking-tight mb-3 uppercase",
   "display-lg": "text-lg md:text-3xl lg:text-2xl leading-6 sm:leading-8",
   "display-md": "text-lg 2xl:text-xl tracking-wide",

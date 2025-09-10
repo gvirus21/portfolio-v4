@@ -86,9 +86,9 @@ const GetInTouch = () => {
   return (
     <section
       ref={container}
-      className="relative h-[40vw] lg:h-[45vw] max-w-screen"
+      className="relative min-h-[16rem] h-[40vw] lg:h-[45vw] max-w-screen"
     >
-      <div className="absolute top-[40%] lg:top-1/2 left-1/2 -translate-x-1/2 lg:-translate-y-1/2 w-full">
+      <div className="absolute top-[60%] lg:top-1/2 left-1/2 -translate-x-1/2 lg:-translate-y-1/2 w-full">
         <div className="relative">
           <div className="hidden lg:block">
             {PARALLAX_CARDS.map((card, index) => (
