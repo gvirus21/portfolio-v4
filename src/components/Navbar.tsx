@@ -79,9 +79,9 @@ const Navbar = () => {
 
             <SkeletonPillButton
               link="/about"
-              className="lg:text-[12px] xl:text-base"
+              className="group lg:text-[12px] xl:text-base"
             >
-              Let&apos;s talk
+              <span className="group-hover:mr-3">Let&apos;s talk</span>
             </SkeletonPillButton>
           </div>
 

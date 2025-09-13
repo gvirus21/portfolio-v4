@@ -1,18 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { TfiArrowTopRight } from "react-icons/tfi";
 import { motion } from "motion/react";
 
 interface SkeletonPillButtonProps {
-  children: string;
+  children: ReactNode;
   link: string;
   className?: string;
 }
 
-const SkeletonPillButton = ({ children, link, className }: SkeletonPillButtonProps) => {
+const SkeletonPillButton = ({
+  children,
+  link,
+  className,
+}: SkeletonPillButtonProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
