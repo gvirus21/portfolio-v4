@@ -57,6 +57,9 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex items-center lg:text-sm xl:text-base gap-4">
+            <FlipLink underline className="uppercase" href="/">
+              Home
+            </FlipLink>
             <FlipLink underline className="uppercase" href="/about">
               About
             </FlipLink>

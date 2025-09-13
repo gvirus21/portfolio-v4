@@ -70,7 +70,7 @@ export const ValueSection = () => {
             </H2>
           </Copy>
 
-          <div className="flex flex-col justify-between items-start w-full 2xl:w-10/12 3xl:w-[30%] mt-10 sm:mt-16 lg:mt-10 2xl:mt-20 3xl:mt-10 lg:mr-0 xl:mr-10 3xl:mr-[20rem]">
+          <div className="flex flex-col justify-between items-start w-full lg:w-[90%] 2xl:w-10/12 3xl:w-[30%] mt-10 sm:mt-12 lg:mt-10 2xl:mt-20 3xl:mt-10 lg:mr-0 xl:mr-10 3xl:mr-[20rem]">
             <div className="space-y-5">
               {deliverySteps.map((step) => (
                 <Copy key={step.id}>
@@ -78,7 +78,7 @@ export const ValueSection = () => {
                 </Copy>
               ))}
             </div>
-            <div className="flex justify-end mt-5 sm:mt-16">
+            <div className="flex justify-end mt-8 sm:mt-16">
               <PillButton link="/contact">Contact</PillButton>
             </div>
           </div>
@@ -97,7 +97,7 @@ export const ValueSection = () => {
             maskPosition: "center",
             willChange: "-webkit-mask-size, mask-size",
           }}
-          className="relative mt-10 md:mt-20 xl:mt-44 aspect-[4/3] sm:aspect-[16/9] 3xl:w-10/12 mx-auto"
+          className="relative mt-16 md:mt-20 xl:mt-44 aspect-[4/3] sm:aspect-[16/9] 3xl:w-10/12 mx-auto"
         >
           <Image
             src={IMAGE_PATHS[currentImageIndex]}

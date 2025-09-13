@@ -13,11 +13,11 @@ export const WorkSection = () => {
   });
 
   return (
-    <section ref={container} className="px-4 sm:px-10 mt-20 sm:mt-60">
+    <section ref={container} className="px-4 sm:px-10 mt-20 sm:mt-36 3xl:mt-48">
       <Copy>
         <H3>Brands I&apos;ve Worked With</H3>
       </Copy>
-      <div className="flex flex-col justify-between mt-10 sm:mt-28 font-normal tracking-tighter">
+      <div className="flex flex-col justify-between mt-10 sm:mt-16 font-normal tracking-tighter">
         <AnimatedWorkTable scrollYProgress={scrollYProgress} />
       </div>
     </section>
