@@ -1,4 +1,5 @@
 import { DisplayMediumText, H4 } from "@/components/ui/Typography";
+import Copy from "@/components/Copy";
 
 const approachItems = [
   {
@@ -23,13 +24,17 @@ export const MyApproachSection = () => {
           <div key={index}>
             <div className="h-[0.5px] w-full bg-black mt-14" />
             <div className="flex justify-between pt-5">
-              <DisplayMediumText className="text-base sm:text-xl 2xl:text-xl w-[5rem] sm:w-[14rem] tracking-[2%]">
-                {item.title}
-              </DisplayMediumText>
-              <div className="md:w-[50%]">
-                <DisplayMediumText className="w-[14rem] sm:w-[32rem] md:w-[20rem] xl:w-[28rem] 3xl:w-[32rem] tracking-wide">
-                  {item.description}
+              <Copy>
+                <DisplayMediumText className="text-base sm:text-xl 2xl:text-xl w-[5rem] sm:w-[14rem] tracking-[2%]">
+                  {item.title}
                 </DisplayMediumText>
+              </Copy>
+              <div className="md:w-[50%]">
+                <Copy>
+                  <DisplayMediumText className="w-[14rem] sm:w-[32rem] md:w-[20rem] xl:w-[28rem] 3xl:w-[32rem] tracking-wide">
+                    {item.description}
+                  </DisplayMediumText>
+                </Copy>
               </div>
             </div>
           </div>

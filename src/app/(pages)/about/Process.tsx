@@ -1,5 +1,5 @@
 import { DisplayMediumText } from "@/components/ui/Typography";
-import React from "react";
+import Copy from "@/components/Copy";
 
 export const ProcessSection = () => {
   const steps = [
@@ -44,20 +44,22 @@ export const ProcessSection = () => {
         {/* Main Content */}
         <div className="flex-1 flex flex-col justify-start mt-0">
           <div className="flex justify-between items-start lg:mb-8 bg-background">
-            <h1 className="relative text-2xl md:text-3xl xl:text-4xl 3xl:text-5xl font-light mb-8 inline-block tracking-tight leading-tight">
-              <span className="mr-6 md:mr-8 xl:mr-10 3xl:mr-14">
-                <div className="absolute top-3 xl:top-4 3xl:top-6 left-0 3xl:left-4 w-3 h-3 xl:h-4 xl:w-4 bg-black rounded-full" />
-              </span>{" "}
-              Website design, application
-              <br />
-              Design,{" "}
-              <span className="font-scotch font-regular">
-                interactive design
-              </span>
-              ,
-              <br />
-              Prototyping, Ecommerce.
-            </h1>
+            <Copy>
+              <h1 className="relative text-2xl md:text-3xl xl:text-4xl 3xl:text-5xl font-light mb-8 inline-block tracking-tight leading-tight">
+                <span className="mr-6 md:mr-8 xl:mr-10 3xl:mr-14">
+                  <div className="absolute top-3 xl:top-4 3xl:top-6 left-0 3xl:left-4 w-3 h-3 xl:h-4 xl:w-4 bg-black rounded-full" />
+                </span>{" "}
+                Website design, application
+                <br />
+                Design,{" "}
+                <span className="font-scotch font-regular">
+                  interactive design
+                </span>
+                ,
+                <br />
+                Prototyping, Ecommerce.
+              </h1>
+            </Copy>
           </div>
         </div>
       </div>

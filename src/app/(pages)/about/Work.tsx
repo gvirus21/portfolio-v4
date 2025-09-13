@@ -1,15 +1,21 @@
 import { H4 } from "@/components/ui/Typography";
+import Copy from "@/components/Copy";
 
 export const WorkSection = () => {
   return (
     <section className="min-h-[110vh] xs:min-h-[110vh] md:min-h-screen lg:min-h-[80vh] lg:mt-[5rem] pt-20 px-4 sm:px-6">
-      <H4 className="text-5xl sm:w-[30rem] 2xl:w-[50rem] uppercase">
-        Some of my Noteworthy works
-      </H4>
-      <h3 className="text-sm sm:text-base 2xl:text-xl md:w-[32rem] 2xl:w-[44rem] mt-8">
-        Throughout my career, I have worked with some of the most Ambitious and
-        fun brands in the industry, here are some of my favourite ones.
-      </h3>
+      <Copy>
+        <H4 className="text-5xl sm:w-[30rem] 2xl:w-[50rem] uppercase">
+          Some of my Noteworthy works
+        </H4>
+      </Copy>
+
+      <Copy>
+        <h3 className="text-sm sm:text-base 2xl:text-xl md:w-[32rem] 2xl:w-[44rem] mt-8">
+          Throughout my career, I have worked with some of the most Ambitious
+          and fun brands in the industry, here are some of my favourite ones.
+        </h3>
+      </Copy>
       <MasonryGrid />
     </section>
   );

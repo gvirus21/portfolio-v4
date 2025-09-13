@@ -104,7 +104,7 @@ const PricingTable = () => {
               style={{
                 width: card.animatedLineWidth,
               }}
-              className="h-[0.5px] bg-black rounded-full mt-4"
+              className="h-[1px] bg-foreground rounded-full mt-4"
             />
 
             <div className="flex justify-between  mt-6 mb-8 sm:mb-16 lg:mb-20">

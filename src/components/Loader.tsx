@@ -50,9 +50,9 @@ const Loader = ({ onComplete }: { onComplete?: () => void }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-betweens space-x-0 md:space-x-4"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-between space-x-0 md:space-x-4"
           >
-            <p className="text-[10px] md:text-sm text-gray-500 tracking-wide uppercase w-full">
+            <p className="text-[10px] md:text-sm text-gray-500 tracking-wide uppercase w-[8rem] md:w-[9.7rem]">
               Loading Experience
             </p>
             {/* Progress Bar */}

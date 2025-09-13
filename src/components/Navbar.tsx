@@ -51,7 +51,7 @@ const Navbar = () => {
             </a>
           </div>
 
-          <div className="hidden md:block lg:hidden xl:block absolute top-2 left-1/2 -translate-x-1/2 ml-10 xl:ml-0 text-black font-light mt-1 text-[12px] lg:text-sm">
+          <div className="hidden md:block lg:hidden xl:block absolute top-2 left-1/2 md:-translate-x-[70%] xl:-translate-x-1/2 ml-10 xl:ml-0 text-black font-light mt-1 text-[12px] lg:text-sm">
             <span>WEB DEVELOPER & DESIGNER</span>
             <div className="text-sm text-gray-500">VIZAG, INDIA</div>
           </div>

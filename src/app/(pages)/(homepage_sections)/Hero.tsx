@@ -81,7 +81,7 @@ export const HeroSection = () => {
         <Copy>
           <h1
             ref={textRef}
-            className={"text-lg md:text-xl xl:text-2xl 3xl:text-3xl w-full md:w-[36rem] xl:w-[44rem] 3xl:w-[55rem]"}
+            className={"text-lg md:text-xl xl:text-2xl 3xl:text-2xl w-full md:w-[30rem] xl:w-[44rem] 3xl:w-[37.5rem]"}
             style={{ visibility: ready ? "visible" : "hidden" }}
           >
             I&apos;m Gourav Kumar, a Web designer & Developer based in India. I

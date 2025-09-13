@@ -74,7 +74,7 @@ const OtherQuestions = () => {
                 style={{
                   width: qa.animatedLineWidth,
                 }}
-                className="h-[0.5px] w-full bg-black rounded-full mt-4"
+                className="h-[1px] w-full bg-foreground rounded-full mt-4"
               />
 
               <div className="flex flex-col sm:flex-row justify-between mt-6 mb-8 sm:mb-16 lg:mb-20">
