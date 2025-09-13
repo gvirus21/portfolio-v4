@@ -78,7 +78,7 @@ export const HeroSection = () => {
           like to solve design problems for businesses & Startups to elevate
           their business needs via website.
         </h1> */}
-        <Copy>
+        <Copy delay={3}>
           <h1
             ref={textRef}
             className={"text-lg md:text-xl xl:text-2xl 3xl:text-2xl w-full md:w-[30rem] xl:w-[44rem] 3xl:w-[37.5rem]"}

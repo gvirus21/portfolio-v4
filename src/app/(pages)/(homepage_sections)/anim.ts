@@ -6,7 +6,7 @@ export const heroImageContainerVariants = {
     transition: {
       duration: 1.2,
       ease: [0.25, 0.46, 0.45, 0.94],
-      delay: 0.7,
+      delay: 3,
     },
   },
 };
@@ -18,7 +18,7 @@ export const heroImageVariants = {
     transition: {
       duration: 1.5,
       ease: [0.25, 0.86, 0.45, 0.98],
-      delay: 0.7,
+      delay: 3,
     },
   },
 };

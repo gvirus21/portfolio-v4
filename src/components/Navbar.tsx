@@ -34,7 +34,7 @@ const Navbar = () => {
         transition={{
           duration: 0.8,
           ease: [0.25, 0.46, 0.45, 0.94],
-          delay: firstLoad ? 2.7 : 1.5,
+          delay: firstLoad ? 0 : 2.8,
         }}
         className={cn(
           "fixed top-0 w-full pt-4 pb-3 px-4 sm:px-6 flex justify-between items-start z-50"
