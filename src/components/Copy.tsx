@@ -80,7 +80,7 @@ export default function Copy({
           ...animationProps,
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 75%",
+            start: "top 90%",
             once: true,
           },
         });
