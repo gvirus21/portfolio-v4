@@ -9,9 +9,9 @@
 
 :root {
   /* --background: #ebebeb; */
+  /* --background: #2b2b2b; */
   --background: #f9fafd;
   --foreground: #171717;
-  /* --background: #2b2b2b; */
 }
 
 /* #EBEBEB #f9fafd*/
@@ -31,12 +31,19 @@
   --breakpoint-xs: 24.375rem;
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
+  :root {
+    --background: #f9fafd;
+    --foreground: #171717;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   /* cursor: none; */
