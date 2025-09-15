@@ -4,6 +4,7 @@ import { useState } from "react";
 import ProjectItem from "./row";
 import styles from "./style.module.scss";
 import { MotionValue, useTransform } from "motion/react";
+import { useIsMouseDevice } from "@/hooks/useMediaQuery";
 
 const AnimatedWorkTable = ({
   scrollYProgress,
@@ -11,26 +12,35 @@ const AnimatedWorkTable = ({
   scrollYProgress: MotionValue<number>;
 }) => {
   const [activeProject, setActiveProject] = useState<number | null>(null);
+  const isMouse = useIsMouseDevice();
+
+  const scrollYProgressRange = isMouse ? [0, 0.4] : [0, 0.5];
+  const scrollYProgressValues = [
+    isMouse ? ["90%", "100%"] : ["80%", "100%"],
+    isMouse ? ["80%", "100%"] : ["70%", "100%"],
+    isMouse ? ["70%", "100%"] : ["60%", "100%"],
+    isMouse ? ["60%", "100%"] : ["50%", "100%"],
+  ];
 
   const firstLineWidth = useTransform(
     scrollYProgress,
-    [0, 0.5],
-    ["10%", "100%"]
+    scrollYProgressRange,
+    scrollYProgressValues[0]
   );
   const secondLineWidth = useTransform(
     scrollYProgress,
-    [0, 0.5],
-    ["0%", "100%"]
+    scrollYProgressRange,
+    scrollYProgressValues[1]
   );
   const thirdLineWidth = useTransform(
     scrollYProgress,
-    [0, 0.5],
-    ["-10%", "100%"]
+    scrollYProgressRange,
+    scrollYProgressValues[2]
   );
-  const forthLineWidth = useTransform(
+  const fourthLineWidth = useTransform(
     scrollYProgress,
-    [0, 0.5],
-    ["-20%", "100%"]
+    scrollYProgressRange,
+    scrollYProgressValues[3]
   );
 
   const projectsData = [
@@ -96,7 +106,7 @@ const AnimatedWorkTable = ({
           "Completed iOS development training in record time and quickly transitioned to working on production apps for clients.",
         tools: ["Swift", "XCode"],
       },
-      borderBottomWidth: forthLineWidth,
+      borderBottomWidth: fourthLineWidth,
     },
   ];
 

@@ -107,8 +107,8 @@ export default function Link({
 
   const firstLineWidth = useTransform(
     scrollYProgress,
-    [0, 0.5],
-    ["20%", "100%"]
+    [0, 0.4],
+    ["93%", "100%"]
   );
 
   return (
