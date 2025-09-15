@@ -11,6 +11,7 @@ import {
 } from "motion/react";
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
+import { useIsMobile } from "@/hooks/useMediaQuery";
 
 const deliverySteps = [
   {
@@ -41,13 +42,18 @@ const IMAGE_PATHS = [
 
 export const ValueSection = () => {
   const container = useRef(null);
+  const isMobile = useIsMobile();
 
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start end", "end start"],
   });
 
-  const imageWidth = useTransform(scrollYProgress, [0, 0.5], ["50%", "100%"]);
+  const imageWidth = useTransform(
+    scrollYProgress,
+    isMobile ? [0, 0.7] : [0, 0.5],
+    ["50%", "100%"]
+  );
   const maskSize = useMotionTemplate`${imageWidth} 100%`;
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

@@ -3,24 +3,26 @@
 import { motion } from "motion/react";
 import FlipLink from "./ui/links/FlipLink";
 import SkeletonPillButton from "./ui/buttons/SkeletonPillButton";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import MobileMenu from "./MobileMenu";
 import { cn } from "@/lib/utils";
 import MobileMenuButton from "./ui/buttons/MobileMenuButton";
-import { usePageLoader } from "@/hooks/usePageLoader";
+// import { usePageLoader } from "@/hooks/usePageLoader";
 import { usePathname } from "next/navigation";
+import usePageLoader from "@/hooks/useLoader";
 
 const Navbar = () => {
-  const [firstLoad, setFirstLoad] = useState(false);
-  const { handleKeyDown, handleNavigate } = usePageLoader();
+  // const [firstLoad, setFirstLoad] = useState(false);
+  // const { handleKeyDown, handleNavigate } = usePageLoader();
 
   const pathname = usePathname();
+  const { isFirstLoad } = usePageLoader();
 
-  useEffect(() => {
-    const visited = window.sessionStorage.getItem("hasVisitedHome");
-    setFirstLoad(Boolean(visited));
-    window.sessionStorage.setItem("hasVisitedHome", "true");
-  }, []);
+  // useEffect(() => {
+  //   const visited = window.sessionStorage.getItem("hasVisitedHome");
+  //   setFirstLoad(Boolean(visited));
+  //   window.sessionStorage.setItem("hasVisitedHome", "true");
+  // }, []);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
@@ -34,7 +36,8 @@ const Navbar = () => {
         transition={{
           duration: 0.8,
           ease: [0.25, 0.46, 0.45, 0.94],
-          delay: firstLoad ? 0 : 2.8,
+          delay: isFirstLoad ? 2.8 : 5,
+          // delay: 2.8,
         }}
         className={cn(
           "fixed top-0 w-full pt-4 pb-3 px-4 sm:px-6 flex justify-between items-start z-50"
@@ -44,8 +47,8 @@ const Navbar = () => {
           <div className="text-base sm:text-base lg:text-sm xl:text-base font-light z-[100]">
             <a
               href={pathname === "/" ? undefined : "/"}
-              onClick={(e) => handleNavigate(e, "/", "HOME")}
-              onKeyDown={(e) => handleKeyDown(e, "/", "HOME")}
+              // onClick={(e) => handleNavigate(e, "/", "HOME")}
+              // onKeyDown={(e) => handleKeyDown(e, "/", "HOME")}
             >
               @gourav.kumar__
             </a>
