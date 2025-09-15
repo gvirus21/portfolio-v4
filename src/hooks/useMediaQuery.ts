@@ -30,3 +30,22 @@ export function useIsTablet() {
 export function useIsDesktop() {
   return useMediaQuery("(min-width: 1025px)");
 }
+
+// Hook to detect touch-based devices
+export function useIsTouchDevice() {
+  const [isTouch, setIsTouch] = useState(false);
+
+  useEffect(() => {
+    // Check for touch capability
+    const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    setIsTouch(hasTouch);
+  }, []);
+
+  return isTouch;
+}
+
+// Hook to detect mouse-based devices (opposite of touch)
+export function useIsMouseDevice() {
+  const isTouch = useIsTouchDevice();
+  return !isTouch;
+}

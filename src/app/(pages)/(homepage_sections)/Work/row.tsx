@@ -6,6 +6,7 @@ import ProjectDetails from "./ProjectDetails";
 import { cn } from "@/lib/utils";
 import styles from "./style.module.scss";
 import { motion, MotionValue, useTransform } from "motion/react";
+import { useIsMouseDevice } from "@/hooks/useMediaQuery";
 
 interface ProjectData {
   id: string;
@@ -40,6 +41,7 @@ export default function Link({
   const { name, date, category, additonal_details, borderBottomWidth } = data;
   const outer = useRef<HTMLDivElement>(null);
   const inner = useRef<HTMLDivElement>(null);
+  const isMouseDevice = useIsMouseDevice();
 
   // Refs for the hover animation elements
   const hoveredNameRef = useRef<HTMLParagraphElement>(null);
@@ -145,20 +147,22 @@ export default function Link({
           separatorWidth={borderBottomWidth}
         />
 
-        <div ref={outer} className={styles.outer}>
-          <div ref={inner} className={styles.inner}>
-            <div key={index} className={styles.container}>
-              <HoveredVisibleTableRows
-                name={name}
-                category={category}
-                date={date}
-                index={index}
-                nameRef={hoveredNameRef}
-                dateRef={hoveredDateRef}
-              />
+        {isMouseDevice && (
+          <div ref={outer} className={styles.outer}>
+            <div ref={inner} className={styles.inner}>
+              <div key={index} className={styles.container}>
+                <HoveredVisibleTableRows
+                  name={name}
+                  category={category}
+                  date={date}
+                  index={index}
+                  nameRef={hoveredNameRef}
+                  dateRef={hoveredDateRef}
+                />
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
       <ProjectDetails
         index={index}
