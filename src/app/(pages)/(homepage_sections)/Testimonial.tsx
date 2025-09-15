@@ -10,7 +10,7 @@ const hideScrollbarStyles = `
   }
   
   .auto-scroll-container {
-    animation: scroll 20s linear infinite;
+    animation: scroll 30s linear infinite;
   }
   
   .auto-scroll-container:hover {
@@ -22,7 +22,7 @@ const hideScrollbarStyles = `
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-50%);
+      transform: translateX(-33.333%);
     }
   }
 `;
@@ -65,8 +65,12 @@ export const TestimonialSection = () => {
 };
 
 const DesktopTestimonial = () => {
-  // Duplicate testimonials for seamless infinite scroll
-  const duplicatedTestimonials = [...testimonials, ...testimonials];
+  const duplicatedTestimonials = [
+    ...testimonials,
+    ...testimonials,
+    ...testimonials,
+  ];
+
   return (
     <div className="hidden md:flex w-full mx-auto overflow-hidden mt-12">
       <div className="flex gap-4 auto-scroll-container items-start">
@@ -83,7 +87,8 @@ const DesktopTestimonial = () => {
               href={testimonial.profileLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-light italic mt-10"
+              className="font-light italic mt-10 link-underline-anim w-fit"
+              style={{ "--underline-height": "0.5px" } as React.CSSProperties}
             >
               <CaptionSmallText>{testimonial.clientName}</CaptionSmallText>
             </a>
@@ -100,7 +105,7 @@ const MobileTestimonial = () => {
       {testimonials.map((testimonial) => (
         <div
           key={testimonial.id}
-          className="flex flex-col justify-between h-auto p-6 rounded-xl bg-gray-200"
+          className="flex flex-col justify-between h-auto p-6 rounded-xl"
         >
           <DisplaySmallText className="mb-2">
             {testimonial.message}

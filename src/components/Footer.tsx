@@ -1,9 +1,9 @@
 "use client";
 
-import SlidingLink from "@/components/ui/links/SlidingLink";
-import Link from "next/link";
-import { TfiArrowTopRight } from "react-icons/tfi";
 import React from "react";
+import Link from "next/link";
+import SlidingLink from "@/components/ui/links/SlidingLink";
+import { TfiArrowTopRight } from "react-icons/tfi";
 import { usePageLoader } from "@/hooks/usePageLoader";
 import { usePathname } from "next/navigation";
 
