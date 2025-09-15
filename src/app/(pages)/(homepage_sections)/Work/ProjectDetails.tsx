@@ -34,9 +34,9 @@ const ToolList = ({ tools }: { tools: string[] }) => (
 );
 
 const ProjectImages = () => (
-  <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row mt-10 space-x-0 space-y-5 sm:space-y-0 sm:space-x-2 lg:space-x-0 lg:space-y-5 xl:space-y-0 xl:space-x-10">
-    <div className="w-[26rem] sm:w-[18rem] md:w-[24rem] lg:w-[26rem] 2xl:w-[32rem] 3xl:w-[42rem] aspect-video bg-slate-300" />
-    <div className="w-[26rem] sm:w-[18rem] md:w-[24rem] lg:w-[26rem] 2xl:w-[32rem] 3xl:w-[42rem] aspect-video bg-slate-300" />
+  <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row mt-10 space-x-0 space-y-5 sm:space-y-0 sm:space-x-2 lg:space-x-0 lg:space-y-5 xl:space-y-0 xl:space-x-5">
+    <div className="w-[26rem] sm:w-[18rem] md:w-[24rem] lg:w-[26rem] 2xl:w-[28rem] 3xl:w-[42rem] aspect-video bg-slate-300" />
+    <div className="w-[26rem] sm:w-[18rem] md:w-[24rem] lg:w-[26rem] 2xl:w-[28rem] 3xl:w-[42rem] aspect-video bg-slate-300" />
   </div>
 );
 
@@ -64,7 +64,7 @@ export const ProjectDetails = ({
         >
           <div className="flex flex-col justify-start lg:justify-between items-center xl:items-start lg:flex-row mb-6">
             <div className="mt-4">
-              <DisplayLargeText className="w-11/12 lg:w-[20rem] xl:w-[24rem] 2xl:w-[50rem]">
+              <DisplayLargeText className="w-11/12 lg:w-[20rem] xl:w-[24rem] 2xl:w-[32rem] 3xl:w-[40rem]">
                 {description}
               </DisplayLargeText>
               <PillButton link={website} className="inline-flex mt-6">
@@ -75,7 +75,7 @@ export const ProjectDetails = ({
                 <h5 className="text-3xl tracking-tighter uppercase mb-6">
                   Challenges We Worked on
                 </h5>
-                <DisplaySmallText className="w-11/12 lg:w-[20rem] xl:w-[24rem] 2xl:w-[30rem]">
+                <DisplaySmallText className="w-11/12 lg:w-[20rem] xl:w-[24rem] 2xl:w-[24rem] 3xl:w-[32rem]">
                   {challengesDescription}
                 </DisplaySmallText>
               </div>
