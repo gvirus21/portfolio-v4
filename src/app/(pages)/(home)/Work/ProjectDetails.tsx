@@ -1,5 +1,4 @@
 import { motion, AnimatePresence } from "motion/react";
-import { Description } from "@/components/ui/Text";
 import { BsDot } from "react-icons/bs";
 import PillButton from "@/components/ui/buttons/PillButton";
 import {
@@ -27,7 +26,7 @@ const ToolList = ({ tools }: { tools: string[] }) => (
     {tools.map((tool, index) => (
       <li key={index} className="flex items-center">
         <BsDot className="text-xl mr-1" />
-        <Description variant="sm">{tool}</Description>
+        <DisplaySmallText>{tool}</DisplaySmallText>
       </li>
     ))}
   </ul>

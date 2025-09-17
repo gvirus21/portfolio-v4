@@ -1,8 +1,6 @@
 import React from "react";
-import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { usePathname } from "next/navigation";
-import { usePageLoader } from "@/hooks/usePageLoader";
 import { TfiArrowTopRight } from "react-icons/tfi";
 import { wait } from "@/lib/utils";
 
@@ -16,7 +14,7 @@ const menuItems = [
   { href: "/about", label: "ABOUT" },
   { href: "/pricing", label: "PRICING" },
   {
-    href: "/www.instagram.com/gourav.kumar__",
+    href: "https://www.instagram.com/gourav.kumar__",
     label: "INSTAGRAM",
     should_transition: false,
   },
@@ -38,7 +36,7 @@ const containerVariants = {
     transition: {
       duration: 0.4,
       ease: [0.25, 0.46, 0.45, 0.94],
-      //   staggerChildren: 0.1,
+      staggerChildren: 0.1,
       delayChildren: 0,
     },
   },
@@ -68,8 +66,6 @@ const linkVariants = {
 };
 
 export const MobileMenu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
-  const { handleNavigate } = usePageLoader();
-
   const pathname = usePathname();
 
   return (
@@ -88,29 +84,22 @@ export const MobileMenu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
             {menuItems.map((item) => (
               <motion.div key={item.href} className="overflow-hidden">
                 <motion.div variants={linkVariants}>
-                  <Link
+                  <motion.a
+                    className="text-5xl font-thin uppercase tracking-wide hover:opacity-70 transition-opacity block"
                     href={item.href}
                     onClick={async (e) => {
                       const isCurrentPage = pathname === item.href;
-
                       if (isCurrentPage) {
                         e.preventDefault();
                         return;
                       }
 
-                      handleNavigate(
-                        e,
-                        item.href,
-                        item.label,
-                        item.should_transition
-                      );
                       await wait(1000);
                       setMobileMenuOpen(false);
                     }}
-                    className="text-5xl font-thin uppercase tracking-wide hover:opacity-70 transition-opacity block"
                   >
                     {item.label}
-                  </Link>
+                  </motion.a>
                 </motion.div>
               </motion.div>
             ))}

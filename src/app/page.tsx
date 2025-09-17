@@ -7,7 +7,7 @@ import {
   ValueSection,
   WorkSection,
   MyApproachSection,
-} from "@/app/(pages)/(homepage_sections)";
+} from "@/app/(pages)/(home)";
 import Loader from "../components/Loader";
 
 const MainContent = () => (

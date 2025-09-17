@@ -1,8 +1,8 @@
-import { H3 } from "@/components/ui/Typography";
-import AnimatedWorkTable from "./AnimatedWorkTable";
-import Copy from "@/components/Copy";
 import { useRef } from "react";
 import { useScroll } from "motion/react";
+import AnimatedWorkTable from "./AnimatedWorkTable";
+import { H3 } from "@/components/ui/Typography";
+import Copy from "@/components/Copy";
 
 export const WorkSection = () => {
   const container = useRef(null);

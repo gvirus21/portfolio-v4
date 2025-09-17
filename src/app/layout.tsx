@@ -1,13 +1,12 @@
-import Navbar from "../components/Navbar";
 import localFont from "next/font/local";
-import { LenisProvider } from "./providers";
 import type { Metadata } from "next";
-import CustomCursor from "@/components/custom-cursor";
-import "./globals.css";
-import Footer from "@/components/Footer";
-import { ViewTransitions } from "next-view-transitions";
-import SlideUpTransition from "@/components/transitions/SlideUpTransition";
+import Navbar from "../components/Navbar";
 import GetInTouch from "@/components/GetInTouch";
+import Footer from "@/components/Footer";
+import CustomCursor from "@/components/custom-cursor";
+import PageTransition from "@/components/transitions/PageTransition";
+import { LenisProvider } from "./providers";
+import "./globals.css";
 
 const sequelSans = localFont({
   display: "swap",
@@ -73,21 +72,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ViewTransitions>
-      <html lang="en">
-        <LenisProvider>
-          <body
-            className={`${sequelSans.variable} ${scotch.variable} antialiased font-main bg-background`}
-          >
-            <SlideUpTransition />
+    <html lang="en">
+      <LenisProvider>
+        <body
+          className={`${sequelSans.variable} ${scotch.variable} antialiased font-main bg-background`}
+        >
+          <PageTransition>
             <Navbar />
             {children}
             <GetInTouch />
             <Footer />
             <CustomCursor />
-          </body>
-        </LenisProvider>
-      </html>
-    </ViewTransitions>
+          </PageTransition>
+        </body>
+      </LenisProvider>
+    </html>
   );
 }
