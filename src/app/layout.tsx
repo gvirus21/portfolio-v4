@@ -1,9 +1,9 @@
 import localFont from "next/font/local";
 import type { Metadata } from "next";
-import Navbar from "../components/Navbar";
-import GetInTouch from "@/components/GetInTouch";
-import Footer from "@/components/Footer";
-import CustomCursor from "@/components/custom-cursor";
+import Navbar from "../components/page-sections/Navbar";
+import GetInTouch from "@/components/page-sections/GetInTouch";
+import Footer from "@/components/page-sections/Footer";
+import CustomCursor from "@/components/ui/custom-cursor";
 import PageTransition from "@/components/transitions/PageTransition";
 import { LenisProvider } from "./providers";
 import "./globals.css";

@@ -68,7 +68,7 @@ body {
   }
 }
 
-/* new view transitions */
+/* in-app page transition animation */
 .transition-overlay {
   position: fixed;
   top: 0;

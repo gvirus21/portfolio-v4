@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "motion/react";
-import FlipLink from "./ui/links/FlipLink";
-import SkeletonPillButton from "./ui/buttons/SkeletonPillButton";
+import FlipLink from "../ui/links/FlipLink";
+import SkeletonPillButton from "../ui/buttons/SkeletonPillButton";
 import { useState } from "react";
 import MobileMenu from "./MobileMenu";
 import { cn } from "@/lib/utils";
-import MobileMenuButton from "./ui/buttons/MobileMenuButton";
+import MobileMenuButton from "../ui/buttons/MobileMenuButton";
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
@@ -48,8 +48,12 @@ const Navbar = () => {
             <FlipLink underline className="uppercase" href="/pricing">
               Pricing
             </FlipLink>
-
-            {/* will add "Playgrounds" & "Journal" links later */}
+            {/* <FlipLink underline className="uppercase" href="/pricing">
+              Playground
+            </FlipLink>
+            <FlipLink underline className="uppercase" href="/pricing">
+              Journal
+            </FlipLink> */}
             <FlipLink
               underline
               className="uppercase"
