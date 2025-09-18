@@ -40,6 +40,8 @@ export default function Copy({
         elements = [containerRef.current];
       }
 
+      gsap.set(elements, { visibility: "hidden" });
+
       elements.forEach((element) => {
         elementRefs.current.push(element);
 
@@ -73,6 +75,14 @@ export default function Copy({
         stagger: 0.1,
         ease: "power4.out",
         delay: delay,
+        onStart: () => {
+          const targets = [
+            containerRef.current,
+            ...elementRefs.current,
+          ].filter((el): el is Element => Boolean(el));
+
+          gsap.set(targets, { visibility: "visible" });
+        },
       };
 
       if (animateOnScroll) {
@@ -94,6 +104,15 @@ export default function Copy({
             split.revert();
           }
         });
+
+        const targets = [
+          containerRef.current,
+          ...elementRefs.current,
+        ].filter((el): el is Element => Boolean(el));
+
+        if (targets.length) {
+          gsap.set(targets, { clearProps: "visibility" });
+        }
       };
     },
     { scope: containerRef, dependencies: [animateOnScroll, delay] }
@@ -101,16 +120,21 @@ export default function Copy({
 
   if (React.Children.count(children) === 1) {
     const child = React.Children.only(children);
-    if (React.isValidElement(child)) {
-      return React.cloneElement(
-        child as React.ReactElement<{ ref?: React.Ref<HTMLElement> }>,
-        { ref: containerRef }
-      );
+    if (React.isValidElement<{ style?: React.CSSProperties }>(child)) {
+      const existingStyle = child.props.style;
+      return React.cloneElement(child, {
+        ref: containerRef,
+        style: { ...(existingStyle ?? {}), visibility: "hidden" },
+      } as typeof child.props & { ref?: React.Ref<HTMLElement> });
     }
   }
 
   return (
-    <div ref={containerRef} data-copy-wrapper="true">
+    <div
+      ref={containerRef}
+      data-copy-wrapper="true"
+      style={{ visibility: "hidden" }}
+    >
       {children}
     </div>
   );

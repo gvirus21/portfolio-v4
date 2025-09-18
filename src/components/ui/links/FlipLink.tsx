@@ -3,7 +3,6 @@
 import React, { useMemo } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { usePageLoader } from "@/hooks/usePageLoader";
 import { usePathname } from "next/navigation";
 
 interface FlipLinkProps {
@@ -21,12 +20,11 @@ const STAGGER = 0.025;
 const FlipLink: React.FC<FlipLinkProps> = ({
   children,
   href,
-  should_transition = true,
+  // should_transition = true,
   underline,
   className,
 }) => {
   const letters = useMemo(() => children.split(""), [children]);
-  const { handleKeyDown, handleNavigate } = usePageLoader();
   const pathname = usePathname();
 
   const isCurrentPage = pathname === href;
@@ -46,14 +44,14 @@ const FlipLink: React.FC<FlipLinkProps> = ({
           e.preventDefault();
           return;
         }
-        handleNavigate(e, href, children, should_transition);
+        // handleNavigate(e, href, children, should_transition);
       }}
       onKeyDown={(e) => {
         if (isCurrentPage) {
           e.preventDefault();
           return;
         }
-        handleKeyDown(e, href, children, should_transition);
+        // handleKeyDown(e, href, children, should_transition);
       }}
       role="link"
       aria-label={children}

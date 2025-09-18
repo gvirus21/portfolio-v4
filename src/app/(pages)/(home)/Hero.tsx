@@ -1,88 +1,59 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
-import { useGSAP } from "@gsap/react";
-import Image from "next/image";
-import { useIsReadyForHeroEntry } from "@/store/useAnimationState";
-import { heroImageContainerVariants, heroImageVariants } from "./anim";
+import { useFirstVisit } from "@/hooks/useFirstVisit";
 import Copy from "@/components/Copy";
 
 gsap.registerPlugin(SplitText);
 
 const HERO_IMAGES = ["herosection-img-1.jpg", "herosection-img-2.jpg"];
+const HOME_HERO_VISIT_KEY = "home-hero";
 
 export const HeroSection = () => {
-  const [hasVisited, setHasVisited] = useState(false);
+  const firstVisit = useFirstVisit(HOME_HERO_VISIT_KEY);
   const textRef = useRef<HTMLHeadingElement | null>(null);
   const containerRef = useRef<HTMLElement | null>(null);
-  const isReadyForHeroEntry = useIsReadyForHeroEntry();
 
-  // Show/animate only after loader completes, or on subsequent visits
-  const ready = hasVisited || isReadyForHeroEntry;
+  const textAnimationDelay = firstVisit ? 3 : 0.6;
 
-  useEffect(() => {
-    const visited = window.sessionStorage.getItem("hasVisitedHome");
-    setHasVisited(Boolean(visited));
-    window.sessionStorage.setItem("hasVisitedHome", "true");
-  }, []);
-
-  useGSAP(
-    () => {
-      if (!textRef.current || !ready) return;
-
-      gsap.set(textRef.current, { visibility: "visible" });
-
-      const splitText = new SplitText(textRef.current, {
-        type: "lines",
-        linesClass: "line-item",
-      });
-
-      splitText.lines.forEach((line) => {
-        const wrapper = document.createElement("div");
-        wrapper.className = "line-wrapper";
-        wrapper.style.overflow = "hidden";
-        wrapper.style.display = "block";
-        line.parentNode?.insertBefore(wrapper, line);
-        wrapper.appendChild(line);
-      });
-
-      gsap.set(splitText.lines, { y: "100%" });
-
-      gsap.to(splitText.lines, {
-        y: "0%",
-        duration: 1,
-        stagger: 0.08,
-        ease: "power2.out",
-        delay: 0.5,
-      });
-
-      return () => {
-        splitText.revert();
-      };
+  const heroImageContainerVariants = {
+    initial: { opacity: 0, y: 40 },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.2,
+        ease: [0.25, 0.46, 0.45, 0.94],
+        delay: firstVisit ? 3.02 : 0.8,
+      },
     },
-    { scope: containerRef, dependencies: [ready] }
-  );
+  };
+
+  const heroImageVariants = {
+    initial: { scale: "110%" },
+    animate: {
+      scale: "100%",
+      transition: {
+        duration: 1.5,
+        ease: [0.25, 0.86, 0.45, 0.98],
+        delay: firstVisit ? 3.02 : 0.8,
+      },
+    },
+  };
 
   return (
     <section ref={containerRef} className="w-full mx-auto pt-44 px-4 sm:px-10">
       <div className="max-w-[38rem] mb-0 sm:mb-16 mt-[0rem] sm:mt-[10rem]">
-        {/* <h1
-          ref={textRef}
-          className={typographyVariants["display-lg"]}
-          style={{ visibility: ready ? "visible" : "hidden" }}
-        >
-          I&apos;m Gourav Kumar, a Web designer & Developer based in India. I
-          like to solve design problems for businesses & Startups to elevate
-          their business needs via website.
-        </h1> */}
-        <Copy delay={3}>
+        <Copy delay={textAnimationDelay}>
           <h1
             ref={textRef}
-            className={"text-lg md:text-xl xl:text-2xl 3xl:text-2xl w-full md:w-[30rem] xl:w-[44rem] 3xl:w-[37.5rem]"}
-            style={{ visibility: ready ? "visible" : "hidden" }}
+            className={
+              "text-lg md:text-xl xl:text-2xl 3xl:text-2xl w-full md:w-[30rem] xl:w-[44rem] 3xl:w-[37.5rem]"
+            }
           >
             I&apos;m Gourav Kumar, a Web designer & Developer based in India. I
             like to solve design problems for businesses & Startups to elevate
@@ -96,7 +67,7 @@ export const HeroSection = () => {
             key={img}
             variants={heroImageContainerVariants}
             initial="initial"
-            animate={ready ? "animate" : "initial"}
+            animate="animate"
             className="relative aspect-[4/3] w-full overflow-clip"
           >
             <motion.div

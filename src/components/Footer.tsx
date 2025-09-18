@@ -4,7 +4,6 @@ import React from "react";
 import Link from "next/link";
 import SlidingLink from "@/components/ui/links/SlidingLink";
 import { TfiArrowTopRight } from "react-icons/tfi";
-import { usePageLoader } from "@/hooks/usePageLoader";
 import { usePathname } from "next/navigation";
 
 const FOOTER_LINKS = [
@@ -18,64 +17,44 @@ const SOCIAL_MEDIA_LINKS = [
   { name: "LinkedIn", href: "https://linkedin.com/" },
 ];
 
-interface DesktopFooterLinksProps {
-  handleNavigate: (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string,
-    pageLabel: string
-  ) => void;
-  pathname: string;
-}
-
-const DesktopFooterLinks: React.FC<DesktopFooterLinksProps> = React.memo(
-  ({ handleNavigate, pathname }) => (
-    <div className="flex justify-between w-full mt-5 lg:max-w-[24rem] 2xl:max-w-[30rem] text-sm">
-      <nav className="flex flex-col justify-between space-y-2 xl:space-y-3">
-        {FOOTER_LINKS.map((link) => (
-          <Link key={link.name} href={link.href} passHref legacyBehavior>
-            <a
-              onClick={(e) => {
-                if (pathname === link.href) {
-                  e.preventDefault();
-                  return;
-                }
-                handleNavigate(e, link.href, link.name);
-              }}
-            >
-              <span
-                className="link-underline-anim"
-                style={{ "--underline-height": "0.5px" } as React.CSSProperties}
-              >
-                {link.name}
-              </span>
-            </a>
-          </Link>
-        ))}
-      </nav>
-      {/* Social Media links */}
-      <div>
-        <nav className="flex flex-col justify-between mr-[5rem] 2xl:mr-[8rem]">
-          {SOCIAL_MEDIA_LINKS.map((link) => (
-            <SlidingLink
-              key={link.name}
-              link={link.href}
-              underlineHeight="0.5px"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="-mb-1 xl:mb-0"
+const DesktopFooterLinks = React.memo(() => (
+  <div className="flex justify-between w-full mt-5 lg:max-w-[24rem] 2xl:max-w-[30rem] text-sm">
+    <nav className="flex flex-col justify-between space-y-2 xl:space-y-3">
+      {FOOTER_LINKS.map((link) => (
+        <Link key={link.name} href={link.href} passHref legacyBehavior>
+          <a href={link.href}>
+            <span
+              className="link-underline-anim"
+              style={{ "--underline-height": "0.5px" } as React.CSSProperties}
             >
               {link.name}
-            </SlidingLink>
-          ))}
-        </nav>
-      </div>
+            </span>
+          </a>
+        </Link>
+      ))}
+    </nav>
+    {/* Social Media links */}
+    <div>
+      <nav className="flex flex-col justify-between mr-[5rem] 2xl:mr-[8rem]">
+        {SOCIAL_MEDIA_LINKS.map((link) => (
+          <SlidingLink
+            key={link.name}
+            link={link.href}
+            underlineHeight="0.5px"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="-mb-1 xl:mb-0"
+          >
+            {link.name}
+          </SlidingLink>
+        ))}
+      </nav>
     </div>
-  )
-);
+  </div>
+));
 DesktopFooterLinks.displayName = "DesktopFooterLinks";
 
 export const Footer: React.FC = () => {
-  const { handleNavigate } = usePageLoader();
   const pathname = usePathname();
   return (
     <section
@@ -102,10 +81,7 @@ export const Footer: React.FC = () => {
                 Drop me a Mail
               </a>
             </div>
-            <DesktopFooterLinks
-              handleNavigate={handleNavigate}
-              pathname={pathname}
-            />
+            <DesktopFooterLinks />
           </div>
         </div>
 
@@ -131,7 +107,7 @@ export const Footer: React.FC = () => {
                     e.preventDefault();
                     return;
                   }
-                  handleNavigate(e, link.href, link.name);
+                  // handleNavigate(e, link.href, link.name);
                 }}
                 className="hover:underline underline-offset-4 transition-colors"
               >
