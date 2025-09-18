@@ -1,15 +1,19 @@
 "use client";
 
-import React from "react";
+import { type CSSProperties, type MouseEvent } from "react";
 import Link from "next/link";
-import SlidingLink from "@/components/ui/links/SlidingLink";
-import { TfiArrowTopRight } from "react-icons/tfi";
 import { usePathname } from "next/navigation";
+import { TfiArrowTopRight } from "react-icons/tfi";
+
+import SlidingLink from "@/components/ui/links/SlidingLink";
+import PillButton from "../ui/buttons/PillButton";
 
 const FOOTER_LINKS = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Pricing", href: "/pricing" },
+  { name: "Playground", href: "/playground" },
+  { name: "Journal", href: "/journal" },
 ];
 
 const SOCIAL_MEDIA_LINKS = [
@@ -17,148 +21,161 @@ const SOCIAL_MEDIA_LINKS = [
   { name: "LinkedIn", href: "https://linkedin.com/" },
 ];
 
-const DesktopFooterLinks = React.memo(() => (
-  <div className="flex justify-between w-full mt-5 lg:max-w-[24rem] 2xl:max-w-[30rem] text-sm">
-    <nav className="flex flex-col justify-between space-y-2 xl:space-y-3">
-      {FOOTER_LINKS.map((link) => (
-        <Link key={link.name} href={link.href} passHref legacyBehavior>
-          <a href={link.href}>
-            <span
-              className="link-underline-anim"
-              style={{ "--underline-height": "0.5px" } as React.CSSProperties}
-            >
-              {link.name}
-            </span>
-          </a>
-        </Link>
-      ))}
-    </nav>
-    {/* Social Media links */}
-    <div>
-      <nav className="flex flex-col justify-between mr-[5rem] 2xl:mr-[8rem]">
-        {SOCIAL_MEDIA_LINKS.map((link) => (
+const CONTACT_EMAIL = "gouravkumar2889@gmail.com";
+
+const underlineStyle: CSSProperties & { "--underline-height": string } = {
+  "--underline-height": "0.5px",
+};
+
+const DesktopFooterLinks = () => {
+  return (
+    <div className="flex justify-between w-full lg:max-w-[24rem] 2xl:max-w-[30rem] text-sm lg:mt-8 xl:mt-12">
+      <nav className="flex flex-col space-y-2 2xl:space-y-2">
+        {FOOTER_LINKS.map(({ name, href }) => (
+          <Link
+            key={name}
+            href={href}
+            className="link-underline-anim"
+            style={underlineStyle}
+          >
+            {name}
+          </Link>
+        ))}
+      </nav>
+      <nav className="flex flex-col">
+        {SOCIAL_MEDIA_LINKS.map(({ name, href }) => (
           <SlidingLink
-            key={link.name}
-            link={link.href}
+            key={name}
+            link={href}
             underlineHeight="0.5px"
             target="_blank"
             rel="noopener noreferrer"
             className="-mb-1 xl:mb-0"
           >
-            {link.name}
+            {name}
           </SlidingLink>
         ))}
       </nav>
     </div>
-  </div>
-));
-DesktopFooterLinks.displayName = "DesktopFooterLinks";
+  );
+};
 
-export const Footer: React.FC = () => {
+export function Footer() {
   const pathname = usePathname();
+
+  const preventDuplicateNavigation =
+    (href: string) => (event: MouseEvent<HTMLAnchorElement>) => {
+      if (pathname === href) {
+        event.preventDefault();
+      }
+    };
   return (
     <section
-      className="relative h-[60vh] md:h-[40vh] lg:h-[40vh] xl:h-[50vh] 2xl:h-[40vh]"
+      className="relative h-[80vh] xs:h-[60vh] md:h-[35vh] lg:h-[40vh] xl:h-[45vh] 2xl:h-[50vh] 3xl:h-[36vh] lg:min-h-[26rem] xl:min-h-0"
       style={{
         clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
       }}
     >
       {/* Desktop Footer */}
-      <div className="fixed bottom-0 hidden lg:flex flex-col justify-between h-[40vh] xl:h-[50vh] 2xl:h-[40vh] w-full bg-black text-white pt-6 xl:pt-10 px-10">
-        <div>
-          <h2 className="lg:text-4xl xl:text-5xl tracking-normal font-thin text-center lg:text-left">
-            Do it Once, Do it right.
-          </h2>
-          <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start lg:justify-between">
-            <div className="flex flex-col items-center lg:items-start text-base sm:text-lg md:text-xl lg:text-lg mt-4 sm:mt-6 lg:mt-4">
-              <p className="tracking-tighter">
-                Your product deserves a better site,
-              </p>
-              <a
-                href="mailto:gourav@example.com"
-                className="mt-2 sm:mt-4 hover:underline underline-offset-4"
-              >
-                Drop me a Mail
-              </a>
+      <div className="fixed bottom-0 hidden lg:flex flex-col justify-between h-[40vh] xl:h-[45vh] 2xl:h-[50vh] 3xl:h-[36vh] lg:min-h-[26rem] xl:min-h-0 w-full bg-black text-white pt-6 xl:pt-0 px-10">
+        <div className="flex justify-between">
+          <div>
+            <h2 className="lg:text-4xl 3xl:text-5xl tracking-normal font-thin text-center lg:text-left xl:mt-8 3xl:mt-14">
+              Do it Once, Do it right.
+            </h2>
+            <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start lg:justify-between">
+              <div className="flex flex-col items-center lg:items-start mt-4 sm:mt-6 lg:mt-2">
+                <p className="text-base sm:text-lg 3xl:text-xl tracking-tight font-light">
+                  Your product deserves a better site.
+                </p>
+                <p className="lg:mt-20 xl:mt-16 2xl:mt-14 3xl:mt-20 text-gray-200">
+                  <span className="text-sm">New Business: </span>
+                  <br />
+                  gouravkumar2889@gmail.com
+                </p>
+                <div className="mt-6">
+                  <PillButton variant="light" link={`mailto:${CONTACT_EMAIL}`}>
+                    Drop me a Mail
+                  </PillButton>
+                </div>
+              </div>
             </div>
-            <DesktopFooterLinks />
           </div>
-        </div>
 
-        {/* Copyright */}
-        <div className="flex justify-between items-center text-[10px] sm:text-sm mb-10 text-gray-300">
-          <p>VISHAKAPATNAM, INDIA</p>
-          <p>
-            <span className="text-white mr-1">©2025</span> Gourav Kumar
-          </p>
+          <div className="mr-[5rem] 2xl:mr-[6rem] 3xl:mr-[10rem]">
+            <DesktopFooterLinks />
+            <div className="flex justify-between lg:space-x-32 xl:space-x-44 3xl:space-x-48 lg:mt-8 xl:mt-10 2xl:mt-10 3xl:mt-20 items-end text-white">
+              <p className="text-sm">VSKP &#8212; INDIA</p>
+              <p className="text-sm">
+                <span className="mr-1">©2025</span> <br /> Gourav Kumar
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Mobile footer */}
-      <div className="fixed bottom-0 flex lg:hidden flex-col justify-between gap-4 h-[60vh] md:h-[40vh] w-full bg-[#131313] text-white pt-5 px-4">
+      <div className="fixed bottom-0 flex lg:hidden flex-col justify-between gap-4 h-[80vh] xs:h-[60vh] md:h-[35vh] w-full bg-black text-white pt-5 px-4">
         <div className="flex justify-between">
-          <div className="text-3xl flex flex-col md:flex-row justify-between gap-0 md:gap-4 px-1 font-thin">
-            {FOOTER_LINKS.map((link) => (
+          <div className="text-3xl flex flex-col md:flex-row flex-wrap w-[80%] space-x-2 gap-1 md:gap-3 px-1 font-thin">
+            {FOOTER_LINKS.map(({ name, href }) => (
               <Link
-                key={link.name}
-                href={link.href}
-                onClick={(e) => {
-                  if (pathname === link.href) {
-                    e.preventDefault();
-                    return;
-                  }
-                  // handleNavigate(e, link.href, link.name);
-                }}
+                key={name}
+                href={href}
+                onClick={preventDuplicateNavigation(href)}
                 className="hover:underline underline-offset-4 transition-colors"
               >
-                {link.name.toUpperCase()}
+                {name.toUpperCase()}
               </Link>
             ))}
           </div>
 
-          <div className="flex flex-col gap-1 mr-4">
-            {SOCIAL_MEDIA_LINKS.map((link) => (
+          <div className="flex flex-col gap-1 mt-1 mr-6">
+            {SOCIAL_MEDIA_LINKS.map(({ name, href }) => (
               <a
-                key={link.name}
-                href={link.href}
+                key={name}
+                href={href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1 uppercase font-thin hover:underline underline-offset-4 transition-colors"
               >
-                {link.name}
+                {name}
                 <TfiArrowTopRight className="font-thin mt-1 opacity-80" />
               </a>
             ))}
           </div>
         </div>
 
-        <div className="flex flex-col justify-end gap-4">
-          <div>
-            <p className="text-xl font-thin tracking-tight mb-2">
-              Your product deserves a better site.
-            </p>
-            <a
-              href="mailto:gourav@example.com"
-              className="hover:underline underline-offset-4 bg-white text-black rounded-full px-2 py-[2px] text-sm tracking-tighter"
-            >
-              Drop me a Mail
-            </a>
+        <div className="flex flex-col space-y-4">
+          <div className="flex flex-col md:flex-row">
+            <div className="flex flex-col justify-end gap-2 md:gap-4">
+              <p className="md:text-lg font-thin tracking-tight">
+                Your product deserves a better site.
+              </p>
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="hover:underline underline-offset-4 bg-white text-black rounded-full px-2 py-[2px] text-[12px] md:text-sm tracking-tighter w-fit"
+              >
+                Drop me a Mail
+              </a>
+            </div>
+
+            <div className="flex justify-between items-end w-full md:w-[14rem] text-[10px] text-white/30 md:text-white mt-4 ml-auto mr-8">
+              <p>VSKP &#8212; INDIA</p>
+              <p>
+                <span className="mr-1">©2025</span> <br /> Gourav Kumar
+              </p>
+            </div>
           </div>
 
-          <div className="h-[0.25px] w-full bg-gray-400/50 mt-6" />
-          <h2 className="font-thin text-4xl tracking-tight">
+          <div className="h-[0.25px] w-full bg-gray-400/50 mt-0 md:mt-2" />
+          <h2 className="font-thin text-4xl tracking-tight mb-10">
             Do it Once, Do it right.
           </h2>
-          <div className="flex justify-between items-center text-[12px] sm:text-sm mt-5 mb-4 text-slate-400/80 tracking-tighter">
-            <p>VISHAKAPATNAM, INDIA</p>
-            <p>
-              <span className="mr-1">©2025</span> Gourav Kumar
-            </p>
-          </div>
         </div>
       </div>
     </section>
   );
-};
+}
 
 export default Footer;

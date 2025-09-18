@@ -11,15 +11,26 @@ interface PillButtonProps {
   children: string;
   link: string;
   className?: string;
+  variant?: "dark" | "light";
 }
 
-const PillButton = ({ children, link, className }: PillButtonProps) => {
+const PillButton = ({
+  children,
+  link,
+  className,
+  variant = "dark",
+}: PillButtonProps) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  const isLight = variant === "light";
+  const backgroundClass = isLight ? "bg-white" : "bg-black";
+  const textClass = isLight ? "text-black" : "text-white";
 
   return (
     <div
       className={cn(
-        "relative flex items-center justify-center px-5 bg-black rounded-full h-6 text-sm font-light hover:opacity-90 transition-opacity overflow-clip",
+        "relative flex items-center justify-center px-5 rounded-full h-6 text-sm font-light hover:opacity-90 transition-opacity overflow-clip",
+        backgroundClass,
         className
       )}
     >
@@ -29,7 +40,7 @@ const PillButton = ({ children, link, className }: PillButtonProps) => {
         onMouseLeave={() => setIsHovered(false)}
       >
         <motion.div
-          className="absolute top-[30%] left-0 text-white"
+          className={cn("absolute top-[30%] left-0", textClass)}
           animate={{
             x: isHovered ? -16 : 8,
           }}
@@ -38,7 +49,7 @@ const PillButton = ({ children, link, className }: PillButtonProps) => {
         </motion.div>
 
         <motion.div
-          className="left-0 text-white z-10"
+          className={cn("left-0 z-10", textClass)}
           initial={{ y: 0 }}
           animate={{
             x: isHovered ? -8 : 8,
@@ -47,7 +58,7 @@ const PillButton = ({ children, link, className }: PillButtonProps) => {
           {children}
         </motion.div>
         <motion.div
-          className="absolute top-[30%] right-0 text-white"
+          className={cn("absolute top-[30%] right-0", textClass)}
           initial={{ y: 1 }}
           animate={{
             x: isHovered ? -12 : 10,
