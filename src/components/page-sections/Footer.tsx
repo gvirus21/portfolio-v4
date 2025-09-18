@@ -35,7 +35,7 @@ const DesktopFooterLinks = () => {
           <Link
             key={name}
             href={href}
-            className="link-underline-anim"
+            className="link-underline-anim w-fit"
             style={underlineStyle}
           >
             {name}
