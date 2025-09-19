@@ -71,7 +71,7 @@ export function Footer() {
     };
   return (
     <section
-      className="relative h-[80vh] xs:h-[60vh] md:h-[35vh] lg:h-[40vh] xl:h-[45vh] 2xl:h-[50vh] 3xl:h-[36vh] lg:min-h-[26rem] xl:min-h-0"
+      className="relative h-[80vh] xs:h-[60vh] md:h-[35vh] lg:h-[40vh] xl:h-[45vh] 2xl:h-[50vh] 3xl:h-[36vh] lg:min-h-[26rem] xl:min-h-0 font-main"
       style={{
         clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
       }}
@@ -115,7 +115,7 @@ export function Footer() {
       </div>
 
       {/* Mobile footer */}
-      <div className="fixed bottom-0 flex lg:hidden flex-col justify-between gap-4 h-[80vh] xs:h-[60vh] md:h-[35vh] w-full bg-black text-white pt-5 px-4">
+      <div className="fixed bottom-0 flex lg:hidden flex-col justify-between gap-4 h-[80vh] xs:h-[60vh] md:h-[35vh] w-full bg-[#131313] text-white pt-5 px-4 font-main">
         <div className="flex justify-between">
           <div className="text-3xl flex flex-col md:flex-row flex-wrap w-[80%] space-x-2 gap-1 md:gap-3 px-1 font-thin">
             {FOOTER_LINKS.map(({ name, href }) => (
