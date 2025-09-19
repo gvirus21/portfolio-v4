@@ -94,7 +94,7 @@ export const MobileMenu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
                         return;
                       }
 
-                      await wait(1000);
+                      await wait(800);
                       setMobileMenuOpen(false);
                     }}
                   >
