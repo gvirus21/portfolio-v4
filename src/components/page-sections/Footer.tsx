@@ -154,7 +154,7 @@ export function Footer() {
               </p>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="hover:underline underline-offset-4 bg-white text-black rounded-full px-2 py-[2px] text-[12px] md:text-sm tracking-tighter w-fit"
+                className="hover:underline underline-offset-4 bg-white text-black rounded-full px-2 py-[2px] text-[12px] md:text-sm tracking-tighter font-light w-fit"
               >
                 Drop me a Mail
               </a>
