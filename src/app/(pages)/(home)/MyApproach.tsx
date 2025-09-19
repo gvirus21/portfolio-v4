@@ -25,7 +25,7 @@ export const MyApproachSection = () => {
             <div className="h-[0.5px] w-full bg-black mt-14" />
             <div className="flex justify-between pt-5">
               <Copy>
-                <DisplayMediumText className="text-base sm:text-xl 2xl:text-xl w-[5rem] sm:w-[14rem] tracking-[2%]">
+                <DisplayMediumText className="text-base sm:text-xl 2xl:text-xl w-[8rem] sm:w-[14rem] tracking-[2%]">
                   {item.title}
                 </DisplayMediumText>
               </Copy>
