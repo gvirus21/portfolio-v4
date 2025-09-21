@@ -6,7 +6,6 @@ import SkeletonPillButton from "../ui/buttons/SkeletonPillButton";
 import { useState } from "react";
 import MobileMenu from "./MobileMenu";
 import { cn } from "@/lib/utils";
-import MobileMenuButton from "../ui/buttons/MobileMenuButton";
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
@@ -71,15 +70,18 @@ const Navbar = () => {
             </SkeletonPillButton>
           </div>
 
-          {/* Mobile menu button (top layer) */}
-          <MobileMenuButton
-            menuOpen={mobileMenuOpen}
-            setMenuOpen={setMobileMenuOpen}
-          />
+          {/* Mobile menu button */}
+          <button
+            className="flex flex-col text-[#222] lg:hidden font-light focus:outline-none z-50 h-[1.3rem] overflow-hidden relative px-2"
+            aria-label="menu toggle"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+          >
+            MENU+
+          </button>
         </div>
       </motion.nav>
 
-      {/* Mobile menu (middle layer) */}
+      {/* Mobile menu */}
       <MobileMenu
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}

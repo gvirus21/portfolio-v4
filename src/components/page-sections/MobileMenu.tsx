@@ -1,124 +1,156 @@
-import React from "react";
-import { motion, AnimatePresence } from "motion/react";
+"use client";
+
+import React, { useEffect, useRef } from "react";
+import Link from "next/link";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 import { usePathname } from "next/navigation";
-import { TfiArrowTopRight } from "react-icons/tfi";
-import { wait } from "@/lib/utils";
+
+const menuLinks = [
+  { path: "/", label: "home" },
+  { path: "/about", label: "about" },
+  { path: "/pricing", label: "pricing" },
+  { path: "/playground", label: "playground" },
+];
 
 interface Props {
   mobileMenuOpen: boolean;
   setMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const menuItems = [
-  { href: "/", label: "HOME" },
-  { href: "/about", label: "ABOUT" },
-  { href: "/pricing", label: "PRICING" },
-  {
-    href: "https://www.instagram.com/gourav.kumar__",
-    label: "INSTAGRAM",
-    should_transition: false,
-  },
-];
-
-const containerVariants = {
-  hidden: { y: "-100%" },
-  visible: {
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.25, 0.46, 0.45, 0.94],
-      staggerChildren: 0.1,
-      delayChildren: 0.5,
-    },
-  },
-  exit: {
-    y: "-100%",
-    transition: {
-      duration: 0.4,
-      ease: [0.25, 0.46, 0.45, 0.94],
-      staggerChildren: 0.1,
-      delayChildren: 0,
-    },
-  },
-};
-
-const linkVariants = {
-  hidden: {
-    y: -50,
-    opacity: 0,
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
-  },
-  exit: {
-    y: -50,
-    opacity: 0,
-    transition: {
-      duration: 0.3,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
-  },
-};
-
-export const MobileMenu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
+const Menu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
   const pathname = usePathname();
 
+  const container = useRef<HTMLDivElement | null>(null);
+  const tl = useRef<gsap.core.Timeline | null>(null);
+
+  useGSAP(
+    () => {
+      if (container.current) {
+        // Set initial state
+        gsap.set(container.current.querySelectorAll(".relative"), {
+          y: 75,
+        });
+        gsap.set(container.current.querySelector(".clip-path-hidden"), {
+          visibility: "hidden",
+        });
+      }
+    },
+    { scope: container }
+  );
+
+  useEffect(() => {
+    if (!container.current) return;
+
+    const menuOverlay = container.current.querySelector(".clip-path-hidden");
+    const menuLinkHolders = container.current.querySelectorAll(".relative");
+
+    if (mobileMenuOpen) {
+      // Show and animate menu
+      gsap.set(menuOverlay, { visibility: "visible" });
+
+      tl.current = gsap
+        .timeline()
+        .to(menuOverlay, {
+          duration: 1.25,
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          ease: "power4.inOut",
+        })
+        .to(menuLinkHolders, {
+          y: 0,
+          duration: 1,
+          stagger: 0.1,
+          ease: "power4.out",
+          delay: -0.75,
+        });
+    } else {
+      // Hide menu
+      if (tl.current) {
+        tl.current.reverse();
+        tl.current.eventCallback("onReverseComplete", () => {
+          gsap.set(menuOverlay, { visibility: "hidden" });
+        });
+      } else {
+        // If no timeline exists, just hide immediately
+        gsap.set(menuOverlay, { visibility: "hidden" });
+      }
+    }
+  }, [mobileMenuOpen]);
+
+  const handleLinkClick = async (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    link: {
+      path: string;
+      label: string;
+    }
+  ) => {
+    const isCurrentPage = pathname === link.path;
+
+    if (isCurrentPage) {
+      e.preventDefault();
+      return;
+    }
+    setMobileMenuOpen(false);
+  };
+
   return (
-    <AnimatePresence>
-      {mobileMenuOpen && (
-        <motion.div
-          key="mobile-menu"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          className="fixed inset-0 z-40 flex flex-col px-8 py-20 bg-[#d9d9d9] text-[#222] overflow-hidden"
-        >
-          {/* Navigation Links */}
-          <nav className="flex flex-col gap-2 mt-[20vh] overflow-hidden">
-            {menuItems.map((item) => (
-              <motion.div key={item.href} className="overflow-hidden">
-                <motion.div variants={linkVariants}>
-                  <motion.a
-                    className="text-5xl font-thin uppercase tracking-wide hover:opacity-70 transition-opacity block"
-                    href={item.href}
-                    onClick={async (e) => {
-                      const isCurrentPage = pathname === item.href;
-                      if (isCurrentPage) {
-                        e.preventDefault();
-                        return;
-                      }
-
-                      await wait(800);
-                      setMobileMenuOpen(false);
-                    }}
-                  >
-                    {item.label}
-                  </motion.a>
-                </motion.div>
-              </motion.div>
-            ))}
-
-            {/* Contact Button */}
-            <div className="overflow-hidden absolute bottom-20">
-              <motion.button
-                variants={linkVariants}
-                className="flex border-b-[0.5px] text-3xl pt-1 pb-2  border-black font-thin"
+    <div className="menu-container" ref={container}>
+      <div className="fixed top-0 left-0 w-screen h-screen px-4 py-8 bg-[#202020] z-[100] flex clip-path-hidden invisible text-white">
+        <MenuOverlay setMobileMenuOpen={setMobileMenuOpen} />
+        <div className="flex-[4] flex flex-col justify-between px-2">
+          <div className="mt-40">
+            {menuLinks.map((link, index) => (
+              <div
+                key={index}
+                className="w-max"
+                style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}
               >
-                <span>Let&apos;s talk</span>
-                <TfiArrowTopRight className="text-xl ml-4 mt-3" />
-              </motion.button>
+                <div
+                  className="relative mb-3"
+                  onClick={(e) => handleLinkClick(e, link)}
+                >
+                  <Link
+                    className="text-background font-thin text-5xl md:text-[60px] leading-[85%] tracking-[-0.02em] uppercase"
+                    href={link.path}
+                  >
+                    {link.label}
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="flex mb-6">
+            <div className="flex-1 flex flex-col justify-end text-white">
+              <a className="mb-1" href="https://www.instagram.com/gourav.kumar__">
+                Instagram &#8599;
+              </a>
+              <a href="#">LinkedIn &#8599;</a>
             </div>
-          </nav>
-        </motion.div>
-      )}
-    </AnimatePresence>
+            <div className="flex-1 flex flex-col justify-end text-white">
+              <p className="mb-1">gouravkumar2889@gmail.com</p>
+              <p>+91 0923 3984 23</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default MobileMenu;
+export default Menu;
+
+const MenuOverlay = ({
+  setMobileMenuOpen,
+}: {
+  setMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) => (
+  <div className="fixed top-4 left-0 flex items-center justify-between w-full z-50 px-4">
+    <Link href="/">@gourav.kumar__</Link>
+    <button
+      className="text-white uppercase mr-3"
+      onClick={() => setMobileMenuOpen(false)}
+    >
+      Close
+    </button>
+  </div>
+);
