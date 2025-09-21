@@ -3,7 +3,7 @@ import Copy from "@/components/Copy";
 
 export const WorkSection = () => {
   return (
-    <section className="min-h-[110vh] xs:min-h-[110vh] md:min-h-screen lg:min-h-[80vh] lg:mt-[5rem] pt-20 px-4 sm:px-6">
+    <section className="lg:min-h-[80vh] lg:mt-[5rem] pt-20 px-4 sm:px-6">
       <Copy>
         <H4 className="text-5xl sm:w-[30rem] 2xl:w-[50rem] uppercase">
           Some of my Noteworthy works
