@@ -28,7 +28,7 @@ export function useIsTablet() {
 }
 
 export function useIsDesktop() {
-  return useMediaQuery("(min-width: 1025px)");
+  return useMediaQuery("(min-width: 1024px)");
 }
 
 // Hook to detect touch-based devices
