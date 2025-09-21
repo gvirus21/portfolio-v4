@@ -98,7 +98,7 @@ const Menu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
       <div className="fixed top-0 left-0 w-screen h-screen px-4 py-8 bg-[#202020] z-[100] flex clip-path-hidden invisible text-white">
         <MenuOverlay setMobileMenuOpen={setMobileMenuOpen} />
         <div className="flex-[4] flex flex-col justify-between px-2">
-          <div className="mt-40">
+          <div className="mt-20 xs:mt-40">
             {menuLinks.map((link, index) => (
               <div
                 key={index}
@@ -120,13 +120,13 @@ const Menu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
             ))}
           </div>
           <div className="flex mb-6">
-            <div className="flex-1 flex flex-col justify-end text-white">
+            <div className="flex-1 flex flex-col justify-end text-sm xs:text-base text-white">
               <a className="mb-1" href="https://www.instagram.com/gourav.kumar__">
                 Instagram &#8599;
               </a>
               <a href="#">LinkedIn &#8599;</a>
             </div>
-            <div className="flex-1 flex flex-col justify-end text-white">
+            <div className="flex-1 flex flex-col justify-end text-sm xs:text-base text-white">
               <p className="mb-1">gouravkumar2889@gmail.com</p>
               <p>+91 0923 3984 23</p>
             </div>
