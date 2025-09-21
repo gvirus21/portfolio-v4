@@ -5,6 +5,7 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { usePathname } from "next/navigation";
+import { wait } from "@/lib/utils";
 
 const menuLinks = [
   { path: "/", label: "home" },
@@ -23,6 +24,7 @@ const Menu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
 
   const container = useRef<HTMLDivElement | null>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
+  const skipExitAnimation = useRef<boolean>(false);
 
   useGSAP(
     () => {
@@ -65,7 +67,12 @@ const Menu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
         });
     } else {
       // Hide menu
-      if (tl.current) {
+      if (skipExitAnimation.current) {
+        // Skip animation and hide immediately when link is clicked
+        gsap.set(menuOverlay, { visibility: "hidden" });
+        gsap.set(menuLinkHolders, { y: 75 }); // Reset to initial state
+        skipExitAnimation.current = false; // Reset flag
+      } else if (tl.current) {
         tl.current.reverse();
         tl.current.eventCallback("onReverseComplete", () => {
           gsap.set(menuOverlay, { visibility: "hidden" });
@@ -90,6 +97,10 @@ const Menu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
       e.preventDefault();
       return;
     }
+
+    // Set flag to skip exit animation
+    skipExitAnimation.current = true;
+    await wait(800);
     setMobileMenuOpen(false);
   };
 
@@ -121,7 +132,10 @@ const Menu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
           </div>
           <div className="flex mb-6">
             <div className="flex-1 flex flex-col justify-end text-sm xs:text-base text-white">
-              <a className="mb-1" href="https://www.instagram.com/gourav.kumar__">
+              <a
+                className="mb-1"
+                href="https://www.instagram.com/gourav.kumar__"
+              >
                 Instagram &#8599;
               </a>
               <a href="#">LinkedIn &#8599;</a>
