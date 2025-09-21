@@ -1,14 +1,37 @@
+import Image from "next/image";
 import React from "react";
+import Copy from "@/components/Copy";
+import { useIsMobile } from "@/hooks/useMediaQuery";
+import BlackDot from "./BlackDot";
 
 export const PersonalInfoSection = () => {
+  const isMobile = useIsMobile();
   return (
-    <section className="relative w-full mt-0 md:mt-20 bg-[#DADADA] pt-14 md:pt-0">
+    <section className="relative w-full mt-10 sm:mt-32 md:mt-10 md:pt-0 bg-gray-200/50">
       <div className="flex flex-col-reverse sm:flex-row items-end sm:items-start justify-between lg:justify-between w-full">
-        <div className="w-full sm:w-[16rem] md:w-[20rem] lg:w-[26rem] xl:h-screen xl:w-auto aspect-[3/4] bg-slate-400 mt-10 sm:mt-0"></div>
-        <p className="relative text-xl sm:text-lg md:text-2xl xl:text-4xl 2xl:text-5xl text-right mt-10 lg:mt-12 leading-tight w-[20rem] sm:w-[20rem] md:w-[24rem] lg:w-[32rem] xl:w-[40rem] 2xl:w-[55rem] px-4 sm:px-6">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. At rerum
-          minima minus expedita magnam. At rerum minima minus expedita magnam.
-        </p>
+        <div className="relative w-full sm:w-[16rem] md:w-[20rem] lg:w-[26rem] xl:w-[40rem] 3xl:w-[60rem] aspect-[3/4] mt-16 sm:mt-0">
+          <Image
+            src="/assets/images/about/personalInfo/img-01.jpg"
+            alt="my-image"
+            className="object-cover w-full h-full"
+            fill
+          />
+        </div>
+        <Copy delay={isMobile ? 0.8 : 0}>
+          <h2 className="relative text-xl sm:text-[3vw] md:text-[3.2vw] lg:text-[2.8vw] xl:text-4xl 3xl:text-6xl font-light inline-block tracking-tight leading-tight mx-4 sm:mx-0 sm:mr-4 lg:mr-10 mt-8 xl:mt-12 text-right">
+            <BlackDot
+              height="xl:h-4.5 3xl:h-7"
+              className="top-[7px] sm:top-2 lg:top-2.5 xl:top-3.5 2xl:top-4 3xl:top-7 left-14 sm:left-14 md:left-16 lg:left-18 xl:left-24 2xl:left-[5.8rem] 3xl:left-40"
+            />
+            Website design, application elit.
+            <br />
+            Design,{" "}
+            <span className="italic font-light">interactive design</span> ipsum
+            magnam
+            <br />
+            Ecommerce minus expedita magnam.
+          </h2>
+        </Copy>
       </div>
     </section>
   );

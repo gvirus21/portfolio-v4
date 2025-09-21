@@ -2,7 +2,7 @@
 
 import {
   HeroSection,
-  // PersonalInfoSection,
+  PersonalInfoSection,
   ProcessSection,
   WorkSection,
 } from "./index";
@@ -11,7 +11,7 @@ export default function AboutPage() {
   return (
     <div className="relative min-h-screen">
       <HeroSection />
-      {/* <PersonalInfoSection /> */}
+      <PersonalInfoSection />
       <ProcessSection />
       <WorkSection />
     </div>
