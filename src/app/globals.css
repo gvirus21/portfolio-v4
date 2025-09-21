@@ -6,13 +6,10 @@
   --foreground: #171717;
 }
 
-/* #EBEBEB #f9fafd*/
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
   --font-mono: var(--font-geist-mono);
   --font-main: var(--font-sequel-sans);
   --font-scotch: var(--font-scotch);
@@ -23,19 +20,18 @@
   --breakpoint-xs: 23.75rem;
 }
 
+/* ===========================================
+   BASE STYLES
+   =========================================== */
 body {
   font-family: var(--font-main), var(--font-scotch);
 }
 
-.scrollbar-hide {
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
-}
+/* ===========================================
+   UTILITY CLASSES
+   =========================================== */
 
-/* link hover animations */
+/* Link underline animation */
 .link-underline-anim {
   position: relative;
   text-decoration: none;
@@ -60,15 +56,11 @@ body {
   transform-origin: left;
 }
 
-/* firefox wrong font weight fix */
-@-moz-document url-prefix() {
-  #content {
-    outline: 1px solid #b9bdbe;
-    outline-offset: -11px;
-  }
-}
+/* ===========================================
+   ANIMATION & TRANSITION CLASSES
+   =========================================== */
 
-/* in-app page transition animation */
+/* Page transition overlay */
 .transition-overlay {
   position: fixed;
   top: 0;
@@ -88,7 +80,7 @@ body {
   transform-origin: left;
 }
 
-/* transition text */
+/* Logo transition animation */
 .logo-overlay {
   position: fixed;
   top: 0;
@@ -117,4 +109,38 @@ body {
   position: relative;
   display: inline-block;
   will-change: transform;
+}
+
+/* ===========================================
+   COMPONENT-SPECIFIC UTILITIES
+   =========================================== */
+
+/* Mobile menu clip path utilities */
+.clip-path-hidden {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+}
+
+.clip-path-visible {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+/* ===========================================
+   BROWSER-SPECIFIC FIXES
+   =========================================== */
+
+/* Firefox font weight fix */
+@-moz-document url-prefix() {
+  #content {
+    outline: 1px solid #b9bdbe;
+    outline-offset: -11px;
+  }
+}
+
+/* Scrollbar hiding utility */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
