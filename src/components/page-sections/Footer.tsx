@@ -71,7 +71,7 @@ export function Footer() {
     };
   return (
     <section
-      className="relative h-[80vh] xs:h-[32rem] md:h-[35vh] lg:h-[40vh] xl:h-[45vh] 2xl:h-[50vh] 3xl:h-[36vh] lg:min-h-[26rem] xl:min-h-0 font-thin"
+      className="relative h-[80vh] xs:h-[32rem] md:h-[35vh] lg:h-[40vh] xl:h-[45vh] 2xl:h-[50vh] 3xl:h-[36vh] lg:min-h-[26rem] xl:min-h-0 font-thin md:font-light"
       style={{
         clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
       }}
