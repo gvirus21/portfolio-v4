@@ -152,7 +152,7 @@ const Menu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
               </div>
             ))}
           </div>
-          <div className="flex items-start justify-between w-full mb-24">
+          <div className="flex items-start justify-between w-full mb-24 font-light">
             <div className="flex flex-col justify-end text-sm xs:text-xl text-white w-fit">
               <a
                 className="mb-2 w-fit"

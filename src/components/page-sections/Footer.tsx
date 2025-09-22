@@ -123,21 +123,21 @@ export function Footer() {
                 key={name}
                 href={href}
                 onClick={preventDuplicateNavigation(href)}
-                className="hover:underline underline-offset-4 text-2xl transition-colors"
+                className="hover:underline underline-offset-4 text-3xl transition-colors"
               >
                 {name.toUpperCase()}
               </Link>
             ))}
           </div>
 
-          <div className="flex flex-col gap-1 mt-1 mr-6">
+          <div className="flex flex-col gap-1 mt-1 mr-6 font-dmsans font-thin">
             {SOCIAL_MEDIA_LINKS.map(({ name, href }) => (
               <a
                 key={name}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1 uppercase  hover:underline underline-offset-4 transition-colors"
+                className="flex items-center gap-1 uppercase hover:underline underline-offset-4 transition-colors"
               >
                 {name}
                 <TfiArrowTopRight className=" mt-1 opacity-80" />
