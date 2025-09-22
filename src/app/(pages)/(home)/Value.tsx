@@ -11,7 +11,11 @@ import {
 } from "motion/react";
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
-import { useIsMobile } from "@/hooks/useMediaQuery";
+import {
+  useIsMobile,
+  useIsDesktop,
+  useIsTouchDevice,
+} from "@/hooks/useMediaQuery";
 
 const deliverySteps = [
   {
@@ -43,6 +47,11 @@ const IMAGE_PATHS = [
 export const ValueSection = () => {
   const container = useRef(null);
   const isMobile = useIsMobile();
+  const isDesktop = useIsDesktop();
+  const isTouchDevice = useIsTouchDevice();
+  const isLargeTouchDevice = isTouchDevice && isDesktop;
+
+  const copyDelay = isLargeTouchDevice ? 3.2 : 0;
 
   const { scrollYProgress } = useScroll({
     target: container,
@@ -70,7 +79,7 @@ export const ValueSection = () => {
     <section ref={container} className="pt-0 px-4 md:px-8 mt-24 sm:mt-40">
       <div className="w-full">
         <div className="flex flex-col lg:flex-row justify-between">
-          <Copy>
+          <Copy delay={copyDelay}>
             <H2 className="lg:w-full 3xl:w-[70rem] xl:text-[5rem] 3xl:text-[6rem] tracking-[-2px] xl:tracking-[-6px] 3xl:ml-5">
               How I Deliver Value
             </H2>
@@ -79,7 +88,7 @@ export const ValueSection = () => {
           <div className="flex flex-col justify-between items-start w-full lg:w-[90%] 2xl:w-10/12 3xl:w-[30%] mt-10 sm:mt-12 lg:mt-10 2xl:mt-20 3xl:mt-10 lg:mr-0 xl:mr-10 3xl:mr-[20rem]">
             <div className="space-y-5">
               {deliverySteps.map((step) => (
-                <Copy key={step.id}>
+                <Copy key={step.id} delay={copyDelay}>
                   <DisplayMediumText>{step.content}</DisplayMediumText>
                 </Copy>
               ))}
