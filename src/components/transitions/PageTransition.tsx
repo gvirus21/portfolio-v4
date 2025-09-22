@@ -35,6 +35,11 @@ const PageTransition = ({ children }: PageTransitionProps) => {
     (url: string) => {
       setOverlayVisible(true);
 
+      // Add transitioning class for overlap during page transitions
+      if (overlayRef.current) {
+        overlayRef.current.classList.add("transitioning");
+      }
+
       // Mark that we should reveal on the next page mount (in-app navigation)
       try {
         window.sessionStorage.setItem("pt:shouldReveal", "1");
@@ -56,7 +61,7 @@ const PageTransition = ({ children }: PageTransitionProps) => {
   );
 
   const revealPage = useCallback(() => {
-    gsap.set(blocksRef.current, { scaleX: 1, transformOrigin: "left" });
+    gsap.set(blocksRef.current, { scaleX: 1, transformOrigin: "right" });
 
     gsap.to(blocksRef.current, {
       scaleX: 0,
@@ -69,9 +74,34 @@ const PageTransition = ({ children }: PageTransitionProps) => {
         if (overlayRef.current) {
           overlayRef.current.style.pointerEvents = "none";
           overlayRef.current.style.display = "none";
+          // Remove transitioning class when transition is complete
+          overlayRef.current.classList.remove("transitioning");
         }
       },
     });
+
+    // revealTimeoutRef.current = setTimeout(() => {
+    //   if (blocksRef.current.length > 0) {
+    //     const firstBlock = blocksRef.current[0];
+    //     if (firstBlock && gsap.getProperty(firstBlock, "scaleX") > 0) {
+    //       gsap.to(blocksRef.current, {
+    //         scaleX: 0,
+    //         duration: 0.2,
+    //         ease: "power2.out",
+    //         transformOrigin: "right",
+    //         onComplete: () => {
+    //           isTransitioning.current = false;
+    //           if (overlayRef.current) {
+    //             overlayRef.current.style.pointerEvents = "none";
+    //           }
+    //           if (logoOverlayRef.current) {
+    //             logoOverlayRef.current.style.pointerEvents = "none";
+    //           }
+    //         },
+    //       });
+    //     }
+    //   }
+    // }, 1000);
   }, []);
 
   const handleRouteChange = useCallback(

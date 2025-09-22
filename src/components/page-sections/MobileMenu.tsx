@@ -48,9 +48,20 @@ const Menu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
     const menuLinkHolders = container.current.querySelectorAll(".relative");
 
     if (mobileMenuOpen) {
-      // Show and animate menu
-      gsap.set(menuOverlay, { visibility: "visible" });
+      // Clear any existing timeline
+      if (tl.current) {
+        tl.current.kill();
+        tl.current = null;
+      }
 
+      // Reset to initial state before animating
+      gsap.set(menuLinkHolders, { y: 75 });
+      gsap.set(menuOverlay, {
+        visibility: "visible",
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+      });
+
+      // Show and animate menu
       tl.current = gsap
         .timeline()
         .to(menuOverlay, {
@@ -72,14 +83,25 @@ const Menu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
         gsap.set(menuOverlay, { visibility: "hidden" });
         gsap.set(menuLinkHolders, { y: 75 }); // Reset to initial state
         skipExitAnimation.current = false; // Reset flag
+        // Clear timeline reference
+        if (tl.current) {
+          tl.current.kill();
+          tl.current = null;
+        }
       } else if (tl.current) {
         tl.current.reverse();
         tl.current.eventCallback("onReverseComplete", () => {
           gsap.set(menuOverlay, { visibility: "hidden" });
+          // Clear timeline reference after reverse completes
+          if (tl.current) {
+            tl.current.kill();
+            tl.current = null;
+          }
         });
       } else {
         // If no timeline exists, just hide immediately
         gsap.set(menuOverlay, { visibility: "hidden" });
+        gsap.set(menuLinkHolders, { y: 75 }); // Reset to initial state
       }
     }
   }, [mobileMenuOpen]);
