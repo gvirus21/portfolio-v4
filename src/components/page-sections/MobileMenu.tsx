@@ -152,19 +152,19 @@ const Menu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
               </div>
             ))}
           </div>
-          <div className="flex mb-6">
-            <div className="flex-1 flex flex-col justify-end text-sm xs:text-base text-white">
+          <div className="flex items-start justify-between w-full mb-24">
+            <div className="flex flex-col justify-end text-sm xs:text-xl text-white w-fit">
               <a
-                className="mb-1"
+                className="mb-2 w-fit"
                 href="https://www.instagram.com/gourav.kumar__"
               >
                 Instagram &#8599;
               </a>
-              <a href="#">LinkedIn &#8599;</a>
+              <a className="w-fit" href="#">LinkedIn &#8599;</a>
             </div>
-            <div className="flex-1 flex flex-col justify-end text-sm xs:text-base text-white">
-              <p className="mb-1">gouravkumar2889@gmail.com</p>
-              <p>+91 0923 3984 23</p>
+            <div className="flex flex-col justify-end text-sm xs:text-sm text-white w-fit mt-2">
+              <p className="mb-4  w-fit">gouravkumar2889@gmail.com</p>
+              <p className=" w-fit">+91 0923 3984 23</p>
             </div>
           </div>
         </div>
