@@ -117,7 +117,7 @@ export function Footer() {
       {/* Mobile footer */}
       <div className="fixed bottom-0 flex lg:hidden flex-col justify-between gap-4 h-[80vh] xs:h-[32rem] md:h-[35vh] w-full bg-[#131313] text-white pt-5 px-4">
         <div className="flex justify-between">
-          <div className="flex flex-col md:flex-row flex-wrap w-[80%] space-x-2 gap-1 md:gap-3 px-1 ">
+          <div className="flex flex-col md:flex-row flex-wrap w-[80%] space-x-2 gap-1 md:gap-3 px-1 font-dmsans font-thin tracking-tight">
             {FOOTER_LINKS.map(({ name, href }) => (
               <Link
                 key={name}

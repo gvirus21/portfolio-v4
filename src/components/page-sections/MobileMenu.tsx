@@ -139,11 +139,11 @@ const Menu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
                 style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}
               >
                 <div
-                  className="relative mb-3"
+                  className="relative mb-4"
                   onClick={(e) => handleLinkClick(e, link)}
                 >
                   <Link
-                    className="text-background font-thin text-5xl md:text-[60px] leading-[85%] tracking-[-0.02em] uppercase"
+                    className="text-background font-thin text-5xl md:text-[60px] leading-[85%] tracking-[-0.02em] font-dmsans  uppercase"
                     href={link.path}
                   >
                     {link.label}

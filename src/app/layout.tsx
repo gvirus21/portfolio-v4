@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import { DM_Sans } from "next/font/google";
 import type { Metadata } from "next";
 import Navbar from "../components/page-sections/Navbar";
 import GetInTouch from "@/components/page-sections/GetInTouch";
@@ -55,10 +56,11 @@ const sequelSans = localFont({
   ],
 });
 
-const scotch = localFont({
+const dmSans = DM_Sans({
+  subsets: ["latin"],
   display: "swap",
-  variable: "--font-scotch",
-  src: "../../public/fonts/Scotch Display Light.otf",
+  variable: "--font-dm-sans",
+  weight: ["100", "300", "500", "600", "800"],
 });
 
 export const metadata: Metadata = {
@@ -75,7 +77,7 @@ export default function RootLayout({
     <html lang="en">
       <LenisProvider>
         <body
-          className={`${sequelSans.variable} ${scotch.variable} antialiased font-main bg-background`}
+          className={`${sequelSans.variable} ${dmSans.variable} antialiased font-main bg-background`}
         >
           <PageTransition>
             <Navbar />
