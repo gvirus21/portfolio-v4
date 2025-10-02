@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { BsDot } from "react-icons/bs";
 import PillButton from "@/components/ui/buttons/PillButton";
+import Image from "next/image";
 import {
   DisplayLargeText,
   DisplaySmallText,
@@ -32,10 +33,25 @@ const ToolList = ({ tools }: { tools: string[] }) => (
   </ul>
 );
 
-const ProjectImages = () => (
+const ProjectImages = ({ images }: { images: string[] }) => (
   <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row mt-10 space-x-0 space-y-5 sm:space-y-0 sm:space-x-2 lg:space-x-0 lg:space-y-5 xl:space-y-0 xl:space-x-5">
-    <div className="w-[26rem] sm:w-[18rem] md:w-[24rem] lg:w-[26rem] 2xl:w-[28rem] 3xl:w-[42rem] aspect-video bg-slate-300" />
-    <div className="w-[26rem] sm:w-[18rem] md:w-[24rem] lg:w-[26rem] 2xl:w-[28rem] 3xl:w-[42rem] aspect-video bg-slate-300" />
+    {[images?.[0], images?.[1]].map((src, idx) => (
+      <div
+        key={idx}
+        className="w-[26rem] sm:w-[18rem] md:w-[24rem] lg:w-[26rem] 2xl:w-[28rem] 3xl:w-[42rem] aspect-video relative overflow-hidden"
+      >
+        {src && (
+          <Image
+            src={src}
+            alt={`Project image ${idx + 1}`}
+            fill
+            className="border border-black rounded-lg"
+            sizes="(min-width: 1536px) 42rem, (min-width: 1535px) 28rem, (min-width: 1024px) 26rem, (min-width: 768px) 24rem, (min-width: 640px) 18rem, 26rem"
+            priority={idx === 0}
+          />
+        )}
+      </div>
+    ))}
   </div>
 );
 
@@ -63,7 +79,7 @@ export const ProjectDetails = ({
         >
           <div className="flex flex-col justify-start lg:justify-between items-center xl:items-start lg:flex-row mb-6">
             <div className="mt-4">
-              <DisplayLargeText className="w-11/12 lg:w-[20rem] xl:w-[24rem] 2xl:w-[32rem] 3xl:w-[40rem]">
+              <DisplayLargeText className="tracking-tight w-11/12 lg:w-[20rem] xl:w-[24rem] 2xl:w-[32rem] 3xl:w-[40rem]">
                 {description}
               </DisplayLargeText>
               <PillButton link={website} className="inline-flex mt-6">
@@ -85,7 +101,7 @@ export const ProjectDetails = ({
               </div>
             </div>
 
-            <ProjectImages />
+            <ProjectImages images={details.images} />
           </div>
         </motion.div>
       )}

@@ -1,5 +1,8 @@
 import { H4 } from "@/components/ui/Typography";
 import Copy from "@/components/Copy";
+import Image from "next/image";
+
+const IMG_DIR = "/assets/images/about/work";
 
 export const WorkSection = () => {
   return (
@@ -39,32 +42,32 @@ const MasonryGrid = () => {
       name: "Playground's Website",
       category: "Development",
       year: "2023",
-      image: "",
-      website: "https://www.google.com",
+      image: `${IMG_DIR}/pg-01.webp`,
+      website: "https://playgrounds.network/",
     },
     {
       id: "bankless-website",
       name: "Bankless's Website",
       category: "Development, Design",
       year: "2023",
-      image: "",
-      website: "https://www.google.com",
+      image: `${IMG_DIR}/bb-01.webp`,
+      website: "https://www.bankless.com/",
     },
     {
       id: "forefront-website",
       name: "Forefront's Website",
       category: "Development, Design",
       year: "2023",
-      image: "",
-      website: "https://www.google.com",
+      image: `${IMG_DIR}/ff-01.webp`,
+      website: "https://forefront.mirror.xyz/",
     },
     {
       id: "codewalla-ios-app",
       name: "Codewalla",
       category: "Development",
       year: "2023",
-      image: "",
-      website: "https://www.google.com",
+      image: `${IMG_DIR}/cw-01.webp`,
+      website: "https://www.codewalla.com/",
     },
   ];
 
@@ -74,13 +77,17 @@ const MasonryGrid = () => {
         {workData.map((work) => (
           <a key={work.id} href={work.website ?? "#"} className="block">
             <div className="w-full overflow-hidden">
-              <div className="w-full h-48 lg:h-[20rem] 2xl:h-[28rem] 3xl:h-[30rem] bg-gray-300">
-                {/* Placeholder for variable-sized image */}
-                {/* <img src={work.image} alt={work.name} /> */}
+              <div className="h-48 lg:h-[20rem] 2xl:h-[28rem] 3xl:h-[24rem] aspect-[16/10] bg-gray-200 relative overflow-hidden pt-7">
+                <Image
+                  src={work.image}
+                  alt={work.name}
+                  height={200}
+                  width={580}
+                />
               </div>
               <div>
                 <div className="flex items-start justify-between mt-3 mb-4">
-                  <h4 className="text-sm 2xl:text-3xl tracking-tighter">
+                  <h4 className="text-sm 2xl:text-2xl tracking-tighter">
                     ({work.year})
                   </h4>
                   <div className="flex flex-col items-end tracking-tight">

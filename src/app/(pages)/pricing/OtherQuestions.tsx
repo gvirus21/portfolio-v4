@@ -18,38 +18,63 @@ const OtherQuestions = () => {
   const firstLineWidth = useTransform(
     scrollYProgress,
     [0, 0.3],
-    ["10%", "100%"]
+    ["60%", "100%"]
   );
   const secondLineWidth = useTransform(
     scrollYProgress,
     [0.1, 0.4],
-    ["10%", "100%"]
+    ["60%", "100%"]
   );
   const thirdLineWidth = useTransform(
     scrollYProgress,
     [0.2, 0.5],
-    ["10%", "100%"]
+    ["60%", "100%"]
+  );
+  const forthLineWidth = useTransform(
+    scrollYProgress,
+    [0.3, 0.5],
+    ["60%", "100%"]
+  );
+  const fifthLineWidth = useTransform(
+    scrollYProgress,
+    [0.4, 0.5],
+    ["60%", "100%"]
   );
   const QA_PAIRS = [
     {
       id: 1,
-      question: "What is the pricing for a website?",
+      question: "Why should I choose you?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, error. Dolore alias excepturi velit impedit asperiores praesentium voluptatem ducimus mollitia? Rerum ea fugit eveniet quaerat totam, accusantium dolores quidem distinctio!",
+        "I’ve been working in the industry for 5 years with dozens of international startups as both a developer and designer. I’ve built products in teams and also worked solo for reputed brands across AI, Web3, and design sectors. I prioritize working on a handful of projects, making sure each one gets the expert attention it deserves.",
       animatedLineWidth: firstLineWidth,
     },
     {
       id: 2,
       question: "What is the pricing for a website?",
       answer:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, error. Dolore alias excepturi velit impedit asperiores praesentium voluptatem ducimus mollitia? Rerum ea",
+        "Pricing depends on scope, but most projects start at $3,500 and scale based on features, complexity, and timeline.",
       animatedLineWidth: secondLineWidth,
     },
     {
       id: 3,
-      question: "What is the pricing for a website?",
-      answer: "The pricing for a website is $1000.",
+      question: "How long does it take to build a website?",
+      answer:
+        "On average, a standard website takes 2–5 weeks. More complex projects may take longer depending on revisions and features.",
       animatedLineWidth: thirdLineWidth,
+    },
+    {
+      id: 4,
+      question: "Can you go cheaper than the mentioned prices?",
+      answer:
+        "Yes, I do offer pre-built website template solutions if your budget is tight. Here we might not go full crazy on custom design but will do the job for you without sacrificing on quality or functionality.",
+      animatedLineWidth: forthLineWidth,
+    },
+    {
+      id: 5,
+      question: "Do you provide ongoing support after the website is launched?",
+      answer:
+        "Absolutely. I provide 2 years of free tech support and maintenance for every website. For site updates or adding new features, the level of support depends on the plan you choose.",
+      animatedLineWidth: fifthLineWidth,
     },
   ];
 
@@ -79,15 +104,15 @@ const OtherQuestions = () => {
 
               <div className="flex flex-col sm:flex-row justify-between mt-6 mb-8 sm:mb-16 lg:mb-20">
                 <Copy>
-                  <DisplayMediumText className="sm:w-[13rem] text-2xl sm:text-base md:text-lg lg:w-[16rem] font-light tracking-tight mr-5">
+                  <DisplaySmallText className="sm:w-[13rem] text-2xl sm:text-base lg:w-[16rem] font-light tracking-tight mr-5">
                     <span>({String(qa.id).padStart(2, "0")}) </span>
                     {qa.question}
-                  </DisplayMediumText>
+                  </DisplaySmallText>
                 </Copy>
                 <Copy>
-                  <DisplayMediumText className="mt-4 sm:mt-0 w-[95%] sm:w-[20rem] md:w-[24rem] xl:w-[26rem] 2xl:w-[32rem] sm:mr-5 md:mr-10 xl:mr-[8vw] 2xl:mr-[10vw] text-base sm:text-base md:text-lg font-light tracking-tight">
+                  <DisplaySmallText className="mt-4 sm:mt-0 w-[95%] sm:w-[20rem] md:w-[24rem] xl:w-[26rem] 2xl:w-[32rem] sm:mr-5 md:mr-10 xl:mr-[8vw] 2xl:mr-[8vw] text-base sm:text-base font-light tracking-tight">
                     {qa.answer}
-                  </DisplayMediumText>
+                  </DisplaySmallText>
                 </Copy>
               </div>
             </div>

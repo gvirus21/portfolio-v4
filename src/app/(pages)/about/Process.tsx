@@ -9,7 +9,7 @@ export const ProcessSection = () => {
       label: "01-02",
       title: "Direction",
       content:
-        "In my opinion, deep understanding of the brief and client is a must in the starting point. Determining project goals and functional specifications, knowing competitors and target audiences, making researches will be taken at this stage in order to find a precise combination between Typography, Color, Composition, Motion and brand assets. For me, this process is the foundation for solving business problems and discovering a right direction for the perfect design.",
+        "From the beginning, it is crucial to have a thorough understanding of the client and the brief. This stage involves defining  project objectives, functional specifications, audience and competitor research, and the proper combination of typography, color, composition, motion, and brand assets are all explored. This, in my opinion, is the cornerstone for determining the best course for design.",
       footer: ["EXPERTISE", "AND PROCESS"],
     },
     {
@@ -17,7 +17,7 @@ export const ProcessSection = () => {
       label: "02-03",
       title: "Design",
       content:
-        "After collecting a right mood and tone in the Direction stage, my mission at this point is connecting the dots and making various versions to find the proper design. My goal is always about creating an experience that not only emphasizes the characteristics of each project but also elegant and satisfied to use. To get that, I have to make sure to work closely with clients and users to get helpful feedbacks and insights for the evolution.",
+        "With the Direction stage as a guide, I look into ideas and apporaches to produce the optimum design. My goal  in this phase is to create experiences that showcase the characteristics of each project while looking elegant and simple to use. By working closely with clients and users, I ensure the final product is shaped by your valuable feedback.",
       footer: ["CREATIVE", "AND VISUAL"],
     },
     {
@@ -25,7 +25,7 @@ export const ProcessSection = () => {
       label: "03-04",
       title: "Interaction",
       content:
-        "Bringing designs to life through thoughtful interactions and user experience flows. This stage focuses on creating intuitive navigation, smooth transitions, and engaging micro-interactions that enhance the overall user journey. I ensure every click, hover, and scroll feels natural and purposeful, making the interface not just beautiful but truly functional and enjoyable to use.",
+        "I make designs come to life through carefully considered interactions and user flows. I make sure that navigation is intuitive, transitions are smooth, and micro-interactions are stimulating and make interacting with the design enjoyable and natural for every click, hover, and scroll.",
       footer: ["USER EXPERIENCE", "AND FLOW"],
     },
     {
@@ -33,7 +33,7 @@ export const ProcessSection = () => {
       label: "04-04",
       title: "Development",
       content:
-        "Transforming designs into pixel-perfect, responsive websites and applications. Using modern technologies and best practices, I ensure clean, maintainable code that performs excellently across all devices and browsers. From front-end implementation to backend integration, every line of code is crafted with attention to performance, accessibility, and scalability.",
+        "Here I turn my designs into fully responsive and pixel-perfect websites and apps. I utilize modern technologies and best practices to produce clean maintainable code that performs in all devices and browsers; every line of code is crafted with performance, accessibility, and scalability in mind.",
       footer: ["IMPLEMENTATION", "AND DELIVERY"],
     },
   ];

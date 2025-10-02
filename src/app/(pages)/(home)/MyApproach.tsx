@@ -3,14 +3,14 @@ import Copy from "@/components/Copy";
 
 const approachItems = [
   {
-    title: "A Simple Philosophy Quality over Quantity",
+    title: "A Simple Philosophy: Quality over Quantity.",
     description:
-      "I approach every project with a mix of curiosity, strategy, and craft. My goal isn’t just to build websites—it’s to help brands communicate better, convert more, and create digital experiences people genuinely enjoy. Every decision, from layout to line of code, is made with intention.",
+      "I partner with two clients per month to deliver unmatched focus, and impact. Every detail is carefully crafted, every decision strategic, and every outcome transformative.",
   },
   {
-    title: "Performance & Emotion You Need Both",
+    title: "Performance & Emotion. You Need Both.",
     description:
-      "A fast site that feels soulless won’t convert. A beautiful site that loads like a snail won’t be seen. That’s why I blend performance with emotion—balancing speed, responsiveness, and SEO with design choices that stir curiosity, build trust, and leave a lasting impression.",
+      "A fast site that feels soulless won’t convert. A beautiful site that loads like a snail won’t be seen. That’s why I blend performance with emotion—balancing speed and functionality to build trust and leave a lasting impression.",
   },
 ];
 
@@ -31,7 +31,7 @@ export const MyApproachSection = () => {
               </Copy>
               <div className="md:w-[50%]">
                 <Copy>
-                  <DisplayMediumText className="w-[14rem] sm:w-[32rem] md:w-[20rem] xl:w-[28rem] 3xl:w-[32rem] tracking-wide">
+                  <DisplayMediumText className="w-[14rem] sm:w-[32rem] md:w-[20rem] xl:w-[24rem] 3xl:w-[26rem] tracking-wide">
                     {item.description}
                   </DisplayMediumText>
                 </Copy>

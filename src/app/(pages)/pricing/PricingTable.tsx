@@ -33,15 +33,14 @@ const PricingTable = () => {
     {
       id: 1,
       title: "Custom Website",
-      priceRange: "$3,500 - $12,000",
-      description:
-        "A fully custom website designed and built specifically for you...",
+      priceRange: "$3,500 - $10,000",
       features: [
         "Custom design phase",
         "Custom coded development",
-        "Blog/articles section",
-        "CMS if required",
+        "3-6 Pages + Blog/articles section",
         "Mobile-first responsive code",
+        "CMS if required",
+        "No eCcommerce functionality",
       ],
       notIncluded: [
         "eCommerce functionality",
@@ -53,14 +52,13 @@ const PricingTable = () => {
       id: 2,
       title: "Custom E-commerce",
       priceRange: "$4,000 - $20,000",
-      description:
-        "A business website is perfect for small businesses or startups looking for a professional online presence with essential features.",
       features: [
-        "Everything from before plus...",
-        "Conversion-optimized design",
-        "Custom-coded Shopify theme",
-        "Advanced product sorting + filtering",
-        "Blog/newsletter section",
+        "Custom design phase",
+        "Custom coded development",
+        "3-6 Pages + Blog/articles section",
+        "Mobile-first responsive code",
+        "eCommerce storefront",
+        "Advanced eCcommerce functionality",
       ],
       notIncluded: ["Post-purchase upsell systems available extra"],
       animatedLineWidth: secondLineWidth,
@@ -69,14 +67,11 @@ const PricingTable = () => {
       id: 3,
       title: "AWWWARDS Worthy",
       priceRange: "$20,000+",
-      description:
-        "A high-converting landing page designed for campaigns, product launches, or lead generation.",
       features: [
-        "Pixel-perfect development",
-        "Complete UX mapping",
-        "Full-page transitions",
+        "Exceptionally unique & detailed designs",
+        "Professional-grade site animations",
         "Interactive scroll-based animations",
-        "Advanced performance optimizations",
+        "Seamless full-page transitions",
       ],
       notIncluded: ["WebGL or 3d integrations"],
       premium: true,

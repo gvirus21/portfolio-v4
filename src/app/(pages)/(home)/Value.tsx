@@ -21,14 +21,7 @@ const deliverySteps = [
   {
     id: 1,
     content:
-      "I approach every project with a mix of curiosity, strategy, and craft. My goal isn’t just to build websites—it’s to help brands communicate better, convert more, and create digital experiences people genuinely enjoy. Every decision, from layout to line of code, is made with intention.",
-    image: "/placeholder.svg?height=600&width=800",
-  },
-  {
-    id: 2,
-    content:
-      "Rather than offering one-size-fits-all solutions, I adapt to what each project truly needs. I collaborate closely, ask the right questions, and bring design and development together to create work that not only looks beautiful but delivers real business impact.",
-    image: "/placeholder.svg?height=600&width=800",
+      "Instead of providing a standardised solution, I respond to each project for what they actually need. I want to help brands not only build websites, I want to help brands communicate better, convert more, and create digital experiences that people visit and genuinely enjoy. I collaborate closely, ask the right questions, bridge design and development, and produce work that is beautiful, but most importantly, impacts the business.",
   },
 ];
 
@@ -85,7 +78,7 @@ export const ValueSection = () => {
             </H2>
           </Copy>
 
-          <div className="flex flex-col justify-between items-start w-full lg:w-[90%] 2xl:w-10/12 3xl:w-[30%] mt-10 sm:mt-12 lg:mt-10 2xl:mt-20 3xl:mt-10 lg:mr-0 xl:mr-10 3xl:mr-[20rem]">
+          <div className="flex flex-col justify-between items-start w-full lg:w-[90%] 2xl:w-10/12 3xl:w-[35%] mt-10 sm:mt-12 lg:mt-10 2xl:mt-20 3xl:mt-10 lg:mr-0 xl:mr-10 3xl:mr-[18rem]">
             <div className="space-y-5">
               {deliverySteps.map((step) => (
                 <Copy key={step.id} delay={copyDelay}>
@@ -93,7 +86,7 @@ export const ValueSection = () => {
                 </Copy>
               ))}
             </div>
-            <div className="flex justify-end mt-8 sm:mt-16">
+            <div className="flex justify-end mt-8 sm:mt-14">
               <PillButton link="/contact">Contact</PillButton>
             </div>
           </div>

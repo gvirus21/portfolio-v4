@@ -43,6 +43,8 @@ const AnimatedWorkTable = ({
     scrollYProgressValues[3]
   );
 
+  const IMG_DIR = "/assets/images/homepage/work-section";
+
   const projectsData = [
     {
       id: "playgrounds-website",
@@ -50,8 +52,8 @@ const AnimatedWorkTable = ({
       category: "Development",
       date: "Dec, 2023",
       additonal_details: {
-        website: "https://www.google.com",
-        images: ["https://www.google.com", "www.google.com"],
+        website: "https://playgrounds.network/",
+        images: [`${IMG_DIR}/pg-01.webp`, `${IMG_DIR}/pg-02.webp`],
         description:
           "Led the development of multiple website projects for the Playgrounds Team, including landing pages, customer-facing web applications, and internal tools for the organisation.",
         challengesDescription:
@@ -66,8 +68,8 @@ const AnimatedWorkTable = ({
       category: "Development, Design",
       date: "Jun, 2022",
       additonal_details: {
-        website: "https://www.google.com",
-        images: ["https://www.google.com", "www.google.com"],
+        website: "https://www.bankless.com/",
+        images: [`${IMG_DIR}/bb-01.webp`, `${IMG_DIR}/bb-02.webp`],
         description:
           "Contributed to the development of the new Re-design of the Bankless's new Website. Worked Closely with the Leading developer and built many pages & graphics for the site.",
         challengesDescription:
@@ -82,8 +84,8 @@ const AnimatedWorkTable = ({
       category: "Development, Design",
       date: "Jun, 2022",
       additonal_details: {
-        website: "https://www.google.com",
-        images: ["https://www.google.com", "www.google.com"],
+        website: "https://forefront.mirror.xyz/",
+        images: [`${IMG_DIR}/ff-01.webp`, `${IMG_DIR}/ff-02.webp`],
         description:
           "Collaborated with the Forefront team to help them design & develop their Squad's website",
         challengesDescription:
@@ -98,8 +100,8 @@ const AnimatedWorkTable = ({
       category: "Development",
       date: "Mar, 2022",
       additonal_details: {
-        website: "https://www.google.com",
-        images: ["https://www.google.com", "www.google.com"],
+        website: "https://www.codewalla.com/",
+        images: [`${IMG_DIR}/cw-01.webp`, `${IMG_DIR}/cw-02.webp`],
         description:
           "Completed iOS development training and collaborated with senior developers on multiple iOS apps at Codewalla.",
         challengesDescription:

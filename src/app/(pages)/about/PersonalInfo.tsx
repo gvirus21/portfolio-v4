@@ -23,13 +23,14 @@ export const PersonalInfoSection = () => {
               height="xl:h-4.5 3xl:h-7"
               className="top-[7px] sm:top-2 lg:top-2.5 xl:top-3.5 2xl:top-4 3xl:top-7 left-14 sm:left-14 md:left-16 lg:left-18 xl:left-24 2xl:left-[5.8rem] 3xl:left-40"
             />
-            Website design, application elit.
+            Otaku since day one,
             <br />
-            Design,{" "}
-            <span className="italic font-light">interactive design</span> ipsum
-            magnam
+            Naruto&apos;s biggest fan, <br />
+            19.3s PR in solving rubiks cube
             <br />
-            Ecommerce minus expedita magnam.
+            PC master race believer 🎮&
+            <br />
+            victim of imposter syndrome and professional procastinator
           </h2>
         </Copy>
       </div>
