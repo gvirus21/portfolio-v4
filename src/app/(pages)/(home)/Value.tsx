@@ -27,14 +27,14 @@ const deliverySteps = [
 
 // Hoisted image paths (8 images) used by the auto-cycling carousel
 const IMAGE_PATHS = [
-  "/assets/images/homepage/value-section/img-01.jpg",
-  "/assets/images/homepage/value-section/img-02.jpg",
-  "/assets/images/homepage/value-section/img-03.jpg",
-  "/assets/images/homepage/value-section/img-04.jpg",
-  "/assets/images/homepage/value-section/img-05.jpg",
-  "/assets/images/homepage/value-section/img-06.jpg",
-  "/assets/images/homepage/value-section/img-07.jpg",
-  "/assets/images/homepage/value-section/img-08.jpg",
+  "/assets/images/homepage/value-section/typography_01.webp",
+  "/assets/images/homepage/value-section/batman.webp",
+  "/assets/images/homepage/value-section/meron.webp",
+  "/assets/images/homepage/value-section/typography_02.webp",
+  "/assets/images/homepage/value-section/samurai.webp",
+  "/assets/images/homepage/value-section/evangealion.webp",
+  "/assets/images/homepage/value-section/figma_ss.webp",
+  "/assets/images/homepage/value-section/gojo.webp",
 ];
 
 export const ValueSection = () => {

@@ -10,7 +10,7 @@ import Copy from "@/components/Copy";
 
 gsap.registerPlugin(SplitText);
 
-const HERO_IMAGES = ["herosection-img-1.jpg", "herosection-img-2.jpg"];
+const HERO_IMAGES = ["hero-01.webp", "hero-02.webp"];
 const HOME_HERO_VISIT_KEY = "home-hero";
 
 export const HeroSection = () => {
@@ -75,7 +75,7 @@ export const HeroSection = () => {
               className="absolute inset-0 w-full h-full"
             >
               <Image
-                src={`/assets/images/${img}`}
+                src={`/assets/images/homepage/hero-section/${img}`}
                 alt={`Hero Image ${idx + 1}`}
                 fill
               />
