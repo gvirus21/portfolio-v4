@@ -47,12 +47,12 @@ const Navbar = () => {
             <FlipLink underline className="uppercase" href="/pricing">
               Pricing
             </FlipLink>
-            {/* <FlipLink underline className="uppercase" href="/pricing">
+            <FlipLink underline className="uppercase" href="/playground">
               Playground
             </FlipLink>
-            <FlipLink underline className="uppercase" href="/pricing">
+            <FlipLink underline className="uppercase" href="/journal">
               Journal
-            </FlipLink> */}
+            </FlipLink>
             <FlipLink
               underline
               className="uppercase"

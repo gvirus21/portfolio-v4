@@ -64,7 +64,7 @@ export const ValueSection = () => {
     const totalImages = IMAGE_PATHS.length;
     const intervalId = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % totalImages);
-    }, 500);
+    }, 400);
     return () => clearInterval(intervalId);
   }, []);
 
