@@ -50,17 +50,17 @@ const Navbar = () => {
             <FlipLink underline className="uppercase" href="/playground">
               Playground
             </FlipLink>
-            <FlipLink underline className="uppercase" href="/journal">
+            {/* <FlipLink underline className="uppercase" href="/journal">
               Journal
-            </FlipLink>
-            {/* <FlipLink
+            </FlipLink> */}
+            <FlipLink
               underline
               className="uppercase"
               href="https://instagram.com/gourav.kumar__"
               should_transition={false}
             >
               Instagram
-            </FlipLink> */}
+            </FlipLink>
 
             <SkeletonPillButton
               link="/about"

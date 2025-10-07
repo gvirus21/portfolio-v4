@@ -13,7 +13,7 @@ const FOOTER_LINKS = [
   { name: "About", href: "/about" },
   { name: "Pricing", href: "/pricing" },
   { name: "Playground", href: "/playground" },
-  { name: "Journal", href: "/journal" },
+  // { name: "Journal", href: "/journal" },
 ];
 
 const SOCIAL_MEDIA_LINKS = [
