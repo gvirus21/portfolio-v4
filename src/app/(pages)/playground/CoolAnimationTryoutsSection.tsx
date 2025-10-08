@@ -33,9 +33,9 @@ const CoolAnimationTryoutsSection = () => {
     },
   ];
   return (
-    <div>
+    <div className="">
       <h3>(01) Cool Animations tryouts</h3>
-      <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 auto-rows-[minmax(200px,auto)] mt-10">
+      <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-20 auto-rows-[minmax(200px,auto)] mt-10">
         {COOL_ANIMATION_TRYOUTS.map((design) => (
           <div key={design.id} className={`overflow-hidden`}>
             <Link href={design.url}>
@@ -46,7 +46,7 @@ const CoolAnimationTryoutsSection = () => {
                 height={300}
                 className="w-full h-auto object-cover"
               />
-              <div className="flex justify-between text-2xl mt-2">
+              <div className="flex justify-between text-lg xl:text-2xl mt-2">
                 <h3>{design.title}</h3>
                 <p>({design.year})</p>
               </div>
