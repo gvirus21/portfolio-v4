@@ -143,7 +143,7 @@ const Menu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
                   onClick={(e) => handleLinkClick(e, link)}
                 >
                   <Link
-                    className="text-background font-thin text-5xl md:text-[60px] leading-[85%] tracking-[-0.02em] font-dmsans  uppercase"
+                    className="text-background font-thin text-[3rem] md:text-[60px] leading-[85%] tracking-[-0.02em] font-dmsans  uppercase"
                     href={link.path}
                   >
                     {link.label}
@@ -162,8 +162,8 @@ const Menu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
               </a>
               <a className="w-fit" href="#">LinkedIn &#8599;</a>
             </div>
-            <div className="flex flex-col justify-end text-sm xs:text-sm text-white w-fit mt-2">
-              <p className="mb-4  w-fit">gouravkumar2889@gmail.com</p>
+            <div className="flex flex-col justify-end text-sm xs:text-sm text-white w-fit">
+              <p className="mb-3  w-fit">gouravkumar2889@gmail.com</p>
               <p className=" w-fit">+91 0923 3984 23</p>
             </div>
           </div>
