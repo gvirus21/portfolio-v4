@@ -1,6 +1,9 @@
+"use client";
+
 import { DisplayMediumText } from "@/components/ui/Typography";
 import Copy from "@/components/Copy";
 import BlackDot from "./BlackDot";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export const ProcessSection = () => {
   const steps = [
@@ -39,11 +42,11 @@ export const ProcessSection = () => {
   ];
 
   return (
-    <div className="flex flex-col lg:flex-row mt-10 px-4 sm:px-6">
+    <div className="flex flex-col xl:flex-row mt-10 px-4 sm:px-6">
       {/* Left Side - Sticky */}
-      <div className="w-full pt-14 md:pt-16 flex flex-col justify-start sticky top-0 lg:h-[70vh]">
-        <div className="flex-1 flex flex-col justify-start mt-0">
-          <div className="flex justify-between items-start lg:mb-8 bg-background">
+      <div className="xl:h-screen w-full pt-14 md:pt-16 flex flex-col justify-between sticky top-0">
+        <div className="flex-1 flex flex-col justify-between mt-0">
+          <div className="flex justify-between items-start lg:mb-8 --bg-background">
             <Copy>
               <h1 className="relative text-2xl md:text-3xl xl:text-4xl 3xl:text-5xl font-light mb-8 inline-block tracking-tight leading-tight">
                 <BlackDot className="top-2.5 md:top-3.5 3xl:top-4.5" />
@@ -57,23 +60,24 @@ export const ProcessSection = () => {
               </h1>
             </Copy>
           </div>
+
+          <LottieAnimation />
         </div>
       </div>
-
       {/* Right Side - Natural Scroll */}
-      <div className="flex flex-col lg:items-end lg:w-[60%] lg:pr-16 3xl:pr-[20rem] lg:pt-60">
+      <div className="flex flex-col lg:items-end xl:w-[60%] xl:pr-16 3xl:pr-[20rem] pt-10 xl:pt-60">
         {steps.map((step, index) => (
           <div
             key={index}
-            className={`flex justify-between items-start mb-12 lg:w-full max-w-[50rem] ${
-              index === steps.length - 1 ? "lg:mb-0" : "lg:mb-10"
+            className={`flex justify-between items-start mb-12 lg:w-full xl:max-w-[50rem] ${
+              index === steps.length - 1 ? "lg:mb-0" : "lg:mb-24"
             }`}
           >
-            <span className="text-xl lg:text-2xl font-thin mt-4 tracking-tighter">
+            <span className="text-xl lg:text-2xl --font-thin mt-4 xl:mt-5 tracking-tighter xl:mr-6">
               {step.id}
             </span>
-            <div className="w-[18rem] lg:w-[36rem]">
-              <h4 className="text-2xl lg:text-4xl font-light mt-4 mb-4 lg:mb-8 ml-1 ">
+            <div className="w-[18rem] xs:w-[20rem] md:w-[28rem] lg:w-[36rem]">
+              <h4 className="text-2xl lg:text-4xl xl:text-3xl mt-4 mb-4 lg:mb-8 ml-1">
                 {step.title}
               </h4>
               <div>
@@ -84,7 +88,7 @@ export const ProcessSection = () => {
                   ))}
                 </div>
               </div>
-              <DisplayMediumText className="font-light pr-6 lg:pr-0 mt-6 lg:mt-10">
+              <DisplayMediumText className="text-sm md:text-xs lg:text-base xl:text-sm font-light pr-6 lg:pr-0 mt-10 lg:mt-10">
                 {step.content}
               </DisplayMediumText>
             </div>
@@ -96,3 +100,16 @@ export const ProcessSection = () => {
 };
 
 export default ProcessSection;
+
+const LottieAnimation = () => (
+  <div className="absolute xl:relative top-13 xs:top-14 right-0 xl:top-0 xl:block aspect-4/3 w-1/2 md:w-[30%] xl:w-1/2 3xl:w-1/3 overflow-hidden">
+    <div className="absolute inset-0 scale-125 origin-center">
+      <DotLottieReact
+        src="https://lottie.host/8475bfbc-b72e-458a-abd4-2860e6f4ab70/kZuGafPuiS.json"
+        loop
+        autoplay
+        className="h-full object-cover"
+      />
+    </div>
+  </div>
+);
