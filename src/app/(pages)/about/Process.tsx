@@ -50,7 +50,7 @@ export const ProcessSection = () => {
             <Copy>
               <h1 className="relative text-2xl md:text-3xl xl:text-4xl 3xl:text-5xl font-light mb-8 inline-block tracking-tight leading-tight">
                 <BlackDot className="top-2.5 md:top-3.5 3xl:top-4.5" />
-                <span className="mr-8 md:mr-10 lg:mr-12 xl:mr-14 3xl:mr-24" />
+                <span className="mr-8 md:mr-10 lg:mr-12 xl:mr-14 3xl:mr-20" />
                 Website design, application
                 <br />
                 Design,{" "}

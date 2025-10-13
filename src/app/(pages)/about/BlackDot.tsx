@@ -15,7 +15,7 @@ const BlackDot: React.FC<BlackDotProps> = ({
   return (
     <span
       className={cn(
-        "absolute aspect-square rounded-full h-[2.5vw] md:h-[1.8vw] lg:h-[1.6vw] xl:h-4.5 3xl:h-7",
+        "absolute aspect-square rounded-full h-[2.5vw] md:h-[1.8vw] lg:h-[1.6vw] xl:h-4.5 3xl:h-6",
         height,
         color,
         className
