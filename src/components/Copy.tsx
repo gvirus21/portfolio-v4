@@ -29,6 +29,19 @@ export default function Copy({
     () => {
       if (!containerRef.current) return;
 
+      // Check if device is mobile/touch screen
+      const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+      // If mobile, just make content visible without animation
+      if (isMobile) {
+        const targets = containerRef.current.hasAttribute("data-copy-wrapper")
+          ? [containerRef.current, ...Array.from(containerRef.current.children)]
+          : [containerRef.current];
+        
+        gsap.set(targets, { visibility: "visible" });
+        return;
+      }
+
       splitRefs.current = [];
       lines.current = [];
       elementRefs.current = [];
