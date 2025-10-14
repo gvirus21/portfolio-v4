@@ -6,15 +6,15 @@ const IMG_DIR = "/assets/images/about/work";
 
 export const WorkSection = () => {
   return (
-    <section className="lg:min-h-[80vh] lg:mt-[5rem] pt-20 px-4 sm:px-6">
+    <section className="pt-20 lg:pt-[10em] 2xl:pt-[14rem] 3xl:pt-[18rem] lg:pb-[5rem] px-4 sm:px-6">
       <Copy>
-        <H4 className="text-5xl sm:w-[30rem] 2xl:w-[50rem] uppercase">
-          Some of my Noteworthy works
+        <H4 className="text-5xl sm:w-[40rem] md:text-5xl md:w-[32rem] lg:text-6xl xl:text-7xl 3xl:text-8xl lg:w-[40rem] xl:w-[50rem] 3xl:w-[60rem] uppercase">
+          Some of My Noteworthy Works
         </H4>
       </Copy>
 
       <Copy>
-        <h3 className="text-sm sm:text-base 2xl:text-xl md:w-[32rem] 2xl:w-[44rem] mt-8">
+        <h3 className="text-base md:text-lg lg:text-xl xl:text-2xl md:w-[36rem] lg:w-[44rem] xl:w-[50rem] 3xl:w-[60rem] xl:font-light mt-10 lg:mt-16 xl:mt-12 3xl:mt-16">
           Throughout my career, I have worked with some of the most Ambitious
           and fun brands in the industry, here are some of my favourite ones.
         </h3>
@@ -72,29 +72,30 @@ const MasonryGrid = () => {
   ];
 
   return (
-    <div className="w-full max-w-7xl 2xl:max-w-full mx-auto mt-20 px-4">
-      <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-6 2xl:gap-10">
+    <div className="w-full mt-20 lg:mt-28 xl:mt-24 3xl:mt-28">
+      <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-10 2xl:gap-12">
         {workData.map((work) => (
           <a key={work.id} href={work.website ?? "#"} className="block">
             <div className="w-full overflow-hidden">
-              <div className="h-48 lg:h-[20rem] 2xl:h-[28rem] 3xl:h-[24rem] aspect-[16/10] bg-gray-200 relative overflow-hidden pt-7">
+              <div className="flex flex-col justify-center h-32 lg:h-[14rem] 3xl:h-[24rem] bg-gray-200 relative overflow-hidden">
                 <Image
                   src={work.image}
                   alt={work.name}
-                  height={200}
-                  width={580}
+                  width={1600}
+                  height={1000}
+                  className="w-full h-auto"
                 />
               </div>
               <div>
                 <div className="flex items-start justify-between mt-3 mb-4">
-                  <h4 className="text-sm 2xl:text-2xl tracking-tighter">
+                  <h4 className="text-xs xs:text-sm xl:text-xl tracking-tighter">
                     ({work.year})
                   </h4>
-                  <div className="flex flex-col items-end tracking-tight">
-                    <span className="text-[10px] 2xl:text-xl tracking-tighter font-medium block">
+                  <div className="flex flex-col items-end space-y-1 xl:space-y-0">
+                    <span className="text-[10px] xl:text-lg tracking-tighter font-medium block">
                       {work.category}
                     </span>
-                    <span className="text-[10px] 2xl:text-base tracking-tighter uppercase block">
+                    <span className="text-[10px] xl:text-base tracking-tighter uppercase block text-right">
                       {work.name}
                     </span>
                   </div>
