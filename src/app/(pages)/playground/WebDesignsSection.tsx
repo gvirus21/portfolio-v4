@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { TfiClose } from "react-icons/tfi";
+import AnimatedImage from "@/components/ui/AnimatedImage";
 
 const WebDesignsSection = () => {
   const WEB_DESIGNS = [
@@ -75,13 +76,20 @@ const WebDesignsSection = () => {
             }}
             aria-label={`Open ${design.title}`}
           >
-            <Image
+            <AnimatedImage
               src={design.imageUrl}
               alt={design.title}
               width={500}
               height={300}
               className="w-full h-auto object-cover"
             />
+            {/* <Image
+              src={design.imageUrl}
+              alt={design.title}
+              width={500}
+              height={300}
+              className="w-full h-auto object-cover"
+            /> */}
             <div className="flex justify-between text-lg xl:text-2xl mt-2">
               <h3>{design.title}</h3>
               <p>({design.year})</p>

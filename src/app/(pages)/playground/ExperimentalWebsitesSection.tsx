@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import AnimatedImage from "@/components/ui/AnimatedImage";
 
 const ExperimentalWebsitesSection = () => {
   const EXPERIMENTAL_WEBSITES = [
@@ -30,19 +30,19 @@ const ExperimentalWebsitesSection = () => {
     <div className="pt-20">
       <h3>(03) Fun / Experimental Websites</h3>
       <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-20 auto-rows-[minmax(200px,auto)] mt-10">
-        {EXPERIMENTAL_WEBSITES.map((design) => (
-          <div key={design.id} className={`overflow-hidden`}>
-            <Link href={design.website}>
-              <Image
-                src={design.imageUrl}
-                alt={design.title}
+        {EXPERIMENTAL_WEBSITES.map((website) => (
+          <div key={website.id} className={`overflow-hidden`}>
+            <Link href={website.website}>
+              <AnimatedImage
+                src={website.imageUrl}
+                alt={website.title}
                 width={500}
                 height={300}
                 className="w-full h-auto object-cover"
               />
               <div className="flex justify-between text-lg xl:text-2xl mt-2">
-                <h3>{design.title}</h3>
-                <p>({design.year})</p>
+                <h3>{website.title}</h3>
+                <p>({website.year})</p>
               </div>
             </Link>
           </div>
