@@ -1,5 +1,6 @@
 import { DisplayMediumText, H4 } from "@/components/ui/Typography";
 import Copy from "@/components/Copy";
+import useCursorState from "@/store/useCursorState";
 
 const approachItems = [
   {
@@ -15,6 +16,8 @@ const approachItems = [
 ];
 
 export const MyApproachSection = () => {
+  const { setCursorState } = useCursorState();
+
   return (
     <section className="min-h-[50rem] md:min-h-[40rem] h-[85vh] sm:h-[80vh] md:h-[70vh] lg:h-[55vh] 2xl:h-[50vh] px-4 sm:px-10 mt-20 lg:mt-0 xl:mt-20">
       <H4>My Approach.</H4>
@@ -25,13 +28,21 @@ export const MyApproachSection = () => {
             <div className="h-[0.5px] w-full bg-black mt-14" />
             <div className="flex justify-between pt-5">
               <Copy>
-                <DisplayMediumText className="text-base sm:text-xl 2xl:text-xl w-[7rem] sm:w-[14rem] tracking-[2%]">
+                <DisplayMediumText
+                  onMouseEnter={() => setCursorState("sm-hovered")}
+                  onMouseLeave={() => setCursorState("regular")}
+                  className="text-base sm:text-xl 2xl:text-xl w-[7rem] sm:w-[14rem] tracking-[2%]"
+                >
                   {item.title}
                 </DisplayMediumText>
               </Copy>
               <div className="md:w-[50%]">
                 <Copy>
-                  <DisplayMediumText className="w-[14rem] sm:w-[32rem] md:w-[20rem] xl:w-[24rem] 3xl:w-[26rem] tracking-wide">
+                  <DisplayMediumText
+                    onMouseEnter={() => setCursorState("sm-hovered")}
+                    onMouseLeave={() => setCursorState("regular")}
+                    className="w-[14rem] sm:w-[32rem] md:w-[20rem] xl:w-[24rem] 3xl:w-[26rem] tracking-wide"
+                  >
                     {item.description}
                   </DisplayMediumText>
                 </Copy>

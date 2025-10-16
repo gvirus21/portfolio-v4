@@ -4,6 +4,7 @@ import React, { useMemo } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import useCursorState from "@/store/useCursorState";
 
 interface FlipLinkProps {
   children: string;
@@ -26,6 +27,7 @@ const FlipLink: React.FC<FlipLinkProps> = ({
 }) => {
   const letters = useMemo(() => children.split(""), [children]);
   const pathname = usePathname();
+  const { setCursorState } = useCursorState();
 
   const isCurrentPage = pathname === href;
 
@@ -55,6 +57,8 @@ const FlipLink: React.FC<FlipLinkProps> = ({
       }}
       role="link"
       aria-label={children}
+      onMouseEnter={() => setCursorState("sm-hovered")}
+      onMouseLeave={() => setCursorState("regular")}
     >
       <div>
         {letters.map((letter, i) => (

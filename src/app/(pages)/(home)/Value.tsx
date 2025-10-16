@@ -16,6 +16,7 @@ import {
   useIsDesktop,
   useIsTouchDevice,
 } from "@/hooks/useMediaQuery";
+import useCursorState from "@/store/useCursorState";
 
 const deliverySteps = [
   {
@@ -43,6 +44,8 @@ export const ValueSection = () => {
   const isDesktop = useIsDesktop();
   const isTouchDevice = useIsTouchDevice();
   const isLargeTouchDevice = isTouchDevice && isDesktop;
+
+  const { setCursorState, setCursorText } = useCursorState();
 
   const copyDelay = isLargeTouchDevice ? 3.2 : 0;
 
@@ -73,20 +76,39 @@ export const ValueSection = () => {
       <div className="w-full">
         <div className="flex flex-col lg:flex-row justify-between">
           <Copy delay={copyDelay}>
-            <H2 className="lg:w-full 3xl:w-[70rem] xl:text-[5rem] 3xl:text-[6rem] tracking-[-2px] xl:tracking-[-6px] 3xl:ml-5">
+            <H2
+              onMouseEnter={() => setCursorState("lg-hovered")}
+              onMouseLeave={() => setCursorState("regular")}
+              className="h-fit g:w-full 3xl:w-fit xl:text-[5rem] 3xl:text-[6rem] tracking-[-2px] xl:tracking-[-6px] 3xl:ml-5"
+            >
               How I Deliver Value
             </H2>
           </Copy>
 
           <div className="flex flex-col justify-between items-start w-full lg:w-[90%] 2xl:w-10/12 3xl:w-[35%] mt-10 sm:mt-12 lg:mt-10 2xl:mt-20 3xl:mt-10 lg:mr-0 xl:mr-10 3xl:mr-[18rem]">
-            <div className="space-y-5">
+            <div className="space-y-5 border">
               {deliverySteps.map((step) => (
                 <Copy key={step.id} delay={copyDelay}>
-                  <DisplayMediumText>{step.content}</DisplayMediumText>
+                  <DisplayMediumText
+                    onMouseEnter={() => setCursorState("sm-hovered")}
+                    onMouseLeave={() => setCursorState("regular")}
+                  >
+                    {step.content}
+                  </DisplayMediumText>
                 </Copy>
               ))}
             </div>
-            <div className="flex justify-end mt-8 sm:mt-14">
+            <div
+              onMouseEnter={() => {
+                setCursorState("sm-hovered");
+                setCursorText("Book a Call");
+              }}
+              onMouseLeave={() => {
+                setCursorState("regular");
+                setCursorText("");
+              }}
+              className="flex justify-end mt-8 sm:mt-14"
+            >
               <PillButton link="/contact">Contact</PillButton>
             </div>
           </div>

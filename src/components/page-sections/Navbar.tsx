@@ -7,9 +7,12 @@ import { useState } from "react";
 import MobileMenu from "./MobileMenu";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import useCursorState from "@/store/useCursorState";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const { setCursorState } = useCursorState();
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <>
@@ -29,7 +32,13 @@ const Navbar = () => {
       >
         <div className="flex items-center justify-between w-full z-50">
           <div className="text-base sm:text-base lg:text-sm xl:text-base font-light z-[100]">
-            <a href={pathname === "/" ? undefined : "/"}>@gourav.kumar__</a>
+            <a
+              href={pathname === "/" ? undefined : "/"}
+              onMouseEnter={() => setCursorState("sm-hovered")}
+              onMouseLeave={() => setCursorState("regular")}
+            >
+              @gourav.kumar__
+            </a>
           </div>
 
           <div className="hidden md:block lg:hidden xl:block absolute top-2 left-1/2 md:-translate-x-[70%] xl:-translate-x-1/2 ml-10 xl:ml-0 text-black font-light mt-1 text-[12px] lg:text-sm">
@@ -61,13 +70,23 @@ const Navbar = () => {
             >
               Instagram
             </FlipLink> */}
-
-            <SkeletonPillButton
-              link="/about"
-              className="group lg:text-[12px] xl:text-base"
+            <div
+              onMouseEnter={() => {
+                setCursorState("sm-hovered");
+                // setCursorText("Book a Free Call");
+              }}
+              onMouseLeave={() => {
+                setCursorState("regular");
+                // setCursorText("");
+              }}
             >
-              <span className="group-hover:mr-3">Let&apos;s talk</span>
-            </SkeletonPillButton>
+              <SkeletonPillButton
+                link="/about"
+                className="group lg:text-[12px] xl:text-base"
+              >
+                <span className="group-hover:mr-3">Let&apos;s talk</span>
+              </SkeletonPillButton>
+            </div>
           </div>
 
           {/* Mobile menu button */}

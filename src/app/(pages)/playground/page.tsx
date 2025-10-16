@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const PlaygroundPage: FC = () => {
   return (
-    <div className="px-4 py-16">
+    <div className="px-4 py-16 xl:pb-28">
       <header className="flex flex-col items-center text-center">
         <Copy>
           <h1 className="flex justify-center items-center text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight leading-[3.5rem] md:leading-[4.5rem] lg:leading-[5.5rem] xl:leading-[6.8rem] h-[30vh] md:h-[40vh] lg:h-[50vh] w-full">

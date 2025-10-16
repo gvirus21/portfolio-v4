@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import styles from "./style.module.scss";
 import { motion, MotionValue, useTransform } from "motion/react";
 import { useIsMouseDevice } from "@/hooks/useMediaQuery";
+import useCursorState from "@/store/useCursorState";
 
 interface ProjectData {
   id: string;
@@ -185,9 +186,15 @@ const DefaultVisibleTableRows = ({
   index: number;
   separatorWidth: MotionValue<string>;
 }) => {
+  const { setCursorState } = useCursorState();
+
   return (
     <div className="flex flex-col w-full">
-      <div className="relative group flex justify-between items-center top-0 overflow-hidden py-3 cursor-pointer text-xs sm:text-sm w-full uppercase">
+      <div
+        onMouseEnter={() => setCursorState("sm-hovered")}
+        onMouseLeave={() => setCursorState("regular")}
+        className="relative group flex justify-between items-center top-0 overflow-hidden py-3 cursor-pointer text-xs sm:text-sm w-full uppercase"
+      >
         <p className="text-white w-full sm:w-[15rem]">{name}</p>
         <p className="text-right sm:text-left w-[20rem] text-white">
           {category}
