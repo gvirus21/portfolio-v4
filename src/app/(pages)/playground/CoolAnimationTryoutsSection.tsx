@@ -1,7 +1,10 @@
 import Link from "next/link";
 import AnimatedImage from "@/components/ui/AnimatedImage";
+import useCursorState from "@/store/useCursorState";
 
 const CoolAnimationTryoutsSection = () => {
+  const { setCursorState, setCursorText } = useCursorState();
+
   const COOL_ANIMATION_TRYOUTS = [
     {
       id: 1,
@@ -38,7 +41,11 @@ const CoolAnimationTryoutsSection = () => {
       <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-20 auto-rows-[minmax(200px,auto)] mt-10">
         {COOL_ANIMATION_TRYOUTS.map((cool_animation) => (
           <div key={cool_animation.id} className={`overflow-hidden`}>
-            <Link href={cool_animation.url}>
+            <Link
+              href={cool_animation.url}
+              onMouseEnter={() => setCursorText("Open")}
+              onMouseLeave={() => setCursorText("")}
+            >
               <AnimatedImage
                 src={cool_animation.imageUrl}
                 alt={cool_animation.title}
@@ -47,8 +54,19 @@ const CoolAnimationTryoutsSection = () => {
                 className="w-full h-auto object-cover"
               />
               <div className="flex justify-between text-lg xl:text-2xl mt-2">
-                <h3>{cool_animation.title}</h3>
-                <p>({cool_animation.year})</p>
+                <h3
+                  onMouseEnter={() => setCursorState("sm-hovered")}
+                  onMouseLeave={() => setCursorState("regular")}
+                >
+                  {cool_animation.title}
+                </h3>
+                <p
+                  onMouseEnter={() => setCursorState("sm-hovered")}
+                  onMouseLeave={() => setCursorState("regular")}
+                >
+                  {" "}
+                  ({cool_animation.year})
+                </p>
               </div>
             </Link>
           </div>

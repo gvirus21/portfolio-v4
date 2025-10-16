@@ -1,21 +1,34 @@
+"use client";
+
 import { FC } from "react";
 import CoolAnimationTryoutsSection from "./CoolAnimationTryoutsSection";
 import WebDesignsSection from "./WebDesignsSection";
 import ExperimentalWebsitesSection from "./ExperimentalWebsitesSection";
 import Copy from "@/components/Copy";
 import Image from "next/image";
+import useCursorState from "@/store/useCursorState";
 
 const PlaygroundPage: FC = () => {
+  const { setCursorState } = useCursorState();
+
   return (
     <div className="px-4 py-16 xl:pb-28">
       <header className="flex flex-col items-center text-center">
         <Copy>
-          <h1 className="flex justify-center items-center text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight leading-[3.5rem] md:leading-[4.5rem] lg:leading-[5.5rem] xl:leading-[6.8rem] h-[30vh] md:h-[40vh] lg:h-[50vh] w-full">
+          <h1
+            onMouseEnter={() => setCursorState("lg-hovered")}
+            onMouseLeave={() => setCursorState("regular")}
+            className="flex justify-center items-center text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight leading-[3.5rem] md:leading-[4.5rem] lg:leading-[5.5rem] xl:leading-[6.8rem] h-[30vh] md:h-[40vh] lg:h-[50vh] w-full"
+          >
             My Playground
           </h1>
         </Copy>
         <Copy>
-          <p className="text-sm  md:text-lg xl:text-3xl w-[20rem] md:w-[26rem] xl:w-[50rem] font-light tracking-tight">
+          <p
+            onMouseEnter={() => setCursorState("sm-hovered")}
+            onMouseLeave={() => setCursorState("regular")}
+            className="text-sm  md:text-lg xl:text-3xl w-[20rem] md:w-[26rem] xl:w-[50rem] font-light tracking-tight"
+          >
             Welcome to my Playground, my personal collection of random designs,
             ideas, and rejected versions of anything, that i can&apos;t find a
             place to show...

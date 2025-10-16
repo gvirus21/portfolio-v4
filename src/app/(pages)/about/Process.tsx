@@ -4,6 +4,7 @@ import { DisplayMediumText } from "@/components/ui/Typography";
 import Copy from "@/components/Copy";
 import BlackDot from "./BlackDot";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import useCursorState from "@/store/useCursorState";
 
 export const ProcessSection = () => {
   const steps = [
@@ -41,6 +42,8 @@ export const ProcessSection = () => {
     },
   ];
 
+  const { setCursorState } = useCursorState();
+
   return (
     <div className="flex flex-col xl:flex-row mt-10 px-4 sm:px-6">
       {/* Left Side - Sticky */}
@@ -48,7 +51,11 @@ export const ProcessSection = () => {
         <div className="flex-1 flex flex-col justify-between mt-0">
           <div className="flex justify-between items-start lg:mb-8 --bg-background">
             <Copy>
-              <h1 className="relative text-2xl md:text-3xl xl:text-4xl 3xl:text-5xl font-light mb-8 inline-block tracking-tight leading-tight">
+              <h1
+                onMouseEnter={() => setCursorState("md-hovered")}
+                onMouseLeave={() => setCursorState("regular")}
+                className="relative text-2xl md:text-3xl xl:text-4xl 3xl:text-5xl font-light mb-8 inline-block tracking-tight leading-tight"
+              >
                 <BlackDot className="top-2.5 md:top-3.5 3xl:top-4.5" />
                 <span className="mr-8 md:mr-10 lg:mr-12 xl:mr-14 3xl:mr-20" />
                 Website design, application
@@ -73,14 +80,25 @@ export const ProcessSection = () => {
               index === steps.length - 1 ? "lg:mb-0" : "lg:mb-24"
             }`}
           >
-            <span className="text-xl lg:text-2xl --font-thin mt-4 xl:mt-5 tracking-tighter xl:mr-6">
+            <span
+              onMouseEnter={() => setCursorState("md-hovered")}
+              onMouseLeave={() => setCursorState("regular")}
+              className="text-xl lg:text-2xl --font-thin mt-4 xl:mt-5 tracking-tighter xl:mr-6"
+            >
               {step.id}
             </span>
             <div className="w-[18rem] xs:w-[20rem] md:w-[28rem] lg:w-[36rem]">
-              <h4 className="text-2xl lg:text-4xl xl:text-3xl mt-4 mb-4 lg:mb-8 ml-1">
+              <h4
+                onMouseEnter={() => setCursorState("md-hovered")}
+                onMouseLeave={() => setCursorState("regular")}
+                className="text-2xl lg:text-4xl xl:text-3xl mt-4 mb-4 lg:mb-8"
+              >
                 {step.title}
               </h4>
-              <div>
+              <div
+                onMouseEnter={() => setCursorState("sm-hovered")}
+                onMouseLeave={() => setCursorState("regular")}
+              >
                 <div className="text-xs mb-2">{step.label}</div>
                 <div className="text-xs uppercase tracking-wider">
                   {step.footer.map((line, i) => (
@@ -88,7 +106,11 @@ export const ProcessSection = () => {
                   ))}
                 </div>
               </div>
-              <DisplayMediumText className="text-sm md:text-xs lg:text-base xl:text-sm font-light pr-6 lg:pr-0 mt-10 lg:mt-10">
+              <DisplayMediumText
+                onMouseEnter={() => setCursorState("sm-hovered")}
+                onMouseLeave={() => setCursorState("regular")}
+                className="text-sm md:text-xs lg:text-base xl:text-sm font-light pr-6 lg:pr-0 mt-10 lg:mt-10"
+              >
                 {step.content}
               </DisplayMediumText>
             </div>

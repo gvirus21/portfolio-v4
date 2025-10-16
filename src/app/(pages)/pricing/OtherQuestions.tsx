@@ -1,6 +1,5 @@
 import PillButton from "@/components/ui/buttons/PillButton";
 import {
-  DisplayMediumText,
   DisplaySmallText,
 } from "@/components/ui/Typography";
 import { motion, useScroll, useTransform } from "motion/react";

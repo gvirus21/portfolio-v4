@@ -2,6 +2,7 @@
 import { cn } from "@/lib/utils";
 import { motion, MotionValue, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
+import useCursorState from "@/store/useCursorState";
 
 interface CardProps {
   className?: string;
@@ -60,6 +61,8 @@ const GetInTouch = () => {
     offset: ["start end", "end start"],
   });
 
+  const { setCursorState } = useCursorState();
+
   const leftCardParallax = useTransform(scrollYProgress, [0, 1], [50, -150]);
   const centerCardParallax = useTransform(scrollYProgress, [0, 1], [150, 0]);
   const rightCardParallax = useTransform(scrollYProgress, [0, 1], [250, 0]);
@@ -101,7 +104,11 @@ const GetInTouch = () => {
             ))}
           </div>
 
-          <h2 className="text-[14vw] font-light text-center tracking-tight w-full">
+          <h2
+            onMouseEnter={() => setCursorState("lg-hovered")}
+            onMouseLeave={() => setCursorState("regular")}
+            className="text-[14vw] font-light text-center tracking-tight w-full"
+          >
             GET IN TOUCH
           </h2>
         </div>

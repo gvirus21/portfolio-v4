@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/useMediaQuery";
+import useCursorState from "@/store/useCursorState";
 
 interface Props {
   src: string;
@@ -23,6 +24,8 @@ const AnimatedImage = ({
 }: Props) => {
   const isMobile = useIsMobile();
   const [mounted, setMounted] = useState(false);
+
+  const { setCursorState } = useCursorState();
 
   useEffect(() => {
     setMounted(true);
@@ -46,7 +49,11 @@ const AnimatedImage = ({
   }
 
   return (
-    <div className={cn("relative overflow-hidden", className)}>
+    <div
+      onMouseEnter={() => setCursorState("sm-hovered")}
+      onMouseLeave={() => setCursorState("regular")}
+      className={cn("relative overflow-hidden", className)}
+    >
       <motion.div
         initial={isMobile ? { rotate: 0, scale: 1 } : { rotate: 5, scale: 1.2 }}
         whileInView={
@@ -88,7 +95,7 @@ const AnimatedImage = ({
             delay: 0.2,
           }}
           viewport={{ once: true }}
-          className="absolute inset-0 w-full h-full bg-gray-300"
+          className="absolute inset-0 w-full h-full bg-gray-200"
         />
       )}
     </div>

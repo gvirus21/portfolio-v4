@@ -3,8 +3,11 @@ import { useState } from "react";
 import Image from "next/image";
 import { TfiClose } from "react-icons/tfi";
 import AnimatedImage from "@/components/ui/AnimatedImage";
+import useCursorState from "@/store/useCursorState";
 
 const WebDesignsSection = () => {
+  const { setCursorState, setCursorText } = useCursorState();
+
   const WEB_DESIGNS = [
     {
       id: 1,
@@ -69,6 +72,8 @@ const WebDesignsSection = () => {
             key={design.id}
             className={`overflow-hidden cursor-pointer`}
             onClick={() => handleOpen(design)}
+            onMouseEnter={() => setCursorText("Open")}
+            onMouseLeave={() => setCursorText("")}
             role="button"
             tabIndex={0}
             onKeyDown={(e) => {
@@ -83,16 +88,19 @@ const WebDesignsSection = () => {
               height={300}
               className="w-full h-auto object-cover"
             />
-            {/* <Image
-              src={design.imageUrl}
-              alt={design.title}
-              width={500}
-              height={300}
-              className="w-full h-auto object-cover"
-            /> */}
             <div className="flex justify-between text-lg xl:text-2xl mt-2">
-              <h3>{design.title}</h3>
-              <p>({design.year})</p>
+              <h3
+                onMouseEnter={() => setCursorState("sm-hovered")}
+                onMouseLeave={() => setCursorState("regular")}
+              >
+                {design.title}
+              </h3>
+              <p
+                onMouseEnter={() => setCursorState("sm-hovered")}
+                onMouseLeave={() => setCursorState("regular")}
+              >
+                ({design.year})
+              </p>
             </div>
           </div>
         ))}
