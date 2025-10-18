@@ -64,7 +64,7 @@ const WebDesignsSection = () => {
   const handleClose = () => setSelectedDesign(null);
 
   return (
-    <div className="pt-28">
+    <div className="font-main tracking-tighter pt-28">
       <h3>(02) Web designs</h3>
       <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 xl:gap-20 auto-rows-[minmax(200px,auto)] mt-10">
         {WEB_DESIGNS.map((design) => (
@@ -88,7 +88,7 @@ const WebDesignsSection = () => {
               height={300}
               className="w-full h-auto object-cover"
             />
-            <div className="flex justify-between text-lg xl:text-2xl mt-2">
+            <div className="flex justify-between xl:text-xl 3xl:text-2xl mt-2">
               <h3
                 onMouseEnter={() => setCursorState("sm-hovered")}
                 onMouseLeave={() => setCursorState("regular")}

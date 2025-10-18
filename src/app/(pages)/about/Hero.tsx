@@ -21,11 +21,14 @@ export const HeroSection = () => {
         <p
           onMouseEnter={() => setCursorState("lg-hovered")}
           onMouseLeave={() => setCursorState("regular")}
-          className="absolute right-4 left-4 sm:left-10 xl:left-10 3xl:left-20 bottom-10 xs:bottom-10 md:bottom-10 lg:bottom-20 xl:bottom-40 3xl:bottom-48 xl:font-light text-3xl sm:text-4xl lg:text-4xl xl:text-5xl 3xl:text-8xl md:w-[75%] lg:w-[80%] xl:w-[80%] 3xl:w-[80%] lg:leading-[3rem] xl:leading-[3.5rem] 3xl:leading-[6.5rem] tracking-tight"
+          className="absolute right-4 left-4 sm:left-10 xl:left-10 3xl:left-20 bottom-10 xs:bottom-10 md:bottom-14 lg:bottom-20 xl:bottom-40 3xl:bottom-48 xl:font-light text-4xl xl:text-5xl 3xl:text-8xl md:w-[80%] md:leading-[2.3rem] lg:leading-[2.4rem] xl:leading-[3.5rem] 3xl:leading-[7rem] trackin"
         >
           <span className="mr-10 md:mr-16 lg:mr-16 xl:mr-24 3xl:mr-40" />
-          In the game for over 5 years, I&apos;m currently based in the beach
-          city of Vizag, India. I work as an independent website designer and
+          <span className="font-sourcecodepro italic mr- 3xl:text-9xl">I</span>
+          n the game for over <span className="font-medium 3xl:font-normal tracking-tight 3xl:tracking-[-0.6rem]">5 years</span>, I&apos;m currently based in the beach
+          city of 
+          <span className="font-medium 3xl:font-normal tracking-tight 3xl:tracking-[-0.6rem] ml-2 2xl:ml-3">Vizag</span>
+          , India. I work as an independent website designer and
           developer.
         </p>
       </Copy>

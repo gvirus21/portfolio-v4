@@ -14,28 +14,36 @@ const PlaygroundPage: FC = () => {
   return (
     <div className="px-4 py-16 xl:pb-28">
       <header className="flex flex-col items-center text-center">
-        <Copy>
-          <h1
-            onMouseEnter={() => setCursorState("lg-hovered")}
-            onMouseLeave={() => setCursorState("regular")}
-            className="flex justify-center items-center text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight leading-[3.5rem] md:leading-[4.5rem] lg:leading-[5.5rem] xl:leading-[6.8rem] h-[30vh] md:h-[40vh] lg:h-[50vh] w-full"
-          >
-            My Playground
-          </h1>
-        </Copy>
+        <span className="flex justify-center items-center h-[40vh] md:h-[40vh] lg:h-[46vh]">
+          <Copy>
+            <h1
+              onMouseEnter={() => setCursorState("lg-hovered")}
+              onMouseLeave={() => setCursorState("regular")}
+              className="text-[2.7rem] md:text-6xl lg:text-7xl xl:text-7xl 3xl:text-9xl font-main xl:leading-[7rem] 3xl:leading-[10rem] w-full tracking-[-4px] md:tracking-[-6px] 3xl:tracking-[-4px] 3xl:font-light"
+            >
+              <span className="font-sourcecodepro font-[300] italic mr-2 text-4x xl:text-6xl 3xl:text-8xl">
+                My
+              </span>
+              Playground
+            </h1>
+          </Copy>
+        </span>
         <Copy>
           <p
             onMouseEnter={() => setCursorState("sm-hovered")}
             onMouseLeave={() => setCursorState("regular")}
-            className="text-sm  md:text-lg xl:text-3xl w-[20rem] md:w-[26rem] xl:w-[50rem] font-light tracking-tight"
+            className="text-sm  md:text-lg xl:text-lg 3xl:text-xl w-[20rem] md:w-[30rem] font-light font-[arial] leading-5 md:leading-6 tracking-tight"
           >
-            Welcome to my Playground, my personal collection of random designs,
-            ideas, and rejected versions of anything, that i can&apos;t find a
-            place to show...
+            <span className="font-sourcecodepro font-semibold italic tracking-tighter">
+              Welcome
+            </span>{" "}
+            to my Playground, my personal collection of random designs, ideas,
+            and rejected versions of anything, that i can&apos;t find a place to
+            show...
           </p>
         </Copy>
 
-        <div className="relative flex justify-center items-center w-full py-[16vh] md:py-[12vh] lg:py-[8vh] xl:py-[10vh]">
+        <div className="relative flex justify-center items-center w-full py-[14vh] md:py-[12vh] lg:py-[8vh] xl:py-[10vh]">
           <Image
             src="/assets/svgs/arrow-down.svg"
             height={200}

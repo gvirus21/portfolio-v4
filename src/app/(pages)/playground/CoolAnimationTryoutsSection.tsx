@@ -36,8 +36,8 @@ const CoolAnimationTryoutsSection = () => {
     },
   ];
   return (
-    <div className="">
-      <h3>(01) Cool Animations tryouts</h3>
+    <div className="font-main tracking-tighter">
+      <h3>(01) Cool Animations Tryouts</h3>
       <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-20 auto-rows-[minmax(200px,auto)] mt-10">
         {COOL_ANIMATION_TRYOUTS.map((cool_animation) => (
           <div key={cool_animation.id} className={`overflow-hidden`}>
@@ -53,7 +53,7 @@ const CoolAnimationTryoutsSection = () => {
                 height={300}
                 className="w-full h-auto object-cover"
               />
-              <div className="flex justify-between text-lg xl:text-2xl mt-2">
+              <div className="flex justify-between text-lg xl:text-xl 3xl:text-2xl mt-2">
                 <h3
                   onMouseEnter={() => setCursorState("sm-hovered")}
                   onMouseLeave={() => setCursorState("regular")}

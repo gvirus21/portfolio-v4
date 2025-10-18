@@ -30,7 +30,7 @@ const ExperimentalWebsitesSection = () => {
   ];
 
   return (
-    <div className="pt-20">
+    <div className="font-main tracking-tighter pt-20">
       <h3>(03) Fun / Experimental Websites</h3>
       <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-20 auto-rows-[minmax(200px,auto)] mt-10">
         {EXPERIMENTAL_WEBSITES.map((website) => (
@@ -47,7 +47,7 @@ const ExperimentalWebsitesSection = () => {
                 height={300}
                 className="w-full h-auto object-cover"
               />
-              <div className="flex justify-between text-lg xl:text-2xl mt-2">
+              <div className="flex justify-between xl:text-xl 3xl:text-2xl mt-2">
                 <h3
                   onMouseEnter={() => setCursorState("sm-hovered")}
                   onMouseLeave={() => setCursorState("regular")}

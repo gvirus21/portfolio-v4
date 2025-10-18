@@ -15,7 +15,7 @@ export const WorkSection = () => {
         <H4
           onMouseEnter={() => setCursorState("lg-hovered")}
           onMouseLeave={() => setCursorState("regular")}
-          className="text-5xl sm:w-[40rem] md:text-5xl md:w-[32rem] lg:text-6xl xl:text-7xl 3xl:text-8xl lg:w-[40rem] xl:w-[50rem] 3xl:w-[60rem] uppercase"
+          className="text-5xl sm:w-[40rem] md:text-5xl md:w-[32rem] lg:text-6xl xl:text-7xl 3xl:text-8xl lg:w-[40rem] xl:w-[50rem] 3xl:w-[60rem] uppercase tracking-wide md:tracking-normal"
         >
           Some of My Noteworthy Works
         </H4>
@@ -25,7 +25,7 @@ export const WorkSection = () => {
         <h3
           onMouseEnter={() => setCursorState("sm-hovered")}
           onMouseLeave={() => setCursorState("regular")}
-          className="text-base md:text-lg lg:text-xl xl:text-2xl md:w-[36rem] lg:w-[44rem] xl:w-[50rem] 3xl:w-[60rem] xl:font-light mt-10 lg:mt-16 xl:mt-12 3xl:mt-16"
+          className="text-base lg:text-xl 3xl:text-2xl md:w-[32rem] lg:w-[44rem] 3xl:w-[50rem] xl:font-light mt-10 lg:mt-16 xl:mt-12 3xl:mt-16 xl:tracking-wide"
         >
           Throughout my career, I have worked with some of the most Ambitious
           and fun brands in the industry, here are some of my favourite ones.
@@ -119,7 +119,7 @@ const MasonryGrid = () => {
                     <span
                       onMouseEnter={() => setCursorState("sm-hovered")}
                       onMouseLeave={() => setCursorState("regular")}
-                      className="text-[10px] xl:text-lg tracking-tighter font-medium block"
+                      className="text-[10px] xl:text-lg lg:tracking-tight font-medium block"
                     >
                       {work.category}
                     </span>
