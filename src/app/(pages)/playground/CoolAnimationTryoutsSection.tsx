@@ -7,11 +7,11 @@ import { useFirstVisit } from "@/hooks/useFirstVisit";
 const CoolAnimationTryoutsSection = () => {
   const { setCursorState, setCursorText } = useCursorState();
 
-  const FIRST_VISIT_KEY = "first-visit";
+  const FIRST_VISIT_KEY = "first-visit-cool-animation";
   const firstVisit = useFirstVisit(FIRST_VISIT_KEY);
-  const textAnimationDelay = firstVisit ? 0.7 : 1.4;
 
-  const imageAnimationDelay = firstVisit ? 0.7 : 1.4;
+  const textAnimationDelay = firstVisit ? 0.8 : 1.4;
+  const imageAnimationDelay = firstVisit ? 0.8 : 1.4;
 
   const COOL_ANIMATION_TRYOUTS = [
     {

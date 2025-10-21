@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
@@ -26,6 +26,7 @@ const AnimatedImage = ({
 }: Props) => {
   const isMobile = useIsMobile();
   const [mounted, setMounted] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const { setCursorState } = useCursorState();
 
@@ -36,7 +37,10 @@ const AnimatedImage = ({
   // Don't animate until we know the screen size
   if (!mounted) {
     return (
-      <div className={cn("relative overflow-hidden", className)}>
+      <div
+        className={cn("relative overflow-hidden", className)}
+        style={{ visibility: "hidden" }}
+      >
         <div className="w-full h-full">
           <Image
             src={src}
@@ -52,9 +56,11 @@ const AnimatedImage = ({
 
   return (
     <div
+      ref={containerRef}
       onMouseEnter={() => setCursorState("sm-hovered")}
       onMouseLeave={() => setCursorState("regular")}
       className={cn("relative overflow-hidden", className)}
+      style={{ visibility: "hidden" }}
     >
       <motion.div
         initial={isMobile ? { rotate: 0, scale: 1 } : { rotate: 5, scale: 1.2 }}
@@ -76,6 +82,11 @@ const AnimatedImage = ({
                 ease: [0.25, 0.1, 0.25, 1],
               }
         }
+        onAnimationStart={() => {
+          if (containerRef.current) {
+            containerRef.current.style.visibility = "visible";
+          }
+        }}
         viewport={{ once: true }}
         className="w-full h-full origin-center"
       >
@@ -98,6 +109,11 @@ const AnimatedImage = ({
             delay: animationDelay,
           }}
           viewport={{ once: true }}
+          onAnimationStart={() => {
+            if (containerRef.current) {
+              containerRef.current.style.visibility = "visible";
+            }
+          }}
           className="absolute inset-0 w-full h-full bg-gray-200"
         />
       )}
