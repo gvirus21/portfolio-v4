@@ -13,6 +13,7 @@ interface Props {
   className?: string;
   width?: number;
   height?: number;
+  animationDelay?: number; // Add custom delay prop
 }
 
 const AnimatedImage = ({
@@ -21,6 +22,7 @@ const AnimatedImage = ({
   width = 1000,
   height = 1000,
   className,
+  animationDelay = 0,
 }: Props) => {
   const isMobile = useIsMobile();
   const [mounted, setMounted] = useState(false);
@@ -68,7 +70,8 @@ const AnimatedImage = ({
           isMobile
             ? { duration: 0 }
             : {
-                delay: 0.2,
+                delay: animationDelay + 0.1,
+                // delay: 0.2,
                 duration: 1.2,
                 ease: [0.25, 0.1, 0.25, 1],
               }
@@ -92,7 +95,7 @@ const AnimatedImage = ({
           transition={{
             duration: 1,
             ease: [0.65, 0, 0.35, 1],
-            delay: 0.2,
+            delay: animationDelay,
           }}
           viewport={{ once: true }}
           className="absolute inset-0 w-full h-full bg-gray-200"

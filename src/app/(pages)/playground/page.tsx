@@ -7,15 +7,20 @@ import ExperimentalWebsitesSection from "./ExperimentalWebsitesSection";
 import Copy from "@/components/Copy";
 import Image from "next/image";
 import useCursorState from "@/store/useCursorState";
+import { useFirstVisit } from "@/hooks/useFirstVisit";
 
 const PlaygroundPage: FC = () => {
   const { setCursorState } = useCursorState();
+
+  const FIRST_VISIT_KEY = "first-visit";
+  const firstVisit = useFirstVisit(FIRST_VISIT_KEY);
+  const textAnimationDelay = firstVisit ? 0.5 : 1;
 
   return (
     <div className="px-4 py-16 xl:pb-28">
       <header className="flex flex-col items-center text-center">
         <span className="flex justify-center items-center h-[40vh] md:h-[40vh] lg:h-[46vh]">
-          <Copy>
+          <Copy delay={textAnimationDelay}>
             <h1
               onMouseEnter={() => setCursorState("lg-hovered")}
               onMouseLeave={() => setCursorState("regular")}
@@ -28,7 +33,7 @@ const PlaygroundPage: FC = () => {
             </h1>
           </Copy>
         </span>
-        <Copy>
+        <Copy delay={textAnimationDelay + 0.3}>
           <p
             onMouseEnter={() => setCursorState("sm-hovered")}
             onMouseLeave={() => setCursorState("regular")}
@@ -43,20 +48,24 @@ const PlaygroundPage: FC = () => {
           </p>
         </Copy>
 
-        <div className="relative flex justify-center items-center w-full py-[14vh] md:py-[12vh] lg:py-[8vh] xl:py-[10vh]">
-          <Image
-            src="/assets/svgs/arrow-down.svg"
-            height={200}
-            width={200}
-            className="h-[1.4rem] lg:h-[1.8rem] opacity-90"
-            alt="arrow-down"
-          />
-        </div>
+        <Copy delay={textAnimationDelay + 0.4}>
+          <div className="relative flex justify-center items-center w-full py-[14vh] md:py-[12vh] lg:py-[8vh] xl:py-[10vh]">
+            <Image
+              src="/assets/svgs/arrow-down.svg"
+              height={200}
+              width={200}
+              className="h-[1.4rem] lg:h-[1.8rem] opacity-90"
+              alt="arrow-down"
+            />
+          </div>
+        </Copy>
       </header>
 
-      <CoolAnimationTryoutsSection />
-      <WebDesignsSection />
-      <ExperimentalWebsitesSection />
+      <div>
+        <CoolAnimationTryoutsSection />
+        <WebDesignsSection />
+        <ExperimentalWebsitesSection />
+      </div>
     </div>
   );
 };
