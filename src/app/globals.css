@@ -98,37 +98,6 @@ body {
   margin-right: 0;
 }
 
-/* Logo transition animation */
-.logo-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100svh;
-  z-index: 10000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #222;
-  pointer-events: none;
-  opacity: 0;
-}
-
-.logo-container {
-  width: 200px;
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.char {
-  position: relative;
-  display: inline-block;
-  will-change: transform;
-}
-
 /* ===========================================
    COMPONENT-SPECIFIC UTILITIES
    =========================================== */
