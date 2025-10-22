@@ -14,19 +14,18 @@ const Navbar = () => {
   const { setCursorState } = useCursorState();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  
   return (
     <>
       <div className="fixed top-0 inset-x-0 h-16 sm:h-16 bg-background z-30 pointer-events-none" />
 
       <motion.nav
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.8,
-          ease: [0.25, 0.46, 0.45, 0.94],
-          delay: pathname === "/" ? 2.8 : 0.2, //only accounts for the reload in that particular page
-        }}
+        // initial={{ opacity: 0, y: 16 }}
+        // animate={{ opacity: 1, y: 0 }}
+        // transition={{
+        //   duration: 0.8,
+        //   ease: [0.25, 0.46, 0.45, 0.94],
+        //   delay: pathname === "/" ? 2.8 : 0.2, //only accounts for the reload in that particular page
+        // }}
         className={cn(
           "fixed top-0 w-full pt-4 pb-3 px-4 sm:px-6 flex justify-between items-start z-50"
         )}
@@ -47,39 +46,40 @@ const Navbar = () => {
             <div className="text-sm text-gray-500">VIZAG, INDIA</div>
           </div>
 
-          <div className="hidden lg:flex items-center lg:text-sm xl:text-base gap-4">
-            <FlipLink underline className="uppercase" href="/">
-              Home
-            </FlipLink>
-            <FlipLink underline className="uppercase" href="/about">
-              About
-            </FlipLink>
-            <FlipLink underline className="uppercase" href="/pricing">
-              Pricing
-            </FlipLink>
-            <FlipLink underline className="uppercase" href="/playground">
-              Playground
-            </FlipLink>
-            {/* <FlipLink underline className="uppercase" href="/journal">
+          <div className="lg:w-[24rem] xl:w-[28rem] hidden lg:flex items-center justify-between lg:text-sm xl:text-base">
+            <div className="flex gap-4">
+              <FlipLink underline className="uppercase" href="/">
+                Home
+              </FlipLink>
+              <FlipLink underline className="uppercase" href="/about">
+                About
+              </FlipLink>
+              <FlipLink underline className="uppercase" href="/pricing">
+                Pricing
+              </FlipLink>
+              <FlipLink underline className="uppercase" href="/playground">
+                Playground
+              </FlipLink>
+              {/* <FlipLink underline className="uppercase" href="/journal">
               Journal
-            </FlipLink> */}
-            {/* <FlipLink
+              </FlipLink> */}
+              {/* <FlipLink
               underline
               className="uppercase"
               href="https://instagram.com/gourav.kumar__"
               should_transition={false}
-            >
+              >
               Instagram
-            </FlipLink> */}
+              </FlipLink> */}
+            </div>
             <div
               onMouseEnter={() => {
                 setCursorState("sm-hovered");
-                // setCursorText("Book a Free Call");
               }}
               onMouseLeave={() => {
                 setCursorState("regular");
-                // setCursorText("");
               }}
+              className=""
             >
               <SkeletonPillButton
                 link="/about"
