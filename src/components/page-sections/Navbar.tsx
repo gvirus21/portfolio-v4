@@ -12,8 +12,9 @@ import useCursorState from "@/store/useCursorState";
 const Navbar = () => {
   const pathname = usePathname();
   const { setCursorState } = useCursorState();
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  
   return (
     <>
       <div className="fixed top-0 inset-x-0 h-16 sm:h-16 bg-background z-30 pointer-events-none" />
@@ -24,7 +25,7 @@ const Navbar = () => {
         transition={{
           duration: 0.8,
           ease: [0.25, 0.46, 0.45, 0.94],
-          delay: pathname === "/" ? 2.8 : 0.7,
+          delay: pathname === "/" ? 2.8 : 0.2, //only accounts for the reload in that particular page
         }}
         className={cn(
           "fixed top-0 w-full pt-4 pb-3 px-4 sm:px-6 flex justify-between items-start z-50"

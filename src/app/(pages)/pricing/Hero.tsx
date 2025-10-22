@@ -5,7 +5,7 @@ import { useFirstVisit } from "@/hooks/useFirstVisit";
 const Hero = () => {
   const FIRST_VISIT_KEY = "pricing-page-first-visit";
   const firstVisit = useFirstVisit(FIRST_VISIT_KEY);
-  const textAnimationDelay = firstVisit ? 0 : 0.7;
+  const textAnimationDelay = firstVisit ? 0.4 : 0.8;
 
   return (
     <section className="relative h-screen w-screen max-w-full">

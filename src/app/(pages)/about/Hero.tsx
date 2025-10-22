@@ -8,7 +8,7 @@ export const HeroSection = () => {
 
   const FIRST_VISIT_KEY = "about-page-first-visit";
   const firstVisit = useFirstVisit(FIRST_VISIT_KEY);
-  const textAnimationDelay = firstVisit ? 0 : 0.8;
+  const textAnimationDelay = firstVisit ? 0.4 : 0.8;
 
   return (
     <section className="relative h-screen md:max-h-[32rem] lg:max-h-[36rem] xl:max-h-none md:mt-20 max-w-screen overflow-hidden">
