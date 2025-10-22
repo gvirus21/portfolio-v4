@@ -21,6 +21,7 @@ export const HeroSection = () => {
 
   const { setCursorState } = useCursorState();
 
+  // const textAnimationDelay = firstVisit ? 3 : 0.6;
   const textAnimationDelay = firstVisit ? 3 : 0.6;
 
   const heroImageContainerVariants = {
@@ -50,7 +51,7 @@ export const HeroSection = () => {
 
   return (
     <section ref={containerRef} className="w-full mx-auto pt-44 px-4 sm:px-10">
-      <div className="max-w-[38rem] mb-0 sm:mb-16 mt-[0rem] sm:mt-[10rem] md:mt-[12rem] xl:mt-[10rem]">
+      <div className="max-w-[38rem] mb-0 sm:mb-16 mt-[0rem] sm:mt-[10rem] md:mt-[12rem] xl:mt-[6rem] 3xl:mt-[10rem]">
         <Copy delay={textAnimationDelay}>
           <h1
             onMouseEnter={() => setCursorState("sm-hovered")}

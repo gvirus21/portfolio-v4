@@ -30,14 +30,14 @@ export default function Copy({
       if (!containerRef.current) return;
 
       // Check if device is mobile/touch screen
-      const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      const isMobile = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
       // If mobile, just make content visible without animation
       if (isMobile) {
         const targets = containerRef.current.hasAttribute("data-copy-wrapper")
           ? [containerRef.current, ...Array.from(containerRef.current.children)]
           : [containerRef.current];
-        
+
         gsap.set(targets, { visibility: "visible" });
         return;
       }
@@ -62,19 +62,32 @@ export default function Copy({
           type: "lines",
           mask: "lines",
           linesClass: "line++",
-          lineThreshold: 0.1,
+          lineThreshold: 0.3,
         });
 
         splitRefs.current.push(split);
 
         const computedStyle = window.getComputedStyle(element);
         const textIndent = computedStyle.textIndent;
+        const letterSpacing = computedStyle.letterSpacing;
 
         if (textIndent && textIndent !== "0px") {
           if (split.lines.length > 0) {
             (split.lines[0] as HTMLElement).style.paddingLeft = textIndent;
           }
           (element as HTMLElement).style.textIndent = "0";
+        }
+
+        // Handle negative letter spacing by adding padding to prevent text cutoff
+        if (letterSpacing && letterSpacing.includes("-")) {
+          const negativeSpacing = parseFloat(letterSpacing.replace("px", ""));
+          if (negativeSpacing < 0) {
+            split.lines.forEach((line) => {
+              (line as HTMLElement).style.paddingRight = `${
+                Math.abs(negativeSpacing) * 2
+              }px`;
+            });
+          }
         }
 
         lines.current.push(...split.lines);
@@ -89,10 +102,9 @@ export default function Copy({
         ease: "power4.out",
         delay: delay,
         onStart: () => {
-          const targets = [
-            containerRef.current,
-            ...elementRefs.current,
-          ].filter((el): el is Element => Boolean(el));
+          const targets = [containerRef.current, ...elementRefs.current].filter(
+            (el): el is Element => Boolean(el)
+          );
 
           gsap.set(targets, { visibility: "visible" });
         },
@@ -118,10 +130,9 @@ export default function Copy({
           }
         });
 
-        const targets = [
-          containerRef.current,
-          ...elementRefs.current,
-        ].filter((el): el is Element => Boolean(el));
+        const targets = [containerRef.current, ...elementRefs.current].filter(
+          (el): el is Element => Boolean(el)
+        );
 
         if (targets.length) {
           gsap.set(targets, { clearProps: "visibility" });
