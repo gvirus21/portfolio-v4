@@ -125,7 +125,7 @@ const AnimatedWorkTable = ({
               alt={`Preload ${project.name} image ${idx + 1}`}
               width={1}
               height={1}
-              priority={idx === 0} // Prioritize first image of each project
+              priority={true} // Prioritize all images
             />
           ))
         )}
