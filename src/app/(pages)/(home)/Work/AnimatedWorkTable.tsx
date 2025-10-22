@@ -5,6 +5,7 @@ import ProjectItem from "./row";
 import styles from "./style.module.scss";
 import { MotionValue, useTransform } from "motion/react";
 import { useIsMouseDevice } from "@/hooks/useMediaQuery";
+import Image from "next/image";
 
 const AnimatedWorkTable = ({
   scrollYProgress,
@@ -114,6 +115,22 @@ const AnimatedWorkTable = ({
 
   return (
     <div className={styles.table}>
+      {/* Hidden preload component to load all images */}
+      <div className="hidden">
+        {projectsData.map((project) =>
+          project.additonal_details.images.map((imageSrc, idx) => (
+            <Image
+              key={`preload-${project.id}-${idx}`}
+              src={imageSrc}
+              alt={`Preload ${project.name} image ${idx + 1}`}
+              width={1}
+              height={1}
+              priority={idx === 0} // Prioritize first image of each project
+            />
+          ))
+        )}
+      </div>
+
       <div className={styles.body}>
         {projectsData.map((project, index) => (
           <ProjectItem
