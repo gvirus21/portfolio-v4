@@ -9,8 +9,7 @@ import {
   useTransform,
   useMotionTemplate,
 } from "motion/react";
-import { useRef, useEffect, useState } from "react";
-import Image from "next/image";
+import { useRef } from "react";
 import {
   useIsMobile,
   useIsDesktop,
@@ -24,18 +23,6 @@ const deliverySteps = [
     content:
       "Instead of providing a standardised solution, I respond to each project for what they actually need. I want to help brands not only build websites, I want to help brands communicate better, convert more, and create digital experiences that people visit and genuinely enjoy. I collaborate closely, ask the right questions, bridge design and development, and produce work that is beautiful, but most importantly, impacts the business.",
   },
-];
-
-// Hoisted image paths (8 images) used by the auto-cycling carousel
-const IMAGE_PATHS = [
-  "/assets/images/homepage/value-section/typography_01.webp",
-  "/assets/images/homepage/value-section/batman.webp",
-  "/assets/images/homepage/value-section/meron.webp",
-  "/assets/images/homepage/value-section/typography_02.webp",
-  "/assets/images/homepage/value-section/samurai.webp",
-  "/assets/images/homepage/value-section/evangealion.webp",
-  "/assets/images/homepage/value-section/figma_ss.webp",
-  "/assets/images/homepage/value-section/gojo.webp",
 ];
 
 export const ValueSection = () => {
@@ -60,16 +47,6 @@ export const ValueSection = () => {
     ["50%", "100%"]
   );
   const maskSize = useMotionTemplate`${imageWidth} 100%`;
-
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    const totalImages = IMAGE_PATHS.length;
-    const intervalId = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % totalImages);
-    }, 400);
-    return () => clearInterval(intervalId);
-  }, []);
 
   return (
     <section ref={container} className="pt-0 px-4 md:px-8 mt-24 sm:mt-40">
@@ -129,13 +106,20 @@ export const ValueSection = () => {
           }}
           className="relative mt-16 md:mt-20 xl:mt-44 aspect-[4/3] sm:aspect-[16/9] 3xl:w-10/12 mx-auto"
         >
-          <Image
-            src={IMAGE_PATHS[currentImageIndex]}
-            alt="Value Image"
-            fill
-            className="object-cover"
-            priority
-          />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+            preload="metadata"
+          >
+            <source
+              src="/assets/videos/portfolio-designs.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
         </motion.div>
       </div>
     </section>
