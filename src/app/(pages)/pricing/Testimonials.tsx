@@ -2,6 +2,7 @@
 
 import Copy from "@/components/Copy";
 import { CaptionSmallText, DisplaySmallText } from "@/components/ui/Typography";
+import useCursorState from "@/store/useCursorState";
 
 const TESTIMONIALS = [
   {
@@ -45,11 +46,17 @@ const TESTIMONIALS = [
 ];
 
 const Testimonials = () => {
+  const { setCursorState, setCursorText } = useCursorState();
+
   return (
     <section className="relative min-h-[30vh] w-screen max-w-full flex flex-col md:flex-row mt-20 overflow-x-hidden">
       <div className="w-3/12 pt-6">
         <Copy>
-          <DisplaySmallText className="text-lg md:text-sm lg:text-lg w-[10rem]">
+          <DisplaySmallText
+            className="text-lg md:text-sm lg:text-lg w-[10rem]"
+            onMouseEnter={() => setCursorState("sm-hovered")}
+            onMouseLeave={() => setCursorState("regular")}
+          >
             Our Customers Describes us best
           </DisplaySmallText>
         </Copy>
@@ -66,7 +73,15 @@ const Testimonials = () => {
             <div className="space-y-3">
               {testimonial.text.map((paragraph, index) => (
                 <Copy key={index}>
-                  <CaptionSmallText className="font-light leading-relaxed">
+                  <CaptionSmallText
+                    className="font-light leading-relaxed"
+                    // onMouseEnter={() =>
+                    //   setCursorState("sm-hovered")
+                    // }
+                    // onMouseLeave={() =>
+                    //   setCursorState("regular")
+                    // }
+                  >
                     {paragraph}
                   </CaptionSmallText>
                 </Copy>
@@ -75,12 +90,26 @@ const Testimonials = () => {
 
             <div className="mt-6 pt-4">
               <Copy>
-                <CaptionSmallText className="text-sm font-light">
+                <CaptionSmallText
+                  className="text-sm font-light"
+                  onMouseEnter={() => {
+                    setCursorState("sm-hovered");
+                    setCursorText("Visit Profile");
+                  }}
+                  onMouseLeave={() => {
+                    setCursorState("regular");
+                    setCursorText("");
+                  }}
+                >
                   {testimonial.name}
                 </CaptionSmallText>
               </Copy>
               <Copy>
-                <CaptionSmallText className="text-gray-600 text-xs italic">
+                <CaptionSmallText
+                  className="text-gray-600 text-xs italic"
+                  onMouseEnter={() => setCursorState("sm-hovered")}
+                  onMouseLeave={() => setCursorState("regular")}
+                >
                   {testimonial.position}
                 </CaptionSmallText>
               </Copy>

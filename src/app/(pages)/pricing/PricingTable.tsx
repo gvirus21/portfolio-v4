@@ -4,9 +4,13 @@ import Copy from "@/components/Copy";
 import { DisplaySmallText } from "@/components/ui/Typography";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
+import useCursorState from "@/store/useCursorState";
+import { useIsTouchDevice } from "@/hooks/useMediaQuery";
 
 const PricingTable = () => {
   const container = useRef(null);
+  const { setCursorState } = useCursorState();
+  const isTouchDevice = useIsTouchDevice();
 
   const { scrollYProgress } = useScroll({
     target: container,
@@ -86,7 +90,11 @@ const PricingTable = () => {
     >
       <div className="2xl:w-3/12 3xl:w-5/12 pt-6">
         <Copy>
-          <DisplaySmallText className="text-lg md:text-sm lg:text-lg">
+          <DisplaySmallText
+            className="text-lg md:text-sm lg:text-lg"
+            onMouseEnter={() => !isTouchDevice && setCursorState("sm-hovered")}
+            onMouseLeave={() => !isTouchDevice && setCursorState("regular")}
+          >
             Our Pricing
           </DisplaySmallText>
         </Copy>
@@ -105,7 +113,15 @@ const PricingTable = () => {
             <div className="flex justify-between  mt-6 mb-8 sm:mb-16 lg:mb-20">
               <div className="flex justify-between w-full sm:w-auto">
                 <Copy>
-                  <DisplaySmallText className="w-[9rem] lg:w-[16rem] sm:text-sm md:text-sm">
+                  <DisplaySmallText
+                    className="w-[9rem] lg:w-[16rem] sm:text-sm md:text-sm"
+                    onMouseEnter={() =>
+                      !isTouchDevice && setCursorState("sm-hovered")
+                    }
+                    onMouseLeave={() =>
+                      !isTouchDevice && setCursorState("regular")
+                    }
+                  >
                     <span>({String(card.id).padStart(2, "0")}) </span>
                     {card.title}
                   </DisplaySmallText>
@@ -114,17 +130,43 @@ const PricingTable = () => {
                   {card.features.map((feature, featureIndex) => (
                     <div key={featureIndex}>
                       <Copy>
-                        <DisplaySmallText className="sm:text-sm md:text-sm mb-1">
+                        <DisplaySmallText
+                          className="sm:text-sm md:text-sm mb-1"
+                          onMouseEnter={() =>
+                            !isTouchDevice && setCursorState("sm-hovered")
+                          }
+                          onMouseLeave={() =>
+                            !isTouchDevice && setCursorState("regular")
+                          }
+                        >
                           {feature}
                         </DisplaySmallText>
                       </Copy>
                     </div>
                   ))}
-                  <p className="text-lg mt-10 sm:hidden">{card.priceRange}</p>
+                  <p
+                    className="text-lg mt-10 sm:hidden"
+                    onMouseEnter={() =>
+                      !isTouchDevice && setCursorState("sm-hovered")
+                    }
+                    onMouseLeave={() =>
+                      !isTouchDevice && setCursorState("regular")
+                    }
+                  >
+                    {card.priceRange}
+                  </p>
                 </div>
               </div>
               <Copy>
-                <DisplaySmallText className="hidden sm:block text-xs sm:text-sm md:text-sm">
+                <DisplaySmallText
+                  className="hidden sm:block text-xs sm:text-sm md:text-sm"
+                  onMouseEnter={() =>
+                    !isTouchDevice && setCursorState("sm-hovered")
+                  }
+                  onMouseLeave={() =>
+                    !isTouchDevice && setCursorState("regular")
+                  }
+                >
                   {card.priceRange}
                 </DisplaySmallText>
               </Copy>

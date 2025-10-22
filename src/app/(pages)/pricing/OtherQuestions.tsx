@@ -1,13 +1,15 @@
 import PillButton from "@/components/ui/buttons/PillButton";
-import {
-  DisplaySmallText,
-} from "@/components/ui/Typography";
+import { DisplaySmallText } from "@/components/ui/Typography";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import Copy from "@/components/Copy";
+import useCursorState from "@/store/useCursorState";
+import { useIsTouchDevice } from "@/hooks/useMediaQuery";
 
 const OtherQuestions = () => {
   const container = useRef(null);
+  const { setCursorState } = useCursorState();
+  const isTouchDevice = useIsTouchDevice();
 
   const { scrollYProgress } = useScroll({
     target: container,
@@ -84,7 +86,11 @@ const OtherQuestions = () => {
     >
       <div className="2xl:w-3/12 3xl:w-5/12 pt-6">
         <Copy>
-          <DisplaySmallText className="text-lg md:text-sm lg:text-lg w-[6rem] leading-6">
+          <DisplaySmallText
+            className="text-lg md:text-sm lg:text-lg w-[6rem] leading-6"
+            onMouseEnter={() => !isTouchDevice && setCursorState("sm-hovered")}
+            onMouseLeave={() => !isTouchDevice && setCursorState("regular")}
+          >
             Any Other Questions?
           </DisplaySmallText>
         </Copy>
@@ -103,13 +109,29 @@ const OtherQuestions = () => {
 
               <div className="flex flex-col sm:flex-row justify-between mt-6 mb-8 sm:mb-16 lg:mb-20">
                 <Copy>
-                  <DisplaySmallText className="sm:w-[13rem] text-2xl sm:text-base lg:w-[16rem] font-light tracking-tight mr-5">
+                  <DisplaySmallText
+                    className="sm:w-[13rem] text-2xl sm:text-base lg:w-[16rem] font-light tracking-tight mr-5"
+                    onMouseEnter={() =>
+                      !isTouchDevice && setCursorState("sm-hovered")
+                    }
+                    onMouseLeave={() =>
+                      !isTouchDevice && setCursorState("regular")
+                    }
+                  >
                     <span>({String(qa.id).padStart(2, "0")}) </span>
                     {qa.question}
                   </DisplaySmallText>
                 </Copy>
                 <Copy>
-                  <DisplaySmallText className="mt-4 sm:mt-0 w-[95%] sm:w-[20rem] md:w-[24rem] xl:w-[26rem] 2xl:w-[32rem] sm:mr-5 md:mr-10 xl:mr-[8vw] 2xl:mr-[8vw] text-base sm:text-base font-light tracking-tight">
+                  <DisplaySmallText
+                    className="mt-4 sm:mt-0 w-[95%] sm:w-[20rem] md:w-[24rem] xl:w-[26rem] 2xl:w-[32rem] sm:mr-5 md:mr-10 xl:mr-[8vw] 2xl:mr-[8vw] text-base sm:text-base font-light tracking-tight"
+                    onMouseEnter={() =>
+                      !isTouchDevice && setCursorState("sm-hovered")
+                    }
+                    onMouseLeave={() =>
+                      !isTouchDevice && setCursorState("regular")
+                    }
+                  >
                     {qa.answer}
                   </DisplaySmallText>
                 </Copy>
@@ -117,7 +139,11 @@ const OtherQuestions = () => {
             </div>
           ))}
         </div>
-        <div className="w-24">
+        <div
+          className="w-24"
+          onMouseEnter={() => !isTouchDevice && setCursorState("sm-hovered")}
+          onMouseLeave={() => !isTouchDevice && setCursorState("regular")}
+        >
           <PillButton link="/contact">Contact</PillButton>
         </div>
       </div>
