@@ -7,6 +7,7 @@ import { TfiArrowTopRight } from "react-icons/tfi";
 
 import SlidingLink from "@/components/ui/links/SlidingLink";
 import PillButton from "../ui/buttons/PillButton";
+import useCursorState from "@/store/useCursorState";
 
 const FOOTER_LINKS = [
   { name: "Home", href: "/" },
@@ -28,6 +29,8 @@ const underlineStyle: CSSProperties & { "--underline-height": string } = {
 };
 
 const DesktopFooterLinks = () => {
+  const { setCursorState } = useCursorState();
+
   return (
     <div className="flex justify-between w-full lg:max-w-[24rem] 2xl:max-w-[30rem] text-sm lg:mt-8 xl:mt-12">
       <nav className="flex flex-col space-y-2 2xl:space-y-2">
@@ -37,6 +40,8 @@ const DesktopFooterLinks = () => {
             href={href}
             className="link-underline-anim w-fit"
             style={underlineStyle}
+            onMouseEnter={() => setCursorState("sm-hovered")}
+            onMouseLeave={() => setCursorState("regular")}
           >
             {name}
           </Link>
@@ -44,16 +49,21 @@ const DesktopFooterLinks = () => {
       </nav>
       <nav className="flex flex-col">
         {SOCIAL_MEDIA_LINKS.map(({ name, href }) => (
-          <SlidingLink
+          <div
             key={name}
-            link={href}
-            underlineHeight="0.5px"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="-mb-1 xl:mb-0"
+            onMouseEnter={() => setCursorState("sm-hovered")}
+            onMouseLeave={() => setCursorState("regular")}
           >
-            {name}
-          </SlidingLink>
+            <SlidingLink
+              link={href}
+              underlineHeight="0.5px"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="-mb-1 xl:mb-0"
+            >
+              {name}
+            </SlidingLink>
+          </div>
         ))}
       </nav>
     </div>
@@ -62,6 +72,7 @@ const DesktopFooterLinks = () => {
 
 export function Footer() {
   const pathname = usePathname();
+  const { setCursorState } = useCursorState();
 
   const preventDuplicateNavigation =
     (href: string) => (event: MouseEvent<HTMLAnchorElement>) => {
@@ -80,12 +91,20 @@ export function Footer() {
       <div className="fixed bottom-0 hidden lg:flex flex-col justify-between h-[40vh] xl:h-[45vh] 2xl:h-[50vh] 3xl:h-[36vh] lg:min-h-[26rem] xl:min-h-0 w-full bg-black text-white pt-6 xl:pt-0 px-10">
         <div className="flex justify-between">
           <div>
-            <h2 className="lg:text-4xl 3xl:text-5xl tracking-normal  text-center lg:text-left xl:mt-8 3xl:mt-14">
+            <h2
+              onMouseEnter={() => setCursorState("md-hovered")}
+              onMouseLeave={() => setCursorState("regular")}
+              className="lg:text-4xl 3xl:text-5xl tracking-normal  text-center lg:text-left xl:mt-8 3xl:mt-14"
+            >
               Do it Once, Do it right.
             </h2>
             <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start lg:justify-between">
               <div className="flex flex-col items-center lg:items-start mt-4 sm:mt-6 lg:mt-2">
-                <p className="text-base sm:text-lg 3xl:text-xl tracking-tight ">
+                <p
+                  onMouseEnter={() => setCursorState("md-hovered")}
+                  onMouseLeave={() => setCursorState("regular")}
+                  className="text-base sm:text-lg 3xl:text-xl tracking-tight "
+                >
                   Your product deserves a better site.
                 </p>
                 <p className="lg:mt-20 xl:mt-16 2xl:mt-14 3xl:mt-20 text-gray-200">
@@ -93,7 +112,11 @@ export function Footer() {
                   <br />
                   gouravkumar2889@gmail.com
                 </p>
-                <div className="mt-6">
+                <div
+                  className="mt-6"
+                  onMouseEnter={() => setCursorState("sm-hovered")}
+                  onMouseLeave={() => setCursorState("regular")}
+                >
                   <PillButton variant="light" link={`mailto:${CONTACT_EMAIL}`}>
                     Drop me a Mail
                   </PillButton>
@@ -155,6 +178,8 @@ export function Footer() {
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
                 className="hover:underline underline-offset-4 bg-white text-black rounded-full px-2 py-[2px] text-[12px] md:text-sm tracking-tighter font-light w-fit"
+                onMouseEnter={() => setCursorState("sm-hovered")}
+                onMouseLeave={() => setCursorState("regular")}
               >
                 Drop me a Mail
               </a>
