@@ -8,6 +8,7 @@ import MobileMenu from "./MobileMenu";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import useCursorState from "@/store/useCursorState";
+import { TfiArrowTopRight } from "react-icons/tfi";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -16,7 +17,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="fixed top-0 inset-x-0 h-16 sm:h-16 bg-background z-30 pointer-events-none" />
+      <div className="fixed top-0 inset-x-0 h-16 sm:h-14 xl:h-15 bg-background z-30 pointer-events-none" />
 
       <motion.nav
         initial={{ opacity: 0, y: 16 }}
@@ -46,7 +47,7 @@ const Navbar = () => {
             <div className="text-sm text-gray-500">VIZAG, INDIA</div>
           </div>
 
-          <div className="lg:w-[24rem] xl:w-[28rem] hidden lg:flex items-center justify-between lg:text-sm xl:text-base">
+          <div className="lg:w-[24.5rem] xl:w-[28rem] hidden lg:flex items-center justify-between lg:text-sm xl:text-base">
             <div className="flex gap-4">
               <FlipLink underline className="uppercase" href="/">
                 Home
@@ -60,17 +61,6 @@ const Navbar = () => {
               <FlipLink underline className="uppercase" href="/playground">
                 Playground
               </FlipLink>
-              {/* <FlipLink underline className="uppercase" href="/journal">
-              Journal
-              </FlipLink> */}
-              {/* <FlipLink
-              underline
-              className="uppercase"
-              href="https://instagram.com/gourav.kumar__"
-              should_transition={false}
-              >
-              Instagram
-              </FlipLink> */}
             </div>
             <div
               onMouseEnter={() => {
@@ -81,9 +71,19 @@ const Navbar = () => {
               }}
               className=""
             >
+              {/* for Ipad pro (lg + touch-based) screen */}
+              <a
+                href="#"
+                className="hidden lg:flex xl:hidden group lg:text-sm bg-foreground font-light text-white tracking-tight px-2 py-[2px] rounded-full"
+              >
+                <span>Let&apos;s talk</span>
+                <TfiArrowTopRight className="mt-1.5 ml-1 text-[12px]" />
+              </a>
+
+              {/* for Desktop screen */}
               <SkeletonPillButton
-                link="/about"
-                className="group lg:text-[12px] xl:text-base"
+                link="#"
+                className="hidden xl:flex group lg:text-[12px] xl:text-base"
               >
                 <span className="group-hover:mr-3">Let&apos;s talk</span>
               </SkeletonPillButton>

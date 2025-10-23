@@ -22,7 +22,7 @@ const SkeletonPillButton = ({
   return (
     <Link
       className={cn(
-        "relative flex justify-center items-center lg:px-3 lg:pr-4 xl:px-5 lg:h-7 xl:h-8 text-sm text-black rounded-full font-light hover:opacity-90 transition-opacity overflow-clip border border-black",
+        "relative flex justify-center items-center lg:px-3 lg:pr-4 xl:px-5 lg:h-7 xl:h-7.5 text-sm text-black rounded-full font-light hover:opacity-90 transition-opacity overflow-clip border border-black",
         className
       )}
       href={link}
@@ -35,7 +35,7 @@ const SkeletonPillButton = ({
           backgroundColor: isHovered ? "black" : "black",
         }}
         transition={{ duration: 0.2, ease: "easeIn" }}
-        className="absolute top-[50%] -translate-y-0.5 lg:left-2 xl:left-3 h-[6px] w-[6px] rounded-full bg-black"
+        className="absolute top-[50%] -translate-y-[3px] lg:left-2 xl:left-3 h-[7px] aspect-square rounded-full bg-black"
       />
       <motion.span
         className="z-10"
