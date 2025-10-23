@@ -1,7 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { TfiClose } from "react-icons/tfi";
 import AnimatedImage from "@/components/ui/AnimatedImage";
 import useCursorState from "@/store/useCursorState";
 
@@ -63,6 +62,42 @@ const WebDesignsSection = () => {
 
   const handleClose = () => setSelectedDesign(null);
 
+  // Prevent background scrolling when modal is open
+  useEffect(() => {
+    if (selectedDesign) {
+      const scrollY = window.scrollY;
+
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
+
+      // Store for restoration
+      document.body.dataset.scrollY = scrollY.toString();
+
+      // Cleanup when modal closes
+      return () => {
+        const savedScrollY = document.body.dataset.scrollY;
+
+        // Remove all styles
+        document.body.style.overflow = "";
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.left = "";
+        document.body.style.right = "";
+        document.body.style.width = "";
+
+        // Restore scroll position
+        if (savedScrollY) {
+          window.scrollTo(0, parseInt(savedScrollY));
+          delete document.body.dataset.scrollY;
+        }
+      };
+    }
+  }, [selectedDesign]);
+
   return (
     <div className="font-main tracking-tighter pt-28">
       <h3>(02) Web designs</h3>
@@ -112,23 +147,26 @@ const WebDesignsSection = () => {
           onClick={handleClose}
         >
           <div
-            className="relative bg-transparent max-w-6xl w-full h-[100%] flex items-center justify-center"
+            className="relative h-fit max-w-fit w-full flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
               onClick={handleClose}
+              onMouseEnter={() => setCursorState("md-hovered")}
+              onMouseLeave={() => setCursorState("regular")}
               aria-label="Close"
-              className="absolute top-6 right-0 xl:top-20 xl:right-40 text-white/90 hover:text-white text-3xl md:text-3xl"
+              className="absolute top-6 right-0 xl:top-4 xl:right-6 text-white mix-blend-exclusion text-lg"
             >
-              <TfiClose />
+              CLOSE
             </button>
+
             <Image
               src={selectedDesign.imageUrl}
               alt={selectedDesign.title}
               width={1600}
               height={1000}
-              className="w-auto --h-auto max-w-full h-[80vh] object-contain rounded"
+              className="h-[80vh] w-auto max-w-full object-contain rounded"
               priority
             />
           </div>
