@@ -3,6 +3,7 @@
 import Copy from "@/components/Copy";
 import { CaptionSmallText, DisplaySmallText } from "@/components/ui/Typography";
 import useCursorState from "@/store/useCursorState";
+import Link from "next/link";
 
 const TESTIMONIALS = [
   {
@@ -14,6 +15,7 @@ const TESTIMONIALS = [
     ],
     name: "Christophe Vauclair",
     position: "CTO & Founder, Playgrounds",
+    profileLink: "https://www.linkedin.com/in/christophe-v-825286161/",
   },
   {
     id: 2,
@@ -24,6 +26,7 @@ const TESTIMONIALS = [
     ],
     name: "Suvendu",
     position: "Senior Backend Engineer, VISA",
+    profileLink: "https://www.linkedin.com/in/suvendu-sekhar-sahoo/",
   },
   {
     id: 3,
@@ -34,6 +37,7 @@ const TESTIMONIALS = [
     ],
     name: "Active-glacier-instinct",
     position: "Frontend Developer, BanklessDAO",
+    profileLink: "https://x.com/ActivateGlacier",
   },
   {
     id: 4,
@@ -42,6 +46,7 @@ const TESTIMONIALS = [
     ],
     name: "Sahil",
     position: "A Local Transport Business Owner",
+    profileLink: "https://www.instagram.com/_ksahil_/",
   },
 ];
 
@@ -68,20 +73,12 @@ const Testimonials = () => {
         {TESTIMONIALS.map((testimonial, index) => (
           <div
             key={testimonial.id}
-            className="flex flex-col justify-between w-full sm:min-w-[24rem] xl:min-w-[28rem] 2xl:min-w-[28rem] min-h-0 3xl:max-h-auto 3xl:h-[30rem] mt-6 md:ml-10 rounded-xl"
+            className="flex flex-col justify-between w-full sm:min-w-[24rem] xl:min-w-[28rem] 2xl:min-w-[28rem] min-h-0 3xl:max-h-auto 3xl:h-[24rem] mt-6 md:ml-10 rounded-xl"
           >
             <div className="space-y-3">
               {testimonial.text.map((paragraph, index) => (
                 <Copy key={index}>
-                  <CaptionSmallText
-                    className="font-light leading-relaxed"
-                    // onMouseEnter={() =>
-                    //   setCursorState("sm-hovered")
-                    // }
-                    // onMouseLeave={() =>
-                    //   setCursorState("regular")
-                    // }
-                  >
+                  <CaptionSmallText className="font-light leading-relaxed">
                     {paragraph}
                   </CaptionSmallText>
                 </Copy>
@@ -90,19 +87,28 @@ const Testimonials = () => {
 
             <div className="mt-6 pt-4">
               <Copy>
-                <CaptionSmallText
-                  className="text-sm font-light"
-                  onMouseEnter={() => {
-                    setCursorState("sm-hovered");
-                    setCursorText("Visit Profile");
-                  }}
-                  onMouseLeave={() => {
-                    setCursorState("regular");
-                    setCursorText("");
-                  }}
+                <Link
+                  href={testimonial.profileLink}
+                  style={
+                    { "--underline-height": "0.5px" } as React.CSSProperties
+                  }
+                  target="_blank"
+                  className="link-underline-anim w-fit"
                 >
-                  {testimonial.name}
-                </CaptionSmallText>
+                  <CaptionSmallText
+                    className="text-sm font-light"
+                    onMouseEnter={() => {
+                      setCursorState("sm-hovered");
+                      setCursorText("Visit Profile");
+                    }}
+                    onMouseLeave={() => {
+                      setCursorState("regular");
+                      setCursorText("");
+                    }}
+                  >
+                    {testimonial.name}
+                  </CaptionSmallText>
+                </Link>
               </Copy>
               <Copy>
                 <CaptionSmallText
