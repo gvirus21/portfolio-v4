@@ -43,7 +43,8 @@ const testimonials = [
     id: 2,
     clientName: "active-glacier-instinct",
     clientPosition: "Senior Frontend Developer, Bankless",
-    style: "bg-[#f0efef] text-foreground",
+    style: "bg-[#181818] text-background",
+
     profileLink: "https://x.com/ActivateGlacier",
     message:
       "Gourav is a fast learner, highly reliable, and a pleasure to collaborate with. His ability to grasp complex concepts quickly and turn them into clean, efficient code makes him a standout engineer. He brings a positive attitude to every project and consistently delivers high-quality work. Simply put, working with Gourav makes the development process smoother and more enjoyable.",
@@ -61,7 +62,8 @@ const testimonials = [
     id: 4,
     clientName: "Sahil",
     clientPosition: "A Local Transport Business Owner",
-    style: "bg-[#181818] text-background",
+    style: "bg-[#f0efef] text-foreground",
+
     message: [
       "We hired Gourav for a website redesign and to build a web-based in-house company tool. He successfully delivered both projects on time and even provided a free website audit to improve SEO and engagement. I highly recommend working with this mad lad!",
     ],
@@ -158,7 +160,7 @@ const MobileTestimonial = () => {
         <div
           key={testimonial.id}
           className={cn(
-            "flex flex-col justify-between h-auto p-6 rounded-xl bg-cover bg-center",
+            "flex flex-col justify-between h-auto p-6 rounded-xl bg-cover bg-center text-white",
             !testimonial.bgImage && testimonial.style
           )}
           style={
