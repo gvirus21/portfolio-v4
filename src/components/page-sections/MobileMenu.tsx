@@ -152,19 +152,30 @@ const Menu = ({ mobileMenuOpen, setMobileMenuOpen }: Props) => {
               </div>
             ))}
           </div>
-          <div className="flex items-start justify-between w-full mb-24 font-light">
-            <div className="flex flex-col justify-end text-sm xs:text-xl text-white w-fit">
-              <a
-                className="mb-2 w-fit"
-                href="https://www.instagram.com/gourav.kumar__"
-              >
-                Instagram &#8599;
-              </a>
-              <a className="w-fit" href="#">LinkedIn &#8599;</a>
-            </div>
-            <div className="flex flex-col justify-end text-sm xs:text-sm text-white w-fit">
-              <p className="mb-3  w-fit">gouravkumar2889@gmail.com</p>
-              <p className=" w-fit">+91 0923 3984 23</p>
+          <div>
+            <div className="flex items-start justify-between w-full mb-24 font-light">
+              <div className="flex flex-col justify-end text-sm xs:text-xl text-white w-fit">
+                <Link
+                  href="#"
+                  className="text-2xl text-background font-thin tracking-tight inline-block underline decoration-[0.5px] underline-offset-6"
+                >
+                  Let&apos;s Talk{" "}
+                  <span className="pt- inline-block">&#8599;</span>
+                </Link>
+                <a
+                  className="mb-2 w-fit mt-3"
+                  href="https://www.instagram.com/gourav.kumar__"
+                >
+                  Instagram &#8599;
+                </a>
+                <a className="w-fit" href="#">
+                  LinkedIn &#8599;
+                </a>
+              </div>
+              <div className="flex flex-col justify-end text-sm xs:text-sm text-white w-fit">
+                <p className="mb-3  w-fit">gouravkumar2889@gmail.com</p>
+                <p className=" w-fit">+91 0923 3984 23</p>
+              </div>
             </div>
           </div>
         </div>
