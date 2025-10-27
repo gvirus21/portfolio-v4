@@ -2,6 +2,7 @@ import Image from "next/image";
 import Copy from "@/components/Copy";
 import useCursorState from "@/store/useCursorState";
 import { useFirstVisit } from "@/hooks/useFirstVisit";
+import { useState, useEffect, useRef } from "react";
 
 export const HeroSection = () => {
   const { setCursorState } = useCursorState();
@@ -9,13 +10,41 @@ export const HeroSection = () => {
   const FIRST_VISIT_KEY = "about-page-first-visit";
   const firstVisit = useFirstVisit(FIRST_VISIT_KEY);
   const textAnimationDelay = firstVisit ? 0.4 : 0.8;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [currentImage, setCurrentImage] = useState(
+    "/assets/images/about/hero/img-01.jpg"
+  );
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+
+      const rect = containerRef.current.getBoundingClientRect();
+      const elementMiddle = rect.top + rect.height / 2;
+
+      const VIEWPORT_SCROLL_OFFSET = 30;
+
+      if (elementMiddle < VIEWPORT_SCROLL_OFFSET) {
+        setCurrentImage("/assets/images/about/hero/img-02.jpg");
+      } else {
+        setCurrentImage("/assets/images/about/hero/img-01.jpg");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <section className="relative h-screen md:max-h-[32rem] lg:max-h-[36rem] xl:max-h-none md:mt-20 max-w-screen overflow-hidden">
+    <section
+      ref={containerRef}
+      className="relative h-screen md:max-h-[32rem] lg:max-h-[36rem] xl:max-h-none md:mt-20 max-w-screen overflow-hidden"
+    >
       <div className="absolute top-1/2 md:top-[40%] xl:top-[43%] 2xl:top-[40%] 3xl:top-[45%] right-1/2 translate-x-1/2 md:translate-x-0 md:right-[6vw] lg:right-[3vw] -translate-y-1/2 aspect-[4/3] w-[300%] md:w-[70vw] object-cover overflow-hidden">
-        {/* TODO: should have 2 images that changes on the percentage of scroll */}
         <Image
-          src="/assets/images/about/hero/img-03.jpg"
+          src={currentImage}
           alt="hero"
           fill
           className="object-cover opacity-60"
