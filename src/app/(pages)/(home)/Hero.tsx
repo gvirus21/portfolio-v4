@@ -14,16 +14,11 @@ gsap.registerPlugin(SplitText);
 const HERO_IMAGES = ["hero-01.webp", "hero-02.webp"];
 const HOME_HERO_VISIT_KEY = "home-hero";
 
-export const HeroSection = () => {
-  const firstVisit = useFirstVisit(HOME_HERO_VISIT_KEY);
-  const textRef = useRef<HTMLHeadingElement | null>(null);
-  const containerRef = useRef<HTMLElement | null>(null);
 
-  const { setCursorState } = useCursorState();
 
-  // const textAnimationDelay = firstVisit ? 3 : 0.6;
-  const textAnimationDelay = firstVisit ? 3 : 0.6;
-
+// TODO: streamline the code by using a single component for both desktop and mobile
+// Desktop version with animations (xl and above)
+const DesktopHeroImages = ({ firstVisit }: { firstVisit: boolean }) => {
   const heroImageContainerVariants = {
     initial: { opacity: 0, y: 40 },
     animate: {
@@ -50,6 +45,58 @@ export const HeroSection = () => {
   };
 
   return (
+    <div className="hidden xl:grid grid-cols-1 lg:grid-cols-2 gap-3 mt-32 sm:mt-40 md:mt-28 lg:mt-40">
+      {HERO_IMAGES.map((img, idx) => (
+        <motion.div
+          key={img}
+          variants={heroImageContainerVariants}
+          initial="initial"
+          animate="animate"
+          className="relative aspect-[4/3] w-full overflow-clip"
+        >
+          <motion.div
+            variants={heroImageVariants}
+            className="absolute inset-0 w-full h-full"
+          >
+            <Image
+              src={`/assets/images/homepage/hero-section/${img}`}
+              alt={`Hero Image ${idx + 1}`}
+              fill
+            />
+          </motion.div>
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+// Mobile version without animations (lg and below)
+const MobileHeroImages = () => {
+  return (
+    <div className="grid xl:hidden grid-cols-1 lg:grid-cols-2 gap-3 mt-32 sm:mt-40 md:mt-28 lg:mt-40">
+      {HERO_IMAGES.map((img, idx) => (
+        <div key={img} className="relative aspect-[4/3] w-full overflow-clip">
+          <Image
+            src={`/assets/images/homepage/hero-section/${img}`}
+            alt={`Hero Image ${idx + 1}`}
+            fill
+          />
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export const HeroSection = () => {
+  const firstVisit = useFirstVisit(HOME_HERO_VISIT_KEY);
+  const textRef = useRef<HTMLHeadingElement | null>(null);
+  const containerRef = useRef<HTMLElement | null>(null);
+
+  const { setCursorState } = useCursorState();
+
+  const textAnimationDelay = firstVisit ? 3 : 0.6;
+
+  return (
     <section ref={containerRef} className="w-full mx-auto pt-44 px-4 sm:px-10">
       <div className="max-w-[38rem] mb-0 sm:mb-16 mt-[0rem] sm:mt-[10rem] md:mt-[12rem] xl:mt-[6rem] 3xl:mt-[10rem]">
         <Copy delay={textAnimationDelay}>
@@ -70,28 +117,12 @@ export const HeroSection = () => {
           </h1>
         </Copy>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 mt-32 sm:mt-40 md:mt-28 lg:mt-40">
-        {HERO_IMAGES.map((img, idx) => (
-          <motion.div
-            key={img}
-            variants={heroImageContainerVariants}
-            initial="initial"
-            animate="animate"
-            className="relative aspect-[4/3] w-full overflow-clip"
-          >
-            <motion.div
-              variants={heroImageVariants}
-              className="absolute inset-0 w-full h-full"
-            >
-              <Image
-                src={`/assets/images/homepage/hero-section/${img}`}
-                alt={`Hero Image ${idx + 1}`}
-                fill
-              />
-            </motion.div>
-          </motion.div>
-        ))}
-      </div>
+
+      {/* Mobile version - no animations */}
+      <MobileHeroImages />
+
+      {/* Desktop version - with animations */}
+      <DesktopHeroImages firstVisit={firstVisit} />
     </section>
   );
 };
