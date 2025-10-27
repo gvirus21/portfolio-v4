@@ -4,6 +4,8 @@ import Copy from "@/components/Copy";
 import { CaptionSmallText, DisplaySmallText } from "@/components/ui/Typography";
 import useCursorState from "@/store/useCursorState";
 import Link from "next/link";
+import useEmblaCarousel from "embla-carousel-react";
+import wheelGestures from "embla-carousel-wheel-gestures";
 
 const TESTIMONIALS = [
   {
@@ -51,10 +53,10 @@ const TESTIMONIALS = [
 ];
 
 const Testimonials = () => {
-  const { setCursorState, setCursorText } = useCursorState();
+  const { setCursorState } = useCursorState();
 
   return (
-    <section className="relative min-h-[30vh] w-screen max-w-full flex flex-col md:flex-row mt-20 overflow-x-hidden">
+    <section className="relative min-h-[30vh] w-screen max-w-full flex flex-col md:flex-row md:justify-between mt-20 overflow-x-hidden">
       <div className="w-3/12 pt-6">
         <Copy>
           <DisplaySmallText
@@ -67,17 +69,40 @@ const Testimonials = () => {
         </Copy>
       </div>
 
-      <div className="flex flex-col sm:flex-row space-y-4 justify-between w-full overflow-x-scroll scrollbar-hide mt-4 md:mt-0">
-        <div className="md:hidden h-[0.5px] w-full bg-slate-400 rounded-full" />
+      <div className="md:w-[75%] lg:w-[80%]  mt-4 md:mt-0">
+        <div className="md:hidden h-[0.5px] w-full bg-slate-400 rounded-full mb-6" />
 
+        <DesktopTestimonials />
+        <MobileTestimonials />
+      </div>
+    </section>
+  );
+};
+
+export default Testimonials;
+
+const DesktopTestimonials = () => {
+  const { setCursorState, setCursorText } = useCursorState();
+  const [emblaRef] = useEmblaCarousel(
+    {
+      loop: false,
+      align: "start",
+      dragFree: true,
+    },
+    [wheelGestures()]
+  );
+
+  return (
+    <div className="hidden md:block overflow-hidden" ref={emblaRef}>
+      <div className="flex space-x-4 sm:space-x-6">
         {TESTIMONIALS.map((testimonial, index) => (
           <div
             key={testimonial.id}
-            className="flex flex-col justify-between w-full sm:min-w-[24rem] xl:min-w-[28rem] 2xl:min-w-[28rem] min-h-0 3xl:max-h-auto 3xl:h-[24rem] mt-6 md:ml-10 rounded-xl"
+            className="flex-none flex flex-col justify-between w-[90vw] sm:w-[24rem] xl:w-[28rem] 2xl:w-[28rem] min-h-0 3xl:max-h-auto 3xl:h-[24rem] rounded-xl"
           >
             <div className="space-y-3">
-              {testimonial.text.map((paragraph, index) => (
-                <Copy key={index}>
+              {testimonial.text.map((paragraph, idx) => (
+                <Copy key={idx}>
                   <CaptionSmallText className="font-light leading-relaxed">
                     {paragraph}
                   </CaptionSmallText>
@@ -127,8 +152,53 @@ const Testimonials = () => {
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 
-export default Testimonials;
+const MobileTestimonials = () => {
+  return (
+    <div className="flex flex-col md:hidden space-y-10">
+      {TESTIMONIALS.map((testimonial, index) => (
+        <div
+          key={testimonial.id}
+          className="flex-none flex flex-col justify-between w-[90vw] rounded-xl"
+        >
+          <div className="space-y-3">
+            {testimonial.text.map((paragraph, idx) => (
+              <Copy key={idx}>
+                <CaptionSmallText className="font-light leading-relaxed">
+                  {paragraph}
+                </CaptionSmallText>
+              </Copy>
+            ))}
+          </div>
+
+          <div className="mt-6 pt-4">
+            <Copy>
+              <Link
+                href={testimonial.profileLink}
+                style={{ "--underline-height": "0.5px" } as React.CSSProperties}
+                target="_blank"
+                className="link-underline-anim w-fit"
+              >
+                <CaptionSmallText className="text-sm font-light">
+                  {testimonial.name}
+                </CaptionSmallText>
+              </Link>
+            </Copy>
+            <Copy>
+              <CaptionSmallText className="text-gray-600 text-xs italic">
+                {testimonial.position}
+              </CaptionSmallText>
+            </Copy>
+          </div>
+
+          {index < TESTIMONIALS.length - 1 && (
+            <div className="md:hidden h-[0.5px] w-full bg-slate-400 rounded-full mt-10" />
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
