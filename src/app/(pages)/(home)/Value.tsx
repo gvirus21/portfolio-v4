@@ -66,11 +66,13 @@ export const ValueSection = () => {
             <div className="space-y-5">
               {deliverySteps.map((step) => (
                 <Copy key={step.id} delay={copyDelay}>
-                  <DisplayMediumText
-                    onMouseEnter={() => setCursorState("sm-hovered")}
-                    onMouseLeave={() => setCursorState("regular")}
-                  >
-                    {step.content}
+                  <DisplayMediumText>
+                    <span
+                      onMouseEnter={() => setCursorState("sm-hovered")}
+                      onMouseLeave={() => setCursorState("regular")}
+                    >
+                      {step.content}
+                    </span>
                   </DisplayMediumText>
                 </Copy>
               ))}

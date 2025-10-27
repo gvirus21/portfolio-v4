@@ -28,22 +28,24 @@ export const MyApproachSection = () => {
             <div className="h-[0.5px] w-full bg-black mt-14" />
             <div className="flex justify-between pt-5">
               <Copy>
-                <DisplayMediumText
-                  onMouseEnter={() => setCursorState("sm-hovered")}
-                  onMouseLeave={() => setCursorState("regular")}
-                  className="text-base sm:text-xl 2xl:text-xl w-[7rem] sm:w-[14rem] tracking-[2%]"
-                >
-                  {item.title}
+                <DisplayMediumText className="text-base sm:text-xl 2xl:text-xl w-[7rem] sm:w-[14rem] tracking-[2%]">
+                  <span
+                    onMouseEnter={() => setCursorState("sm-hovered")}
+                    onMouseLeave={() => setCursorState("regular")}
+                  >
+                    {item.title}
+                  </span>
                 </DisplayMediumText>
               </Copy>
               <div className="md:w-[50%]">
                 <Copy>
-                  <DisplayMediumText
-                    onMouseEnter={() => setCursorState("sm-hovered")}
-                    onMouseLeave={() => setCursorState("regular")}
-                    className="w-[14rem] sm:w-[32rem] md:w-[20rem] xl:w-[24rem] 3xl:w-[26rem] tracking-wide"
-                  >
-                    {item.description}
+                  <DisplayMediumText className="w-[14rem] sm:w-[32rem] md:w-[20rem] xl:w-[24rem] 3xl:w-[26rem] tracking-wide">
+                    <span
+                      onMouseEnter={() => setCursorState("sm-hovered")}
+                      onMouseLeave={() => setCursorState("regular")}
+                    >
+                      {item.description}
+                    </span>
                   </DisplayMediumText>
                 </Copy>
               </div>

@@ -117,12 +117,13 @@ const DesktopTestimonial = () => {
                 : undefined
             }
           >
-            <DisplaySmallText
-              onMouseEnter={() => setCursorState("sm-hovered")}
-              onMouseLeave={() => setCursorState("regular")}
-              className="w-[24rem] md:text-base tracking-wide"
-            >
-              {testimonial.message}
+            <DisplaySmallText className="w-[24rem] md:text-base tracking-wide">
+              <span
+                onMouseEnter={() => setCursorState("sm-hovered")}
+                onMouseLeave={() => setCursorState("regular")}
+              >
+                {testimonial.message}
+              </span>
             </DisplaySmallText>
 
             <a
@@ -132,17 +133,19 @@ const DesktopTestimonial = () => {
               className="font-light italic mt-10 link-underline-anim w-fit"
               style={{ "--underline-height": "0.5px" } as React.CSSProperties}
             >
-              <CaptionSmallText
-                onMouseEnter={() => {
-                  setCursorState("sm-hovered");
-                  setCursorText("Visit profile");
-                }}
-                onMouseLeave={() => {
-                  setCursorState("regular");
-                  setCursorText("");
-                }}
-              >
-                {testimonial.clientName}
+              <CaptionSmallText>
+                <span
+                  onMouseEnter={() => {
+                    setCursorState("sm-hovered");
+                    setCursorText("Visit profile");
+                  }}
+                  onMouseLeave={() => {
+                    setCursorState("regular");
+                    setCursorText("");
+                  }}
+                >
+                  {testimonial.clientName}
+                </span>
               </CaptionSmallText>
             </a>
             <CaptionSmallText>{testimonial.clientPosition}</CaptionSmallText>
