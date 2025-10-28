@@ -1,11 +1,9 @@
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Copy from "@/components/Copy";
-import useCursorState from "@/store/useCursorState";
 import { useFirstVisit } from "@/hooks/useFirstVisit";
-import { useState, useEffect, useRef } from "react";
 
 export const HeroSection = () => {
-  const { setCursorState } = useCursorState();
 
   const FIRST_VISIT_KEY = "about-page-first-visit";
   const firstVisit = useFirstVisit(FIRST_VISIT_KEY);
@@ -53,8 +51,6 @@ export const HeroSection = () => {
 
       <Copy delay={textAnimationDelay}>
         <p
-          onMouseEnter={() => setCursorState("lg-hovered")}
-          onMouseLeave={() => setCursorState("regular")}
           className="absolute right-4 left-4 sm:left-10 xl:left-10 3xl:left-20 bottom-10 xs:bottom-10 md:bottom-14 lg:bottom-20 xl:bottom-40 3xl:bottom-48 xl:font-light text-4xl xl:text-5xl 3xl:text-8xl md:w-[80%] md:leading-[2.3rem] lg:leading-[2.4rem] xl:leading-[3.5rem] 3xl:leading-[7rem] trackin"
         >
           <span className="mr-10 md:mr-16 lg:mr-16 xl:mr-24 3xl:mr-40" />

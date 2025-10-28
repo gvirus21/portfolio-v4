@@ -7,26 +7,17 @@ import useCursorState from "@/store/useCursorState";
 const IMG_DIR = "/assets/images/about/work";
 
 export const WorkSection = () => {
-  const { setCursorState } = useCursorState();
 
   return (
     <section className="pt-20 lg:pt-[10em] 2xl:pt-[14rem] 3xl:pt-[18rem] lg:pb-[5rem] px-4 sm:px-6">
       <Copy>
-        <H4
-          onMouseEnter={() => setCursorState("lg-hovered")}
-          onMouseLeave={() => setCursorState("regular")}
-          className="text-5xl sm:w-[40rem] md:text-5xl md:w-[32rem] lg:text-6xl xl:text-7xl 3xl:text-8xl lg:w-[40rem] xl:w-[50rem] 3xl:w-[60rem] uppercase tracking-wide md:tracking-normal"
-        >
+        <H4 className="text-5xl sm:w-[40rem] md:text-5xl md:w-[32rem] lg:text-6xl xl:text-7xl 3xl:text-8xl lg:w-[40rem] xl:w-[50rem] 3xl:w-[60rem] uppercase tracking-wide md:tracking-normal">
           Some of My Noteworthy Works
         </H4>
       </Copy>
 
       <Copy>
-        <h3
-          onMouseEnter={() => setCursorState("sm-hovered")}
-          onMouseLeave={() => setCursorState("regular")}
-          className="text-base lg:text-xl 3xl:text-2xl md:w-[32rem] lg:w-[44rem] 3xl:w-[50rem] xl:font-light mt-10 lg:mt-16 xl:mt-12 3xl:mt-16 xl:tracking-wide"
-        >
+        <h3 className="text-base lg:text-xl 3xl:text-2xl md:w-[32rem] lg:w-[44rem] 3xl:w-[50rem] xl:font-light mt-10 lg:mt-16 xl:mt-12 3xl:mt-16 xl:tracking-wide">
           Throughout my career, I have worked with some of the most Ambitious
           and fun brands in the industry, here are some of my favourite ones.
         </h3>

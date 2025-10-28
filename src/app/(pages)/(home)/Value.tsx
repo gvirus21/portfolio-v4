@@ -53,11 +53,7 @@ export const ValueSection = () => {
       <div className="w-full">
         <div className="flex flex-col lg:flex-row justify-between">
           <Copy delay={copyDelay}>
-            <H2
-              onMouseEnter={() => setCursorState("lg-hovered")}
-              onMouseLeave={() => setCursorState("regular")}
-              className="h-fit g:w-full 3xl:w-fit xl:text-[5rem] 2xl:text-[5rem] 3xl:text-[6rem] tracking-[-2px] xl:tracking-[-6px] 3xl:ml-5 overflow-visible"
-            >
+            <H2 className="h-fit g:w-full 3xl:w-fit xl:text-[5rem] 2xl:text-[5rem] 3xl:text-[6rem] tracking-[-2px] xl:tracking-[-6px] 3xl:ml-5 overflow-visible">
               How I Deliver Value
             </H2>
           </Copy>
@@ -66,14 +62,7 @@ export const ValueSection = () => {
             <div className="space-y-5">
               {deliverySteps.map((step) => (
                 <Copy key={step.id} delay={copyDelay}>
-                  <DisplayMediumText>
-                    <span
-                      onMouseEnter={() => setCursorState("sm-hovered")}
-                      onMouseLeave={() => setCursorState("regular")}
-                    >
-                      {step.content}
-                    </span>
-                  </DisplayMediumText>
+                  <DisplayMediumText>{step.content}</DisplayMediumText>
                 </Copy>
               ))}
             </div>

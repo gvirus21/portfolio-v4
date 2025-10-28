@@ -109,29 +109,13 @@ const OtherQuestions = () => {
 
               <div className="flex flex-col sm:flex-row justify-between mt-6 mb-8 sm:mb-16 lg:mb-20">
                 <Copy>
-                  <DisplaySmallText
-                    className="sm:w-[13rem] text-2xl sm:text-base lg:w-[16rem] font-light tracking-tight mr-5"
-                    onMouseEnter={() =>
-                      !isTouchDevice && setCursorState("sm-hovered")
-                    }
-                    onMouseLeave={() =>
-                      !isTouchDevice && setCursorState("regular")
-                    }
-                  >
+                  <DisplaySmallText className="sm:w-[13rem] text-2xl sm:text-base lg:w-[16rem] font-light tracking-tight mr-5">
                     <span>({String(qa.id).padStart(2, "0")}) </span>
                     {qa.question}
                   </DisplaySmallText>
                 </Copy>
                 <Copy>
-                  <DisplaySmallText
-                    className="mt-4 sm:mt-0 w-[95%] sm:w-[20rem] md:w-[24rem] xl:w-[26rem] 2xl:w-[32rem] sm:mr-5 md:mr-10 xl:mr-[8vw] 2xl:mr-[8vw] text-base sm:text-base font-light tracking-tight"
-                    onMouseEnter={() =>
-                      !isTouchDevice && setCursorState("sm-hovered")
-                    }
-                    onMouseLeave={() =>
-                      !isTouchDevice && setCursorState("regular")
-                    }
-                  >
+                  <DisplaySmallText className="mt-4 sm:mt-0 w-[95%] sm:w-[20rem] md:w-[24rem] xl:w-[26rem] 2xl:w-[32rem] sm:mr-5 md:mr-10 xl:mr-[8vw] 2xl:mr-[8vw] text-base sm:text-base font-light tracking-tight">
                     {qa.answer}
                   </DisplaySmallText>
                 </Copy>

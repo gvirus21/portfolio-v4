@@ -72,16 +72,10 @@ const testimonials = [
 ];
 
 export const TestimonialSection = () => {
-  const { setCursorState } = useCursorState();
-
   return (
     <section className="min-h-[50vh] w-full mt-24 sm:mt-36 px-4 sm:px-10 ">
       <style>{hideScrollbarStyles}</style>
-      <H3
-        onMouseEnter={() => setCursorState("lg-hovered")}
-        onMouseLeave={() => setCursorState("regular")}
-        className="lg:w-full 3xl:ml-5 text-[2.5rem] xl:text-[5rem] 3xl:text-[7rem] tracking-[-2px] xl:tracking-[-8px] 3xl:tracking-[-6px] leading-12 xl:leading-normal"
-      >
+      <H3 className="lg:w-full 3xl:ml-5 text-[2.5rem] xl:text-[5rem] 3xl:text-[7rem] tracking-[-2px] xl:tracking-[-8px] 3xl:tracking-[-6px] leading-12 xl:leading-normal">
         Client Success Stories
       </H3>
       <DesktopTestimonial />
@@ -118,12 +112,7 @@ const DesktopTestimonial = () => {
             }
           >
             <DisplaySmallText className="w-[24rem] md:text-base tracking-wide">
-              <span
-                onMouseEnter={() => setCursorState("sm-hovered")}
-                onMouseLeave={() => setCursorState("regular")}
-              >
-                {testimonial.message}
-              </span>
+              {testimonial.message}
             </DisplaySmallText>
 
             <a

@@ -34,11 +34,7 @@ const PlaygroundPage: FC = () => {
           </Copy>
         </span>
         <Copy delay={textAnimationDelay + 0.3}>
-          <p
-            onMouseEnter={() => setCursorState("sm-hovered")}
-            onMouseLeave={() => setCursorState("regular")}
-            className="text-sm  md:text-lg xl:text-lg 3xl:text-xl w-[20rem] md:w-[30rem] font-light font-[arial] leading-5 md:leading-6 tracking-tight"
-          >
+          <p className="text-sm  md:text-lg xl:text-lg 3xl:text-xl w-[20rem] md:w-[30rem] font-light font-[arial] leading-5 md:leading-6 tracking-tight">
             <span className="font-sourcecodepro font-semibold italic tracking-tighter">
               Welcome
             </span>{" "}

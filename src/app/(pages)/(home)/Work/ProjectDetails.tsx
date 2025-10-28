@@ -24,19 +24,12 @@ interface ProjectDetailsProps {
 }
 
 const ToolList = ({ tools }: { tools: string[] }) => {
-  const { setCursorState } = useCursorState();
-
   return (
     <ul className="space-y-1">
       {tools.map((tool, index) => (
         <li key={index} className="flex items-center">
           <BsDot className="text-xl mr-1" />
-          <DisplaySmallText
-            onMouseEnter={() => setCursorState("sm-hovered")}
-            onMouseLeave={() => setCursorState("regular")}
-          >
-            {tool}
-          </DisplaySmallText>
+          <DisplaySmallText>{tool}</DisplaySmallText>
         </li>
       ))}
     </ul>
@@ -91,11 +84,7 @@ export const ProjectDetails = ({
         >
           <div className="flex flex-col justify-start lg:justify-between items-center xl:items-start lg:flex-row mb-6">
             <div className="mt-4">
-              <DisplayLargeText
-                onMouseEnter={() => setCursorState("sm-hovered")}
-                onMouseLeave={() => setCursorState("regular")}
-                className="tracking-tight w-11/12 lg:w-[20rem] xl:w-[24rem] 2xl:w-[32rem] 3xl:w-[40rem]"
-              >
+              <DisplayLargeText className="tracking-tight w-11/12 lg:w-[20rem] xl:w-[30rem] 2xl:w-[32rem] 3xl:w-[40rem]">
                 {description}
               </DisplayLargeText>
               <div
@@ -115,16 +104,12 @@ export const ProjectDetails = ({
 
               <div className="mt-10">
                 <h5
-                  onMouseEnter={() => setCursorState("sm-hovered")}
-                  onMouseLeave={() => setCursorState("regular")}
                   className="text-3xl tracking-tighter uppercase mb-6"
                 >
                   Challenges We Worked on
                 </h5>
                 <DisplaySmallText
-                  onMouseEnter={() => setCursorState("sm-hovered")}
-                  onMouseLeave={() => setCursorState("regular")}
-                  className="w-11/12 lg:w-[20rem] xl:w-[24rem] 2xl:w-[24rem] 3xl:w-[32rem]"
+                  className="w-11/12 lg:w-[20rem] xl:w-[30rem] 2xl:w-[24rem] 3xl:w-[32rem]"
                 >
                   {challengesDescription}
                 </DisplaySmallText>
@@ -132,8 +117,6 @@ export const ProjectDetails = ({
 
               <div className="mt-12">
                 <H6
-                  onMouseEnter={() => setCursorState("sm-hovered")}
-                  onMouseLeave={() => setCursorState("regular")}
                   className="mb-3"
                 >
                   Technologies

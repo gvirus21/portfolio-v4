@@ -136,11 +136,7 @@ const DesktopTestimonials = () => {
                 </Link>
               </Copy>
               <Copy>
-                <CaptionSmallText
-                  className="text-gray-600 text-xs italic"
-                  onMouseEnter={() => setCursorState("sm-hovered")}
-                  onMouseLeave={() => setCursorState("regular")}
-                >
+                <CaptionSmallText className="text-gray-600 text-xs italic">
                   {testimonial.position}
                 </CaptionSmallText>
               </Copy>
