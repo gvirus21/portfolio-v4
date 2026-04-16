@@ -24,6 +24,10 @@ export default function Home() {
   const [showLoader, setShowLoader] = useState(false);
 
   useEffect(() => {
+    alert("This site is under construction 🚧👷‍♂️");
+  }, []);
+
+  useEffect(() => {
     if (typeof window === "undefined") return;
     const win = window as unknown as {
       __appInit?: boolean;
