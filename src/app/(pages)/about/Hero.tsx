@@ -4,7 +4,6 @@ import Copy from "@/components/Copy";
 import { useFirstVisit } from "@/hooks/useFirstVisit";
 
 export const HeroSection = () => {
-
   const FIRST_VISIT_KEY = "about-page-first-visit";
   const firstVisit = useFirstVisit(FIRST_VISIT_KEY);
   const textAnimationDelay = firstVisit ? 0.4 : 0.8;
@@ -20,7 +19,7 @@ export const HeroSection = () => {
       const rect = containerRef.current.getBoundingClientRect();
       const elementMiddle = rect.top + rect.height / 2;
 
-      const VIEWPORT_SCROLL_OFFSET = 30;
+      const VIEWPORT_SCROLL_OFFSET = 80;
 
       if (elementMiddle < VIEWPORT_SCROLL_OFFSET) {
         setCurrentImage("/assets/images/about/hero/img-02.jpg");
@@ -50,9 +49,7 @@ export const HeroSection = () => {
       </div>
 
       <Copy delay={textAnimationDelay}>
-        <p
-          className="absolute right-4 left-4 sm:left-10 xl:left-10 3xl:left-20 bottom-10 xs:bottom-10 md:bottom-14 lg:bottom-20 xl:bottom-40 3xl:bottom-48 xl:font-light text-4xl xl:text-5xl 3xl:text-8xl md:w-[80%] md:leading-[2.3rem] lg:leading-[2.4rem] xl:leading-[3.5rem] 3xl:leading-[7rem] trackin"
-        >
+        <p className="absolute right-4 left-4 sm:left-10 xl:left-10 3xl:left-20 bottom-10 xs:bottom-10 md:bottom-14 lg:bottom-20 xl:bottom-40 3xl:bottom-48 xl:font-light text-4xl xl:text-5xl 3xl:text-8xl md:w-[80%] md:leading-[2.3rem] lg:leading-[2.4rem] xl:leading-[3.5rem] 3xl:leading-[7rem] font-dmsans">
           <span className="mr-10 md:mr-16 lg:mr-16 xl:mr-24 3xl:mr-40" />
           <span className="font-sourcecodepro italic mr- 3xl:text-9xl">I</span>n
           the game for over{" "}
